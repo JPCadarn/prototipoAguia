@@ -1,0 +1,156 @@
+html {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+.centralizar {
+	text-align: center;
+}
+
+*:visited {
+	text-decoration: none;
+}
+
+.texto-icone {
+	font-size: 2em;
+}
+
+.imagem-logo {
+	height: 2.5em !important;
+}
+
+.input-field input[type=email]:not(.browser-default):focus:not([readonly]),
+.input-field input[type=password]:not(.browser-default):focus:not([readonly]),
+.input-field input[type=number]:not(.browser-default):focus:not([readonly]) {
+	border-bottom: 1px solid #4a148c !important;
+	box-shadow: 0 1px 0 0 #4a148c !important;
+}
+
+.input-field input[type=text]:focus+label,
+.materialize-textarea:focus:not([readonly])+label,
+.input-field input[type=email]:focus+label,
+.materialize-textarea:focus:not([readonly])+label,
+.input-field input[type=password]:focus+label,
+.materialize-textarea:focus:not([readonly])+label,
+input[type=date]:not(.browser-default):focus:not([readonly])+label,
+input[type=number]:not(.browser-default):focus:not([readonly])+label {
+	color: #4a148c !important;
+}
+
+.input-field .prefix.active {
+	color: #4a148c !important;
+}
+
+.input-field input[type=text]:focus,
+.materialize-textarea:focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]) {
+	border-bottom: 1px solid #4a148c !important;
+	box-shadow: 0 1px 0 0 #4a148c !important;
+}
+
+.slider .indicators .indicator-item.active {
+	background-color: #a4a4a8;
+}
+
+#dropdownCategorias a {
+	color: #424242;
+}
+
+.carrinho-header {
+	font-size: 2.28rem;
+}
+
+.img-carrinho {
+	height: 250px !important;
+	width: 250px !important;
+}
+
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:after {
+	background-color: #4a148c;
+}
+
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:before,
+[type="radio"].with-gap:checked+span:after {
+	border: 2px solid #4a148c;
+}
+
+.img-pedido {
+	width: 20% !important;
+}
+
+.btn-breadcrumb {
+	font-size: 2rem !important;
+}
+
+.ativo {
+	color: ghostwhite;
+}
+
+.datepicker-date-display,
+.datepicker-table td.is-selected {
+	background-color: #4a148c !important;
+}
+
+.datepicker-cancel,
+.datepicker-done,
+.is-today .datepicker-day-button,
+.dropdown-content li>span {
+	color: #4a148c;
+}
+
+.label-tabela {
+	font-size: 2.8rem !important;
+}
+
+.select-wrapper input.select-dropdown:focus {
+	border-bottom: 1px solid #4a148c !important;
+}
+
+#parcelas, .oculto {
+	display: none;
+}
+
+.negrito {
+	font-weight: bolder;
+}
+
+.estrela {
+	cursor: pointer !important;
+}
+
+.collapsible {
+	width: 100% !important;
+}
+
+.tabs .indicator, .timepicker-digital-display {
+	background-color: #4a148c;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+	background-color: rgba(74, 20, 140, 0.2);
+	outline: none;
+}
+
+.timepicker-canvas line {
+	stroke: #ce93d8;
+}
+
+.timepicker-canvas-bearing,
+.timepicker-canvas-bg {
+	fill: #ce93d8;
+}
+
+.timepicker-close {
+	color: #4a148c;
+}

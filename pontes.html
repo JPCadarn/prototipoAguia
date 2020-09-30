@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="assets/materialize/css/materialize.min.css"  media="screen,projection"/>
+		<link rel="stylesheet" href="assets/css/main.css">
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+		<nav>
+			<div class="nav-wrapper purple darken-4">
+				<a href='index.html' class='brand-logo center' tabIndex='-1'>
+					<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
+				</a>
+				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="pontes.html">Pontes</a></li>
+					<li><a href="#">Agendamentos</a></li>
+					<li><a href="#">Logout</a></li>
+					<li><a href="#">Minha Conta</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<ul class="sidenav" id="mobile-demo">
+			<li><a href="pontes.html">Pontes</a></li>
+			<li><a href="#">Agendamentos</a></li>
+			<li><a href="#">Logout</a></li>
+			<li><a href="#">Minha Conta</a></li>
+		</ul>
+		
+		<div class="row">
+			<div class="col s12 m4">
+					<div class="card">
+						<div class="card-image">
+						<a href="corticeira.html">
+							<img src="assets/fotos/fotos/PHOTO-2020-07-24-14-17-56.jpg">
+						</a>
+						<span class="card-title">Ponte Corticeira</span>
+					</div>
+					<div class="card-content">
+						<p>Descricão da ponte</p>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m4">
+					<div class="card">
+						<div class="card-image">
+						<a href="corticeira.html">
+							<img src="assets/fotos/fotos/PHOTO-2020-07-24-14-17-56.jpg">
+						</a>
+						<span class="card-title">Ponte Corticeira</span>
+					</div>
+					<div class="card-content">
+						<p>Descricão da ponte</p>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m4">
+					<div class="card">
+						<div class="card-image">
+						<a href="corticeira.html">
+							<img src="assets/fotos/fotos/PHOTO-2020-07-24-14-17-56.jpg">
+						</a>
+						<span class="card-title">Ponte Corticeira</span>
+					</div>
+					<div class="card-content">
+						<p>Descricão da ponte</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="fixed-action-btn">
+  			<a data-target="modalCadastro" class="btn-large modal-trigger btn-floating waves-effect waves-light purple darken-4">
+    			<i class="large material-icons">add</i>
+  			</a>
+		</div>
+
+		<!-- Modal Structure -->
+		<div id="modalCadastro" class="modal bottom-sheet">
+			<div class="modal-title">
+				<h4 class="center">Adicionar Ponte</h4>
+			</div>
+			<div class="modal-content">
+				<div class="row">
+					<div class="col s12">
+						<ul class="tabs">
+							<li class="tab col s12 m2"><a class="active purple-text text-darken-4" href="#formIdentificacao">Identicação e Localização</a></li>
+							<li class="tab col s12 m2"><a class="purple-text text-darken-4" href="#formEstrutura">Características da Estrutura</a></li>
+							<li class="tab col s12 m2"><a class="purple-text text-darken-4" href="#formFuncionais">Características Funcionais</a></li>
+							<li class="tab col s12 m2"><a class="purple-text text-darken-4" href="#formAnomalias">Registro de Anomalias</a></li>
+							<li class="tab col s12 m2"><a class="purple-text text-darken-4" href="#formImagens">Imagens</a></li>
+						</ul>
+					</div>
+					<div id="formIdentificacao" class="col s12">
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="via" type="text">
+								<label for="via">Via ou Municipio</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="nome_oae" type="text">
+								<label for="nome_oae">Nome da OAE</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="data_construcao" type="text" class="datepicker">
+								<label for="data_construcao">Data de Construção</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="trem_tipo" type="text">
+								<label for="trem_tipo">Trem-Tipo</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="sentido" type="text">
+								<label for="sentido">Sentido</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="localizacao" type="text">
+								<label for="localizacao">Localização</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="latitude" type="text">
+								<label for="latitude">Latitude</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="longitude" type="text">
+								<label for="longitude">Longitude</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="projetista" type="text">
+								<label for="projetista">Projetista</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="construtor" type="text">
+								<label for="construtor">Construtor</label>
+							</div>
+						</div>
+					</div>
+					<div id="formEstrutura" class="col s12">
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="comprimento" type="text">
+								<label for="comprimento">Comprimento</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="largura" type="text">
+								<label for="largura">Largura</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="largura_acostamento" type="text">
+								<label for="largura_acostamento">Largura do Acostamento</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="largura_refugio" type="text">
+								<label for="largura_refugio">Largura do Refúgio</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="largura_passeio" type="text">
+								<label for="largura_passeio">Largura do Passeio</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="sistema_construtivo" type="text">
+								<label for="sistema_construtivo">Sistema Construtivo</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="natureza_transposicao" type="text">
+								<label for="natureza_transposicao">Natureza da Transposição</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="material" type="text">
+								<label for="material">Material</label>
+							</div>
+						</div>
+						<h5 class="center">Seção Tipo</h5>
+						<div class="row">
+							<div class="input-field col s4">
+								<input id="longitudinal_super" type="text">
+								<label for="longitudinal_super">Longitudinal da superestrutura</label>
+							</div>
+							<div class="input-field col s4">
+								<input id="transversal_super" type="text">
+								<label for="transversal_super">Transversal da superestrutura</label>
+							</div>
+							<div class="input-field col s4">
+								<input id="mesoestrutura_tipo" type="text">
+								<label for="mesoestrutura_tipo">Mesoestrutura </label>
+							</div>
+						</div>
+						<h5 class="center">Características Particulares</h5>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="nro_vaos" type="text">
+								<label for="nro_vaos">Número de Vãos</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="nro_apoios" type="text">
+								<label for="nro_apoios">Número de Apoios</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="nro_pilares_apoio" type="text">
+								<label for="nro_pilares_apoio">Número de Pilares por Apoio</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="aparelhos_apoio" type="text">
+								<label for="aparelhos_apoio">Aparelhos de Apoio</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="comprimento_vao_tipico" type="text">
+								<label for="comprimento_vao_tipico">Comprimento do vão típico</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="comprimento_maior_vao" type="text">
+								<label for="comprimento_maior_vao">Comprimento do maior vão</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="altura_pilares" type="text">
+								<label for="altura_pilares">Altura dos pilares</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="juntas_dilatacao" type="text">
+								<label for="juntas_dilatacao">Juntas de dilatação</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="encontros" type="text">
+								<label for="encontros">Encontros</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="outras" type="text">
+								<label for="outras">Outras Características</label>
+							</div>
+						</div>
+					</div>
+					<div id="formFuncionais" class="col s12">
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="caracteristicas_plani" type="text">
+								<label for="caracteristicas_plani">Características plani-altimétricas</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="nro_faixas" type="text">
+								<label for="nro_faixas">Número de Faixas</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="acostamento" type="text">
+								<label for="acostamento">Acostamento</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="refugios" type="text">
+								<label for="refugios">Refúgios</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="passeio" type="text">
+								<label for="passeio">Passeio</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="barreira_rigida" type="text">
+								<label for="barreira_rigida">Barreira rígida</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="material_pavimento" type="text">
+								<label for="material_pavimento">Material do pavimento</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="pingadeiras" type="text">
+								<label for="pingadeiras">Pingadeiras</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="guarda_corpo" type="text">
+								<label for="guarda_corpo">Guarda-Corpo</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="drenos" type="text">
+								<label for="drenos">Dreno</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="freq_passagem_carga" type="text">
+								<label for="freq_passagem_carga">Frequencia passagem carga especial</label>
+							</div>
+						</div>
+					</div>
+					<div id="formAnomalias" class="col s12">
+						<h5 class="center">Elementos Estruturas</h5>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="superestrutura" type="text">
+								<label for="superestrutura">Superestrutura</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="mesoestrutura" type="text">
+								<label for="mesoestrutura">Mesoestrutura</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="infraestrutura" type="text">
+								<label for="infraestrutura">Infraestrutura</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="aparelhos_apoio_anomalia" type="text">
+								<label for="aparelhos_apoio_anomalia">Aparelhos de apoio</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="juntas_dilatacao_anomalia" type="text">
+								<label for="juntas_dilatacao_anomalia">Juntas de dilatação</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="encontros_anomalia" type="text">
+								<label for="encontros_anomalia">Encontros</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="juntas_dilatacao_anomalia" type="text">
+								<label for="juntas_dilatacao_anomalia">Juntas de dilatação</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="encontros_anomalia" type="text">
+								<label for="encontros_anomalia">Encontros</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="juntas_dilatacao_anomalia" type="text">
+								<label for="juntas_dilatacao_anomalia">Juntas de dilatação</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="encontros_anomalia" type="text">
+								<label for="encontros_anomalia">Encontros</label>
+							</div>
+						</div>
+						<h5 class="center">Elementos da pista ou funcionais</h5>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="pavimento" type="text">
+								<label for="pavimento">Pavimento</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="acostamento_refugio" type="text">
+								<label for="acostamento_refugio">Acostamento e refúgio</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="drenagem" type="text">
+								<label for="drenagem">Drenagem</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="guarda_corpo_anomalia" type="text">
+								<label for="guarda_corpo_anomalia">Guarda-Corpo</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="barreira_defensa" type="text">
+								<label for="barreira_defensa">Barreiras concreto/defensa metálica</label>
+							</div>
+						</div>
+						<h5 class="center">Outros Elementos</h5>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="taludes" type="text">
+								<label for="taludes">Taludes</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="iluminacao" type="text">
+								<label for="iluminacao">Iluminação</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="sinalizacao" type="text">
+								<label for="sinalizacao">Sinalização</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="protecao_pilares" type="text">
+								<label for="protecao_pilares">Proteção de pilares</label>
+							</div>
+						</div>
+					</div>
+					<div id="formImagens" class="col s12">
+						<div class="file-field input-field">
+							<div class="btn purple darken-4">
+								<span>Imagens</span>
+								<input type="file" multiple>
+							</div>
+							<div class="file-path-wrapper">
+							  <input class="file-path validate" type="text" placeholder="Anexe aqui as imagens da ponte">
+							</div>
+						</div>
+					</div>
+					<div class="fixed-action-btn">
+						<div class="fixed-action-btn">
+							<button class="modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4" type="submit" value="Create">
+								<i class="large material-icons">check</i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--JavaScript at end of body for optimized loading-->
+		<script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+		<script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
+		<script type="text/javascript" src="assets/js/main.js"></script>
+	</body>
+</html>
