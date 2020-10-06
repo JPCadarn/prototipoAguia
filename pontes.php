@@ -39,25 +39,29 @@
 
 		<?php
 			$pontes = $conexao->executarQuery('SELECT id, nome, descricao FROM pontes');
+			if(count($pontes)){
 			foreach($pontes as $ponte){
-				$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$ponte['id']} ORDER BY id ASC LIMIT 1")[0]['imagem'];
-				echo "
-					<div class='row'>
-						<div class='col s12 m4'>
-								<div class='card'>
-									<div class='card-image'>
-									<a href='ponteDetalhes.php?id={$ponte['id']}'>
-										<img src='assets/fotos/$imagem'>
-									</a>
-									<span class='card-title'>{$ponte['nome']}</span>
-								</div>
-								<div class='card-content'>
-									<p>{$ponte['descricao']}</p>
+					$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$ponte['id']} ORDER BY id ASC LIMIT 1")[0]['imagem'];
+					echo "
+						<div class='row'>
+							<div class='col s12 m4'>
+									<div class='card'>
+										<div class='card-image'>
+										<a href='ponteDetalhes.php?id={$ponte['id']}'>
+											<img src='assets/fotos/$imagem'>
+										</a>
+										<span class='card-title'>{$ponte['nome']}</span>
+									</div>
+									<div class='card-content'>
+										<p>{$ponte['descricao']}</p>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				";
+					";
+				}
+			}else{
+				echo "<h6 class='centralizar'>Nenhuma ponte cadastrada";
 			}
 		?>
 
