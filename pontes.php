@@ -40,8 +40,13 @@
 		<?php
 			$pontes = $conexao->executarQuery('SELECT id, nome, descricao FROM pontes');
 			if(count($pontes)){
-			foreach($pontes as $ponte){
-					$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$ponte['id']} ORDER BY id ASC LIMIT 1")[0]['imagem'];
+				foreach($pontes as $ponte){
+					$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$ponte['id']} ORDER BY id ASC LIMIT 1");
+					if(isset($imagem[0]['imagem'])){
+						$imagem = $imagem[0]['imagem'];
+					}else{
+						$imagem = '';
+					}
 					echo "
 						<div class='row'>
 							<div class='col s12 m4'>
@@ -391,7 +396,7 @@
 							<div class="file-field input-field">
 								<div class="btn purple darken-4">
 									<span>Imagens</span>
-									<input name="images[]" type="file" multiple accept="image/*">
+									<input name="images[]" required type="file" multiple accept="image/*">
 								</div>
 								<div class="file-path-wrapper">
 									<input class="file-path validate" type="text" placeholder="Anexe aqui as imagens da ponte">
