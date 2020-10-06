@@ -17,7 +17,7 @@
 				</a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
-					<li><a href="pontes.html">Pontes</a></li>
+					<li><a href="pontes.php">Pontes</a></li>
 					<li><a href="">Agendamentos</a></li>
 					<li><a href="">Logout</a></li>
 					<li><a href="">Minha Conta</a></li>
