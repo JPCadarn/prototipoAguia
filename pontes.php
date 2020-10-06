@@ -17,7 +17,7 @@
 	<body>
 		<nav>
 			<div class="nav-wrapper purple darken-4">
-				<a href='index.html' class='brand-logo center' tabIndex='-1'>
+				<a href='index.php' class='brand-logo center' tabIndex='-1'>
 					<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
 				</a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
