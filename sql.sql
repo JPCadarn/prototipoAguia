@@ -73,3 +73,9 @@ CREATE TABLE agendamentos(
 	detalhes TEXT NOT NULL,
 	ponte_id INT NOT NULL REFERENCES pontes(id)
 );
+
+CREATE TABLE usuarios(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	usuario VARCHAR(50) NOT NULL unique,
+	senha VARCHAR(60) NOT NULL
+);

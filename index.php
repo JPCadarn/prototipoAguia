@@ -10,27 +10,55 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
-		<nav>
-			<div class="nav-wrapper purple darken-4">
-				<a href='#' class='brand-logo center' tabIndex='-1'>
-					<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
-				</a>
-				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="pontes.php">Pontes</a></li>
-					<li><a href="">Agendamentos</a></li>
-					<li><a href="">Logout</a></li>
-					<li><a href="">Minha Conta</a></li>
-				</ul>
+				
+		<?php
+			if(session_status() <> PHP_SESSION_ACTIVE){
+				session_start();
+			}
+
+			if(isset($_SESSION['userId'])){
+				header('Location: dash.php');
+			}
+		?>
+
+		<center>
+			<img class="responsive-img imagem-login" src="assets/Logo/Roxo.png" />
+
+			<div class="container center">
+
+				<?php
+					if(isset($_GET['login_errado']) && $_GET['login_errado'] == true){
+						echo "<h5 class='red-text'>Usuário ou Senha estão incorretos.</h5>";
+						echo "<div class='section'></div>";
+					}
+				?>
+
+				<div class="z-depth-1 grey lighten-4 row card-login">
+					<form class="col s12" method="POST" action='login.php'>
+						<div class='row'>
+							<div class='input-field col s12'>
+								<input required type='text' name='login'/>
+								<label for='email'>Informe seu login</label>
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
+								<input required type='password' name='senha'/>
+								<label for='password'>Informe sua senha</label>
+							</div>
+							<label class='float-right'>
+								<a class='purple-text' href='visitantes.php'><b>Entrar como visitante</b></a>
+							</label>
+						</div>
+						<br>
+						<div class='row'>
+							<button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect purple darken-4'>Login</button>
+						</div>
+					</form>
+				</div>
 			</div>
-		</nav>
-		
-		<ul class="sidenav" id="mobile-demo">
-			<li><a href="sass.html">Sass</a></li>
-			<li><a href="badges.html">Components</a></li>
-			<li><a href="collapsible.html">Javascript</a></li>
-			<li><a href="mobile.html">Mobile</a></li>
-		</ul>
+		</center>
+
 		<!--JavaScript at end of body for optimized loading-->
 		<script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
 		<script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
