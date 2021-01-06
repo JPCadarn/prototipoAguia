@@ -1,0 +1,10 @@
+- Fazer página separada de agendamentos;
+- Fazer rankeamento;
+- Fazer cadastro de usuários;
+- Validar login na navbar;
+- Fazer edição pontes;
+- Fazer edição agendamentos;
+- Fazer delete pontes;
+- Fazer delete agendamentos;
+- Ajustar grid agendamentos;
+- Mudar navbar nos arquivos p/ utils;

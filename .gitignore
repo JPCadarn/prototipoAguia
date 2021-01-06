@@ -1,5 +1,5 @@
 # exclude everything
-fotos/*
+assets/fotos/*
 
 # exception to the rule
 !fotos/.gitkeep 
