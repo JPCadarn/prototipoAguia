@@ -208,7 +208,7 @@
 			</a>
 		</div>
 
-		<div id="modalAgendamento" class="modal bottom-sheet">
+		<div id="modalAgendamento" class="modal">
 			<div class="modal-title">
 				<h4 class="center">Adicionar Agendamento</h4>
 			</div>

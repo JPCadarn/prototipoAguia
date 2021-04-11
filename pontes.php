@@ -56,6 +56,7 @@
 											<img src='assets/fotos/$imagem'>
 										</a>
 										<span class='card-title'>{$ponte['nome']}</span>
+										<a class='btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4' href='pontesEdit.php?id={$ponte['id']}'><i class='material-icons'>edit</i></a>
 									</div>
 									<div class='card-content'>
 										<p>{$ponte['descricao']}</p>
@@ -77,7 +78,7 @@
 		</div>
 
 		<!-- Modal Structure -->
-		<div id="modalCadastro" class="modal bottom-sheet">
+		<div id="modalCadastro" class="modal">
 			<div class="modal-title">
 				<h4 class="center">Adicionar Ponte</h4>
 			</div>
@@ -86,7 +87,7 @@
 					<form action="novaPonte.php" method="POST" class="col s12" enctype="multipart/form-data" autocomplete="off">
 						<div class="col s12">
 							<ul class="tabs">
-								<li class="tab col s12 m2"><a class="active purple-text text-darken-4" href="#formIdentificacao">Identicação e Localização</a></li>
+								<li class="tab col s12 m2"><a class="purple-text text-darken-4" href="#formIdentificacao">Identicação e Localização</a></li>
 								<li class="tab col s12 m2"><a class="purple-text text-darken-4" href="#formEstrutura">Características da Estrutura</a></li>
 								<li class="tab col s12 m2"><a class="purple-text text-darken-4" href="#formFuncionais">Características Funcionais</a></li>
 								<li class="tab col s12 m2"><a class="purple-text text-darken-4" href="#formAnomalias">Registro de Anomalias</a></li>

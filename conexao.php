@@ -5,7 +5,7 @@
 		const senha = '';
 		const dbName = 'aguia'; 
 
-		function conectar(){
+		public function conectar(){
 			try{
 				$conexao = new mysqli($this::serverName, $this::userName, $this::senha, $this::dbName);
 				$conexao->autocommit(true);
@@ -15,11 +15,11 @@
 			}
 		}
 
-		function desconectar($conexao){
+		public function desconectar($conexao){
 			$conexao->close();
 		}
 
-		function executarQuery($query){
+		public function executarQuery($query){
 			$conexao = $this->conectar();
 				
 			$retorno = [];

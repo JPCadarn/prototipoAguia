@@ -5,12 +5,15 @@
 	}
 	require_once('conexao.php');
 	$conexao = new Conexao();
+	$conexao->conectar();
+
 	$query = "
 		SELECT *
 		FROM usuarios
 		WHERE usuario = '{$_POST['login']}'
 	";
 	$dadosUser = $conexao->executarQuery($query);
+
 	if(!empty($dadosUser)){
 		$validacaoSenha = password_verify($_POST['senha'], $dadosUser[0]['senha']);
 		if($validacaoSenha){
