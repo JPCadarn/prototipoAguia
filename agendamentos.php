@@ -31,7 +31,7 @@
 						<div class='card-image'>
 							<img src='assets/fotos/$imagem'>
 							<span class='card-title'>{$agendamento['id']} - {$agendamento['ponte_nome']}</span>
-							<a class='btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>edit</i></a>
+							<a data-position='bottom' data-tooltip='Editar' class='tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>edit</i></a>
 						</div>
 						<div class='card-content'>
 							<p>{$utils->formataData($agendamento['data'])} - {$agendamento['horario']}</p>
@@ -54,7 +54,7 @@
 		echo "<div class='modal-content'>";
 		echo "<div class='row'>";
 		echo "<form action='novoAgendamento.php' method='POST' class='col s12' autocomplete='off'>";
-		echo "{$utils->renderSelect('ponte_id', $pontes, 'Ponte', 'Selecione a ponte')}";
+		echo "{$utils->renderSelect('ponte_id', $pontes, 'Ponte', 'Selecione a ponte'), 'nome'}";
 		echo "<div class='input-field col s6'>";
 		echo "<input id='data' name='data' type='text' class='datepicker'>";
 		echo "<label for='data'>Data do Agendamento</label>";

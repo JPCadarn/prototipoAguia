@@ -1,11 +1,14 @@
+- Adicionar tipo no agendamento;
 - Fazer cadastro visita p/ rankeamento;
 - Fazer rankeamento;
 - Fazer cadastro de usuários;
-- Validar login na navbar;
 - Fazer delete pontes;
 - Fazer edição agendamentos;
 - Fazer delete agendamentos;
 - Ajustar grid agendamentos;
-- Mudar navbar nos arquivos p/ utils;
-- Mudar render forms p/ utils;
 - Fazer tratamento exceptions;
+- Mudar render forms p/ utils;
+- Validar login na navbar;
+- Adicionar tooltips;
+- Mudar utils p/ static;
+- Utils p/ bottom floating;

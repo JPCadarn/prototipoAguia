@@ -12,6 +12,7 @@ class Utils{
 					<ul class='right hide-on-med-and-down'>
 						<li><a href='pontes.php'>Pontes</a></li>
 						<li><a href='agendamentos.php'>Agendamentos</a></li>
+						<li><a href='inspecoes.php'>Inspeções</a></li>
 						<li><a href='logout.php'>Logout</a></li>
 						<li><a href='#'>Minha Conta</a></li>
 					</ul>
@@ -20,6 +21,7 @@ class Utils{
 			<ul class='sidenav' id='mobile-demo'>
 				<li><a href='pontes.php'>Pontes</a></li>
 				<li><a href='agendamentos.php'>Agendamentos</a></li>
+				<li><a href='inspecoes.php'>Inspeções</a></li>
 				<li><a href='logout.php'>Logout</a></li>
 				<li><a href='#'>Minha Conta</a></li>
 			</ul>
@@ -52,12 +54,12 @@ class Utils{
 		return implode('/', array_reverse(explode('-', $data)));
 	}
 
-	public function renderSelect($idName, $opcoes, $label, $opcaoDisabled){
+	public function renderSelect($idName, $opcoes, $label, $opcaoDisabled, $campoValor){
 		echo "<div class='input-field col s12'>";
 		echo "<select id='$idName' name='$idName'>";
 		echo "<option value='' disabled selected>$opcaoDisabled</option>";
 		foreach($opcoes as $opcao){
-			echo '<option value='.$opcao['id'].'>'.$opcao['nome'].'</option>';
+			echo '<option value='.$opcao['id'].'>'.$opcao[$campoValor].'</option>';
 		}
 		echo "</select>";
 		echo "<label>$label</label>";

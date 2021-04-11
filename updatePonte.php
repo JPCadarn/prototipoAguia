@@ -10,9 +10,9 @@
 	}
 	$camposValores = implode(',', $camposValores);
 	$query = "
-	UPDATE pontes
-	SET $camposValores
-	WHERE id = {$_POST['id']}
+		UPDATE pontes
+		SET $camposValores
+		WHERE id = {$_POST['id']}
 	";
 	$idPonte = $conexao->executarQuery($query);
 	header('Location: pontes.php');
