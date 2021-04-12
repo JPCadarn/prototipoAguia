@@ -143,3 +143,5 @@ CREATE TABLE inspecoes(
 	protecao_pilares INT,
 	inspecao_id INT REFERENCES agendamentos(id)
 );
+
+INSERT INTO usuarios (usuario, senha) VALUES ('ADMIN', '$2y$10$EDunD4N4R5yOAvLgJH38WeccvPSnnmNCJWpwpanJF1BFZGQ8uyLg6');
