@@ -56,10 +56,13 @@
 											<img src='assets/fotos/$imagem'>
 										</a>
 										<span class='card-title'>{$ponte['nome']}</span>
-										<a class='btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4' href='pontesEdit.php?id={$ponte['id']}'><i class='material-icons'>edit</i></a>
 									</div>
 									<div class='card-content'>
 										<p>{$ponte['descricao']}</p>
+									</div>
+									<div class='card-action center'>
+										<a href='pontesEdit.php?id={$ponte['id']}'><i class='material-icons'>edit</i> Editar</a>
+										<a href='pontesDelete.php?id={$ponte['id']}'><i class='material-icons'>delete</i> Excluir</a>
 									</div>
 								</div>
 							</div>
