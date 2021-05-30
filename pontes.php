@@ -55,9 +55,9 @@
 										<a href='ponteDetalhes.php?id={$ponte['id']}'>
 											<img src='assets/fotos/$imagem'>
 										</a>
-										<span class='card-title'>{$ponte['nome']}</span>
-									</div>
+										</div>
 									<div class='card-content'>
+										<span class='card-title'>{$ponte['nome']}</span>
 										<p>{$ponte['descricao']}</p>
 									</div>
 									<div class='card-action center'>
@@ -83,7 +83,7 @@
 		<!-- Modal Structure -->
 		<div id="modalCadastro" class="modal">
 			<div class="modal-title">
-				<h4 class="center">Adicionar Ponte</h4>
+				<h4 class="center">Ficha de Inspeção Cadastral</h4>
 			</div>
 			<div class="modal-content">
 				<div class="row">
@@ -316,7 +316,7 @@
 							</div>
 						</div>
 						<div id="formAnomalias" class="col s12">
-							<h5 class="center">Elementos Estruturas</h5>
+							<h5 class="center">Elementos Estruturais</h5>
 							<div class="row">
 								<div class="input-field col s12 m6">
 									<input id="superestrutura" name="superestrutura" type="text">

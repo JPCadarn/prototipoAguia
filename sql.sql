@@ -83,6 +83,7 @@ CREATE TABLE usuarios(
 
 CREATE TABLE inspecoes(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	ponte_id INT NOT NULL REFERENCES pontes(id),
 	nome INT,
 	descricao INT,
 	via INT,
