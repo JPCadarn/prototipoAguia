@@ -69,7 +69,7 @@
 					<div class='card-image'>
 						<img src='assets/fotos/$imagem'>
 						<span class='card-title'>{$agendamento['id']} - {$agendamento['ponte_nome']}</span>
-						<a data-position='bottom' data-tooltip='Editar' class='tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>edit</i></a>
+						<a data-position='bottom' href='agendamentosDelete.php?id={$agendamento['id']}' data-tooltip='Excluir' class='tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>delete</i></a>
 					</div>
 					<div class='card-stacked'>
 						<div class='card-content'>
