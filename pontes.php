@@ -37,6 +37,7 @@
 			<li><a href="#">Minha Conta</a></li>
 		</ul>
 
+		<div class='row'>
 		<?php
 			$pontes = $conexao->executarQuery('SELECT id, nome, descricao FROM pontes');
 			if(count($pontes)){
@@ -48,31 +49,33 @@
 						$imagem = '';
 					}
 					echo "
-						<div class='row'>
 							<div class='col s12 m4'>
-									<div class='card'>
-										<div class='card-image'>
+								<div class='card'>
+									<div class='card-image'>
 										<a href='ponteDetalhes.php?id={$ponte['id']}'>
 											<img src='assets/fotos/$imagem'>
 										</a>
-										</div>
-									<div class='card-content'>
-										<span class='card-title'>{$ponte['nome']}</span>
-										<p>{$ponte['descricao']}</p>
 									</div>
-									<div class='card-action center'>
-										<a href='pontesEdit.php?id={$ponte['id']}'><i class='material-icons'>edit</i> Editar</a>
-										<a href='pontesDelete.php?id={$ponte['id']}'><i class='material-icons'>delete</i> Excluir</a>
+									<div class='card-stacked'>
+										<div class='card-content'>
+											<span class='card-title'>{$ponte['nome']}</span>
+											<p>{$ponte['descricao']}</p>
+										</div>
+										<div class='card-action center'>
+											<a href='ponteDetalhes.php?id={$ponte['id']}'><i class='material-icons'>info</i> Detalhes</a>
+											<a href='pontesEdit.php?id={$ponte['id']}'><i class='material-icons'>edit</i> Editar</a>
+											<a href='pontesDelete.php?id={$ponte['id']}'><i class='material-icons'>delete</i> Excluir</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 					";
 				}
 			}else{
 				echo "<h6 class='centralizar'>Nenhuma ponte cadastrada";
 			}
 		?>
+		</div>
 
 		<div class="fixed-action-btn">
   			<a data-target="modalCadastro" class="btn-large modal-trigger btn-floating waves-effect waves-light purple darken-4">

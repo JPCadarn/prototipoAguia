@@ -54,6 +54,7 @@
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";
+	echo "<div class='row'>";
 
 	foreach($agendamentos as $agendamento){
 		$imagem = $conexao->executarQuery('SELECT imagem FROM imagens_pontes WHERE ponte_id = '.$agendamento['ponte_id'].' ORDER BY id ASC LIMIT 1');
@@ -63,14 +64,14 @@
 			$imagem = '';
 		}
 		echo "
-			<div class='row'>
-				<div class='col s12 m6'>
-					<div class='card'>
-						<div class='card-image'>
-							<img src='assets/fotos/$imagem'>
-							<span class='card-title'>{$agendamento['id']} - {$agendamento['ponte_nome']}</span>
-							<a data-position='bottom' data-tooltip='Editar' class='tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>edit</i></a>
-						</div>
+			<div class='col s12 m6'>
+				<div class='card horizontal'>
+					<div class='card-image'>
+						<img src='assets/fotos/$imagem'>
+						<span class='card-title'>{$agendamento['id']} - {$agendamento['ponte_nome']}</span>
+						<a data-position='bottom' data-tooltip='Editar' class='tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>edit</i></a>
+					</div>
+					<div class='card-stacked'>
 						<div class='card-content'>
 							<p>{$utils->formataData($agendamento['data'])} - {$agendamento['horario']}</p>
 							<p>{$agendamento['detalhes']}</p>
@@ -80,6 +81,7 @@
 			</div>
 		";
 	}
+	echo "</div>";
 
 	$utils->scriptsJs();
 	echo '</body>';
