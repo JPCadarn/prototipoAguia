@@ -8,7 +8,7 @@
 			a.*,
 			p.nome AS ponte_nome
 		FROM agendamentos a
-		INNER JOIN pontes p
+		INNER JOIN pontes p ON a.ponte_id = p.id
 	';
 	$pontes = $conexao->executarQuery('SELECT id, nome FROM pontes');
 	$agendamentos = $conexao->executarQuery($queryAgendamentos);
