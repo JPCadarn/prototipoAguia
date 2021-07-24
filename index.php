@@ -38,19 +38,21 @@
 						<div class='row'>
 							<div class='input-field col s12'>
 								<input required type='text' name='login'/>
-								<label for='email'>Informe seu login</label>
+								<label for='email'>Usuário</label>
 							</div>
 						</div>
 						<div class='row'>
 							<div class='input-field col s12'>
 								<input required type='password' name='senha'/>
-								<label for='password'>Informe sua senha</label>
+								<label for='password'>Senha</label>
 							</div>
 							<label class='float-right'>
 								<a class='purple-text' href='visitantes.php'><b>Entrar como visitante</b></a>
 							</label>
+							<label class='float-left'>
+								<a class='purple-text' href='novoUsuario.php'><b>Cadastrar-se</b></a>
+							</label>
 						</div>
-						<br>
 						<div class='row'>
 							<button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect purple darken-4'>Login</button>
 						</div>

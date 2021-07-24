@@ -1,3 +1,22 @@
+CREATE TABLE clientes(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(200) NOT NULL,
+	data_nascimento DATE NOT NULL,
+	cpf_cnpj VARCHAR (14) NOT NULL,
+	endereco VARCHAR(200) NOT NULL,
+	telefone VARCHAR(20) NOT NULL,
+	email VARCHAR(200) NOT NULL,
+	datetime_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	datetime_atualizacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE usuarios(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	usuario VARCHAR(50) NOT NULL unique,
+	senha VARCHAR(60) NOT NULL,
+	id_cliente INT NOT NULL REFERENCES clientes(id)
+);
+
 CREATE TABLE pontes(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(50),
@@ -58,13 +77,15 @@ CREATE TABLE pontes(
 	iluminacao VARCHAR(50),
 	sinalizacao VARCHAR(50),
 	protecao_pilares VARCHAR(50),
-	inspecao_id INTEGER REFERENCES agendamentos(id)
+	inspecao_id INTEGER REFERENCES agendamentos(id),
+	id_usuario INT NOT NULL REFERENCES usuarios(id)
 );
 
 CREATE TABLE imagens_pontes(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	ponte_id INT NOT NULL REFERENCES pontes(id),
-	imagem VARCHAR(200) NOT NULL
+	imagem VARCHAR(200) NOT NULL,
+	id_usuario INT NOT NULL REFERENCES usuarios(id)
 );
 
 CREATE TABLE agendamentos(
@@ -72,13 +93,8 @@ CREATE TABLE agendamentos(
 	data DATE NOT NULL,
 	horario TIME NOT NULL,
 	detalhes TEXT NOT NULL,
-	ponte_id INT NOT NULL REFERENCES pontes(id)
-);
-
-CREATE TABLE usuarios(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	usuario VARCHAR(50) NOT NULL unique,
-	senha VARCHAR(60) NOT NULL
+	ponte_id INT NOT NULL REFERENCES pontes(id),
+	id_usuario INT NOT NULL REFERENCES usuarios(id)
 );
 
 CREATE TABLE inspecoes(
@@ -142,7 +158,8 @@ CREATE TABLE inspecoes(
 	iluminacao INT,
 	sinalizacao INT,
 	protecao_pilares INT,
-	inspecao_id INT REFERENCES agendamentos(id)
+	inspecao_id INT REFERENCES agendamentos(id),
+	id_usuario INT NOT NULL REFERENCES usuarios(id)
 );
 
 INSERT INTO usuarios (usuario, senha) VALUES ('ADMIN', '$2y$10$EDunD4N4R5yOAvLgJH38WeccvPSnnmNCJWpwpanJF1BFZGQ8uyLg6');

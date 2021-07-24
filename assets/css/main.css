@@ -168,3 +168,7 @@ input[type=date]:not(.browser-default):focus:not([readonly]) {
 .timepicker-close {
 	color: #4a148c;
 }
+
+.cropped, .card {
+	object-fit: contain;
+}

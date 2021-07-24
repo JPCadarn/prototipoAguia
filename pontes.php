@@ -49,14 +49,12 @@
 						$imagem = '';
 					}
 					echo "
-							<div class='col s12 m4'>
-								<div class='card'>
+							<div class='col s12 m3'>
+								<div class='card medium'>
 									<div class='card-image'>
-										<a href='ponteDetalhes.php?id={$ponte['id']}'>
-											<img src='assets/fotos/$imagem'>
-										</a>
+										<img src='assets/fotos/$imagem'>
 									</div>
-									<div class='card-stacked'>
+									<div>
 										<div class='card-content'>
 											<span class='card-title'>{$ponte['nome']}</span>
 											<p>{$ponte['descricao']}</p>
