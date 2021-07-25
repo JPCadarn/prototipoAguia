@@ -2,11 +2,42 @@
 
 class Utils{
 	public function navBar(){
-		if(isset($_SESSION['userId'])){
+		if(isset($_SESSION['userId']) && isset($_SESSION['userType']) && ($_SESSION['userType'] == 'aguia')){
+			$this->renderNavBarAguia();
+		}elseif(isset($_SESSION['userId'])){
 			$this->renderNavBar();
 		}else{
 			$this->renderNavBarSemLogin();
 		}
+	}
+
+	public function renderNavBarAguia(){
+		echo "
+			<nav>
+				<div class='nav-wrapper purple darken-4'>
+					<a href='index.php' class='brand-logo center' tabIndex='-1'>
+						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
+					</a>
+					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
+					<ul class='right hide-on-med-and-down'>
+						<li><a href='pontes.php'>Pontes</a></li>
+						<li><a href='agendamentos.php'>Agendamentos</a></li>
+						<li><a href='inspecoes.php'>Inspeções</a></li>
+						<li><a href='clientes.php'>Clientes</a></li>
+						<li><a href='logout.php'>Logout</a></li>
+						<li><a href='#'>Minha Conta</a></li>
+					</ul>
+				</div>
+			</nav>
+			<ul class='sidenav' id='mobile-demo'>
+				<li><a href='pontes.php'>Pontes</a></li>
+				<li><a href='agendamentos.php'>Agendamentos</a></li>
+				<li><a href='inspecoes.php'>Inspeções</a></li>
+				<li><a href='clientes.php'>Clientes</a></li>
+				<li><a href='logout.php'>Logout</a></li>
+				<li><a href='#'>Minha Conta</a></li>
+			</ul>
+		";
 	}
 
 	public function renderNavBar(){
