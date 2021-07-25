@@ -103,6 +103,19 @@ class Utils{
 
 		return $retorno;
 	}
+
+	public function mostraMensagemErro(){
+		if(isset($_GET['mensagemErro'])){
+			$mensagemErro = $_GET['mensagemErro'];
+			unset($_GET['mensagemErro']);
+			$tagErro = "
+				<div class='erro'>
+					$mensagemErro
+				</div>
+			";
+			echo $tagErro;
+		}
+	}
 }
 
 ?>

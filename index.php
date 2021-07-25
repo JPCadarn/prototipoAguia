@@ -10,7 +10,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
-				
 		<?php
 			if(session_status() <> PHP_SESSION_ACTIVE){
 				session_start();
@@ -19,9 +18,17 @@
 			if(isset($_SESSION['userId'])){
 				header('Location: dash.php');
 			}
+
+			require_once('utils.php');
+			$utils = new Utils();
 		?>
 
 		<center>
+			<div class="row">
+				<?php
+					$utils->mostraMensagemErro();
+				?>
+			</div>
 			<img class="responsive-img imagem-login" src="assets/Logo/Roxo.png" />
 
 			<div class="container center">
@@ -46,17 +53,56 @@
 								<input required type='password' name='senha'/>
 								<label for='password'>Senha</label>
 							</div>
-							<label class='float-right'>
-								<a class='purple-text' href='visitantes.php'><b>Entrar como visitante</b></a>
-							</label>
-							<label class='float-left'>
-								<a class='purple-text' href='novoUsuario.php'><b>Cadastrar-se</b></a>
-							</label>
 						</div>
 						<div class='row'>
 							<button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect purple darken-4'>Login</button>
+							<br>
+							<br>
+							<br>
+							<a data-target="modalCadastro" class="col s12 btn btn-large modal-trigger waves-effect waves-light purple darken-4">
+								Cadastrar-se
+							</a>
 						</div>
 					</form>
+				</div>
+			</div>
+
+			<div id="modalCadastro" class="modal">
+				<br>
+				<br>
+				<div class="modal-title">
+					<h4 class="center">Cadastro de Cliente</h4>
+				</div>
+				<div class="modal-content">
+					<div class="row">
+						<form action="novoUsuario.php" method="POST" class="col s12" autocomplete="off">
+							<div class="row">
+								<div class="input-field col s12 m6">
+									<input id="nome" name="nome" type="text">
+									<label for="nome">Nome</label>
+								</div>
+								<div class="input-field col s12 m6">
+									<input id="senha" name="senha" type="password">
+									<label for="senha">Senha</label>
+								</div>
+								<div class="input-field col s12 m6">
+									<input id="email" name="email" type="email">
+									<label for="email">Email</label>
+								</div>
+								<div class="input-field col s12 m6">
+									<input id="chave" name="chave" type="text">
+									<label for="chave">Chave</label>
+								</div>
+								<div class="fixed-action-btn">
+									<div class="fixed-action-btn">
+										<button class="modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4" type="submit" value="Create">
+											<i class="large material-icons">check</i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</center>

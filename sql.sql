@@ -7,14 +7,18 @@ CREATE TABLE clientes(
 	telefone VARCHAR(20) NOT NULL,
 	email VARCHAR(200) NOT NULL,
 	datetime_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	datetime_atualizacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+	datetime_atualizacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	chave VARCHAR(60) UNIQUE
 );
 
 CREATE TABLE usuarios(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	usuario VARCHAR(50) NOT NULL unique,
+	nome VARCHAR(200) NOT NULL,
+	email VARCHAR(200) NOT NULL UNIQUE,
 	senha VARCHAR(60) NOT NULL,
-	id_cliente INT NOT NULL REFERENCES clientes(id)
+	id_cliente INT NOT NULL REFERENCES clientes(id),
+	chave VARCHAR(60) NOT NULL,
+	tipo ENUM('normal','admin','aguia') NOT NULL
 );
 
 CREATE TABLE pontes(
