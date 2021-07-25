@@ -1,6 +1,14 @@
 <?php
 
 class Utils{
+	public function navBar(){
+		if(isset($_SESSION['userId'])){
+			$this->renderNavBar();
+		}else{
+			$this->renderNavBarSemLogin();
+		}
+	}
+
 	public function renderNavBar(){
 		echo "
 			<nav>
@@ -24,6 +32,31 @@ class Utils{
 				<li><a href='inspecoes.php'>Inspeções</a></li>
 				<li><a href='logout.php'>Logout</a></li>
 				<li><a href='#'>Minha Conta</a></li>
+			</ul>
+		";
+	}
+
+	public function renderNavBarSemLogin(){
+		echo "
+			<nav>
+				<div class='nav-wrapper purple darken-4'>
+					<a href='index.php' class='brand-logo center' tabIndex='-1'>
+						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
+					</a>
+					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
+					<ul class='right hide-on-med-and-down'>
+						<li><a href='pontes.php'>Pontes</a></li>
+						<li><a href='agendamentos.php'>Agendamentos</a></li>
+						<li><a href='inspecoes.php'>Inspeções</a></li>
+						<li><a href='index.php'>Login</a></li>
+					</ul>
+				</div>
+			</nav>
+			<ul class='sidenav' id='mobile-demo'>
+				<li><a href='pontes.php'>Pontes</a></li>
+				<li><a href='agendamentos.php'>Agendamentos</a></li>
+				<li><a href='inspecoes.php'>Inspeções</a></li>
+				<li><a href='index.php'>Login</a></li>
 			</ul>
 		";
 	}
@@ -106,14 +139,24 @@ class Utils{
 
 	public function mostraMensagemErro(){
 		if(isset($_GET['mensagemErro'])){
-			$mensagemErro = $_GET['mensagemErro'];
-			unset($_GET['mensagemErro']);
+			$mensagemErro = $this->getMensagemErro($_GET['mensagemErro']);
 			$tagErro = "
 				<div class='erro'>
 					$mensagemErro
 				</div>
 			";
 			echo $tagErro;
+		}
+	}
+
+	public function getMensagemErro($codigoErro){
+		switch ($codigoErro){
+			case '104':
+				return 'Chave de Usuário Inválida';
+				break;
+			default:
+				return '';
+				break;
 		}
 	}
 }

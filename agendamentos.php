@@ -15,7 +15,7 @@
 	echo '<!DOCTYPE html>';
 	$utils->tagHead();
 	echo '<body>';
-	$utils->renderNavBar();
+	$utils->navBar();
 
 	echo "
 	<div class='fixed-action-btn'>

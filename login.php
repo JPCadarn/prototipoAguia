@@ -10,7 +10,7 @@
 	$query = "
 		SELECT *
 		FROM usuarios
-		WHERE usuario = '{$_POST['login']}'
+		WHERE email = '{$_POST['login']}'
 	";
 	$dadosUser = $conexao->executarQuery($query);
 
@@ -19,6 +19,7 @@
 		if($validacaoSenha){
 			$_SESSION['visitantes'] = false;
 			$_SESSION['userId'] = $dadosUser[0]['id'];
+			$_SESSION['userType'] = $dadosUser[0]['tipo'];
 			header('Location: dash.php');
 		}else{
 			header('Location: index.php?login_errado=true');

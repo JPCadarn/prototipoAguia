@@ -24,7 +24,7 @@
 	</head>
 	<body>
 		<?php
-			$utils->renderNavBar();
+			$utils->navBar();
 		?>
 
 		<!--JavaScript at end of body for optimized loading-->

@@ -25,7 +25,7 @@
 		$idUsuario = $conexao->executarQuery($query);
 		$mensagemErro = '';
 	}else{
-		$mensagemErro = '?mensagemErro=Chave de Usuário inválida!';
+		$mensagemErro = '?mensagemErro=104';
 	}
 	header('Location: index.php'.$mensagemErro);
 ?>

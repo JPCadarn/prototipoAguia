@@ -4,5 +4,6 @@
     }
 
     unset($_SESSION['userId']);
+    unset($_SESSION['userType']);
     header('Location: dash.php');
 ?>

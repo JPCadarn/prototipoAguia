@@ -10,7 +10,7 @@
 	echo '<!DOCTYPE html>';
 	$utils->tagHead();
 	echo '<body>';
-	$utils->renderNavBar();
+	$utils->navBar();
 
 	$clientes = $clienteService->getDadosClientesFormatados();
 	$utils->row();

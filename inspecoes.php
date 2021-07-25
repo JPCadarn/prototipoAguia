@@ -15,7 +15,7 @@
 	echo '<!DOCTYPE html>';
 	$utils->tagHead();
 	echo '<body>';
-	$utils->renderNavBar();
+	$utils->navBar();
 
 	$pontes = $conexao->executarQuery('SELECT id, nome, descricao FROM pontes WHERE inspecao_id IS NOT NULL');
 	if(count($pontes)){
