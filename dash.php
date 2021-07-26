@@ -10,6 +10,8 @@
 		$agendamentos = $conexao->executarQuery("SELECT * FROM agendamentos WHERE ponte_id = {$_GET['id']}");
 	}
 	$utils = new Utils();
+
+	// $utils->varDump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>

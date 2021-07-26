@@ -2,6 +2,9 @@
 
 class Utils{
 	public function navBar(){
+		if(session_status() <> PHP_SESSION_ACTIVE){
+			session_start();
+		}
 		if(isset($_SESSION['userId']) && isset($_SESSION['userType']) && ($_SESSION['userType'] == 'aguia')){
 			$this->renderNavBarAguia();
 		}elseif(isset($_SESSION['userId'])){

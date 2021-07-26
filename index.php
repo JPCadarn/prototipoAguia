@@ -11,6 +11,9 @@
 	</head>
 	<body>
 		<?php
+			require_once('utils.php');
+			$utils = new Utils();
+
 			if(session_status() <> PHP_SESSION_ACTIVE){
 				session_start();
 			}
@@ -18,9 +21,6 @@
 			if(isset($_SESSION['userId'])){
 				header('Location: dash.php');
 			}
-
-			require_once('utils.php');
-			$utils = new Utils();
 		?>
 
 		<center>
