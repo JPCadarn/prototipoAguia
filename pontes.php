@@ -41,9 +41,9 @@
 											<p>{$ponte['descricao']}</p>
 										</div>
 										<div class='card-action center'>
-											<a href='ponteDetalhes.php?id={$ponte['id']}'><i class='material-icons'>info</i> Detalhes</a>
-											<a href='pontesEdit.php?id={$ponte['id']}'><i class='material-icons'>edit</i> Editar</a>
-											<a href='pontesDelete.php?id={$ponte['id']}'><i class='material-icons'>delete</i> Excluir</a>
+											<a href='ponteDetalhes.php?id={$ponte['id']}'><i class='material-icons tooltipped' data-position='bottom' data-tooltip='Detalhes'>info</i></a>
+											<a href='pontesEdit.php?id={$ponte['id']}'><i class='material-icons tooltipped' data-position='bottom' data-tooltip='Editar'>edit</i></a>
+											<a href='pontesDelete.php?id={$ponte['id']}'><i class='material-icons tooltipped' data-position='bottom' data-tooltip='Excluir'>delete</i></a>
 										</div>
 									</div>
 								</div>
@@ -84,7 +84,7 @@
 											<label for="nome">Nome da OAE</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="data_construcao" name="data_construcao" type="text" class="datepicker">
+											<input id="data_construcao" name="data_construcao" type="date">
 											<label for="data_construcao">Data de Construção</label>
 										</div>
 										<div class="input-field col s12 m6">
@@ -100,11 +100,11 @@
 											<label for="localizacao">Localização</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="latitude" name="latitude" type="text">
+											<input id="latitude" name="latitude" type="number">
 											<label for="latitude">Latitude</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="longitude" name="longitude" type="text">
+											<input id="longitude" name="longitude" type="number">
 											<label for="longitude">Longitude</label>
 										</div>
 										<div class="input-field col s12 m6">
@@ -123,24 +123,24 @@
 								<div class="collapsible-body">
 									<div class="row">
 										<div class="input-field col s12 m6">
-											<input id="comprimento_estrutura" name="comprimento_estrutura" type="text">
-											<label for="comprimento_estrutura">Comprimento</label>
+											<input id="comprimento_estrutura" name="comprimento_estrutura" type="number">
+											<label for="comprimento_estrutura">Comprimento (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="largura_estrutura" name="largura_estrutura" type="text">
-											<label for="largura_estrutura">Largura</label>
+											<input id="largura_estrutura" name="largura_estrutura" type="number">
+											<label for="largura_estrutura">Largura (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="largura_acostamento" name="largura_acostamento" type="text">
-											<label for="largura_acostamento">Largura do Acostamento</label>
+											<input id="largura_acostamento" name="largura_acostamento" type="number">
+											<label for="largura_acostamento">Largura do Acostamento (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="largura_refugio" name="largura_refugio" type="text">
-											<label for="largura_refugio">Largura do Refúgio</label>
+											<input id="largura_refugio" name="largura_refugio" type="number">
+											<label for="largura_refugio">Largura do Refúgio (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="largura_passeio" name="largura_passeio" type="text">
-											<label for="largura_passeio">Largura do Passeio</label>
+											<input id="largura_passeio" name="largura_passeio" type="number">
+											<label for="largura_passeio">Largura do Passeio (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="sistema_construtivo" name="sistema_construtivo" type="text">
@@ -154,7 +154,7 @@
 											<input id="material_construcao" name="material_construcao" type="text">
 											<label for="material_construcao">Material</label>
 										</div>
-										<h5 class="center">Seção Tipo</h5>
+										<h5 class="center">Seção Tipo <i class='tiny material-icons tooltipped' data-position='bottom' data-tooltip='Favor anexar as imagens correspondentes na seção Imagens'>info</i></h5>
 										<div class="input-field col s4">
 											<input id="longitudinal_super" name="longitudinal_super" type="text">
 											<label for="longitudinal_super">Longitudinal da superestrutura</label>
@@ -169,15 +169,15 @@
 										</div>
 										<h5 class="center">Características Particulares</h5>
 										<div class="input-field col s12 m6">
-											<input id="nro_vaos" name="nro_vaos" type="text">
+											<input id="nro_vaos" name="nro_vaos" type="number">
 											<label for="nro_vaos">Número de Vãos</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="nro_apoios" name="nro_apoios" type="text">
+											<input id="nro_apoios" name="nro_apoios" type="number">
 											<label for="nro_apoios">Número de Apoios</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="nro_pilares_apoio" name="nro_pilares_apoio" type="text">
+											<input id="nro_pilares_apoio" name="nro_pilares_apoio" type="number">
 											<label for="nro_pilares_apoio">Número de Pilares por Apoio</label>
 										</div>
 										<div class="input-field col s12 m6">
@@ -186,15 +186,15 @@
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="comprimento_vao_tipico" name="comprimento_vao_tipico" type="text">
-											<label for="comprimento_vao_tipico">Comprimento do vão típico</label>
+											<label for="comprimento_vao_tipico">Comprimento do vão típico (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="comprimento_maior_vao" name="comprimento_maior_vao" type="text">
-											<label for="comprimento_maior_vao">Comprimento do maior vão</label>
+											<label for="comprimento_maior_vao">Comprimento do maior vão (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="altura_pilares" name="altura_pilares" type="text">
-											<label for="altura_pilares">Altura dos pilares</label>
+											<label for="altura_pilares">Altura dos pilares (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="juntas_dilatacao" name="juntas_dilatacao" type="text">
@@ -220,8 +220,8 @@
 											<label for="caracteristicas_plani">Características plani-altimétricas</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="nro_faixas" name="nro_faixas" type="text">
-											<label for="nro_faixas">Número de Faixas</label>
+											<input id="nro_faixas" name="nro_faixas" type="number">
+											<label for="nro_faixas">Número de Faixas (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="acostamento" name="acostamento" type="text">
