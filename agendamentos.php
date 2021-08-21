@@ -2,7 +2,6 @@
 	require_once('conexao.php');
 	require_once('utils.php');
 	$conexao = new Conexao();
-	$utils = new Utils();
 	$queryAgendamentos = '
 		SELECT 
 			a.*,
@@ -13,9 +12,9 @@
 	$pontes = $conexao->executarQuery('SELECT id, nome FROM pontes');
 	$agendamentos = $conexao->executarQuery($queryAgendamentos);
 	echo '<!DOCTYPE html>';
-	$utils->tagHead();
+	Utils::tagHead();
 	echo '<body>';
-	$utils->navBar();
+	Utils::navBar();
 
 	echo "
 	<div class='fixed-action-btn'>
@@ -30,7 +29,7 @@
 	echo "<div class='modal-content'>";
 	echo "<div class='row'>";
 	echo "<form action='novoAgendamento.php' method='POST' class='col s12' autocomplete='off'>";
-	echo "{$utils->renderSelect('ponte_id', $pontes, 'Ponte', 'Selecione a ponte', 'nome')}";
+	Utils::renderSelect('ponte_id', $pontes, 'Ponte', 'Selecione a ponte', 'nome');
 	echo "<div class='input-field col s6'>";
 	echo "<input id='data' name='data' type='text' class='datepicker'>";
 	echo "<label for='data'>Data do Agendamento</label>";
@@ -73,7 +72,7 @@
 					</div>
 					<div class='card-stacked'>
 						<div class='card-content'>
-							<p>{$utils->formataData($agendamento['data'])} - {$agendamento['horario']}</p>
+							<p>" . Utils::formataData($agendamento['data']) . ' - '. $agendamento['horario']. "</p>
 							<p>{$agendamento['detalhes']}</p>
 						</div>
 					</div>
@@ -83,7 +82,7 @@
 	}
 	echo "</div>";
 
-	$utils->scriptsJs();
+	Utils::scriptsJs();
 	echo '</body>';
 	echo '</html>';
 ?>

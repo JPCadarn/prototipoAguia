@@ -1,20 +1,20 @@
 <?php
 
 class Utils{
-	public function navBar(){
+	public static function navBar(){
 		if(session_status() <> PHP_SESSION_ACTIVE){
 			session_start();
 		}
 		if(isset($_SESSION['userId']) && isset($_SESSION['userType']) && ($_SESSION['userType'] == 'aguia')){
-			$this->renderNavBarAguia();
+			self::renderNavBarAguia();
 		}elseif(isset($_SESSION['userId'])){
-			$this->renderNavBar();
+			self::renderNavBar();
 		}else{
-			$this->renderNavBarSemLogin();
+			self::renderNavBarSemLogin();
 		}
 	}
 
-	public function renderNavBarAguia(){
+	public static function renderNavBarAguia(){
 		echo "
 			<nav>
 				<div class='nav-wrapper purple darken-4'>
@@ -43,7 +43,7 @@ class Utils{
 		";
 	}
 
-	public function renderNavBar(){
+	public static function renderNavBar(){
 		echo "
 			<nav>
 				<div class='nav-wrapper purple darken-4'>
@@ -70,7 +70,7 @@ class Utils{
 		";
 	}
 
-	public function renderNavBarSemLogin(){
+	public static function renderNavBarSemLogin(){
 		echo "
 			<nav>
 				<div class='nav-wrapper purple darken-4'>
@@ -95,7 +95,7 @@ class Utils{
 		";
 	}
 
-	public function tagHead(){
+	public static function tagHead(){
 		echo "
 			<head>
 				<!--Import Google Icon Font-->
@@ -109,7 +109,7 @@ class Utils{
 		";
 	}
 
-	public function scriptsJs(){
+	public static function scriptsJs(){
 		echo "
 			<script type='text/javascript' src='assets/js/jquery-3.4.1.js'></script>
 			<script type='text/javascript' src='assets/materialize/js/materialize.min.js'></script>
@@ -117,11 +117,11 @@ class Utils{
 		";
 	}
 
-	public function formataData($data){
+	public static function formataData($data){
 		return implode('/', array_reverse(explode('-', $data)));
 	}
 
-	public function renderSelect($idName, $opcoes, $label, $opcaoDisabled, $campoValor){
+	public static function renderSelect($idName, $opcoes, $label, $opcaoDisabled, $campoValor){
 		echo "<div class='input-field col s12'>";
 		echo "<select id='$idName' name='$idName'>";
 		echo "<option value='' disabled selected>$opcaoDisabled</option>";
@@ -133,28 +133,38 @@ class Utils{
 		echo "</div>";
 	}
 
-	public function row(){
+	public static function renderSelectSemDiv($idName, $opcoes, $label, $opcaoDisabled, $campoValor){
+		echo "<select id='$idName' name='$idName'>";
+		echo "<option value='' disabled selected>$opcaoDisabled</option>";
+		foreach($opcoes as $opcao){
+			echo '<option value='.$opcao['id'].'>'.$opcao[$campoValor].'</option>';
+		}
+		echo "</select>";
+		echo "<label>$label</label>";
+	}
+
+	public static function row(){
 		echo "<div class='row'>";
 	}
 
-	public function varDump($dados){
+	public static function varDump($dados){
 		echo '<pre>';
 		var_dump($dados);
 		exit;
 	}
 
-	public function printR($dados){
+	public static function printR($dados){
 		echo '<pre>';
 		print_r($dados);
 		exit;
 	}
 
-	public function formataTelefone($telefone){
+	public static function formataTelefone($telefone){
 		$retorno = substr_replace($telefone, '(', 0, 0);
 		return substr_replace($retorno, ')', 3, 0);
 	}
 
-	public function formataCpfCnpj($cpfCnpj){
+	public static function formataCpfCnpj($cpfCnpj){
 		if(strlen($cpfCnpj) == 14){
 			//XX.XXX.XXX/0001-XX
 			$retorno = substr_replace($cpfCnpj, '.', 2, 0);
@@ -171,9 +181,9 @@ class Utils{
 		return $retorno;
 	}
 
-	public function mostraMensagemErro(){
+	public static function mostraMensagemErro(){
 		if(isset($_GET['mensagemErro'])){
-			$mensagemErro = $this->getMensagemErro($_GET['mensagemErro']);
+			$mensagemErro = self::getMensagemErro($_GET['mensagemErro']);
 			$tagErro = "
 				<div class='erro'>
 					$mensagemErro
@@ -183,7 +193,7 @@ class Utils{
 		}
 	}
 
-	public function getMensagemErro($codigoErro){
+	public static function getMensagemErro($codigoErro){
 		switch ($codigoErro){
 			case '104':
 				return 'Chave de Usuário Inválida';

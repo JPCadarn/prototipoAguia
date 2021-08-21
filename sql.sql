@@ -83,7 +83,6 @@ CREATE TABLE pontes(
 	iluminacao VARCHAR(50),
 	sinalizacao VARCHAR(50),
 	protecao_pilares VARCHAR(50),
-	inspecao_id INTEGER REFERENCES agendamentos(id),
 	id_usuario INT NOT NULL REFERENCES usuarios(id)
 );
 
@@ -175,3 +174,30 @@ CREATE TABLE imagens_inspecoes(
 	imagem VARCHAR(200) NOT NULL,
 	id_usuario INT NOT NULL REFERENCES usuarios(id)
 );
+
+ALTER TABLE inspecoes 
+ADD nota_indice_localizacao DECIMAL(10, 2) NOT NULL, 
+ADD nota_indice_volume_trafego DECIMAL(10, 2) NOT NULL, 
+ADD nota_indice_largura_oae DECIMAL(10, 2) NOT NULL, 
+ADD nota_geometria_condicoes DECIMAL(10, 2) NOT NULL, 
+ADD nota_acessos DECIMAL(10, 2) NOT NULL, 
+ADD nota_cursos_agua DECIMAL(10, 2) NOT NULL, 
+ADD nota_encontros_fundacoes DECIMAL(10, 2) NOT NULL, 
+ADD nota_apoios_intermediarios DECIMAL(10, 2) NOT NULL, 
+ADD nota_aparelhos_apoio DECIMAL(10, 2) NOT NULL, 
+ADD nota_superestrutura DECIMAL(10, 2) NOT NULL, 
+ADD nota_pista_rolamento DECIMAL(10, 2) NOT NULL, 
+ADD nota_juntas_dilatacao DECIMAL(10, 2) NOT NULL, 
+ADD nota_barreiras_guardacorpos DECIMAL(10, 2) NOT NULL, 
+ADD nota_sinalizacao DECIMAL(10, 2) NOT NULL, 
+ADD nota_instalacoes_util_publica DECIMAL(10, 2) NOT NULL, 
+ADD nota_largura_plataforma DECIMAL(10, 2) NOT NULL, 
+ADD nota_capacidade_carga DECIMAL(10, 2) NOT NULL, 
+ADD nota_superficie_plataforma DECIMAL(10, 2) NOT NULL, 
+ADD nota_pista_rolamento_fc DECIMAL(10, 2) NOT NULL, 
+ADD nota_outros_fc DECIMAL(10, 2) NOT NULL, 
+ADD nota_espaco_livre DECIMAL(10, 2) NOT NULL, 
+ADD nota_localizacao_ponte DECIMAL(10, 2) NOT NULL, 
+ADD nota_saude_fisica_ponte DECIMAL(10, 2) NOT NULL, 
+ADD nota_outros_fi DECIMAL(10, 2) NOT NULL,
+ADD tipo_inspecao ENUM('cadastral', 'rotineira', 'especial', 'extraordinaria');

@@ -2,7 +2,6 @@
 	require_once('conexao.php');
 	require_once('utils.php');
 	$conexao = new Conexao();
-	$utils = new Utils();
 	$_POST['data_nascimento'] = implode('-', array_reverse(explode('/', $_POST['data_nascimento'])));
 	$_POST['chave'] = password_hash('chave de acesso', PASSWORD_BCRYPT);
 	$chaves = implode(',', array_keys($_POST));

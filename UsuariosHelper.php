@@ -5,7 +5,6 @@
 	class UsuariosHelper{
 		public function validarChaveCliente($chave){
 			$conexao = new Conexao();
-			$utils = new Utils();
 			$chaveExiste = $conexao->executarQuery("SELECT id, chave FROM clientes WHERE chave = '$chave'");
 			if(!empty($chaveExiste)){
 				return ($chaveExiste[0]['chave'] == $chave);

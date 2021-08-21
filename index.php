@@ -12,7 +12,6 @@
 	<body>
 		<?php
 			require_once('utils.php');
-			$utils = new Utils();
 
 			if(session_status() <> PHP_SESSION_ACTIVE){
 				session_start();
@@ -26,7 +25,7 @@
 		<center>
 			<div class="row">
 				<?php
-					$utils->mostraMensagemErro();
+					Utils::mostraMensagemErro();
 				?>
 			</div>
 			<img class="responsive-img imagem-login" src="assets/Logo/Roxo.png" />

@@ -24,9 +24,9 @@
 		if(rename($_FILES['images']['tmp_name'][$i], $destino)){
 			$queryImagens = "
 			INSERT INTO imagens_inspecoes
-			(inspecao_id, imagem)
+			(inspecao_id, imagem, id_usuario)
 			VALUES
-			($idInspecao, '$nomeImagem')
+			($idInspecao, '$nomeImagem', {$_SESSION['userId']})
 			";
 			$conexao->executarQuery($queryImagens);
 		}

@@ -1,6 +1,7 @@
 <?php
 	require_once('conexao.php');
 	require_once('utils.php');
+	require_once('RankeamentoService.php');
 	$conexao = new Conexao();
 	if(!isset($_GET['id']) || $_GET['id'] == ''){
 
@@ -9,9 +10,8 @@
 		$imagens = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$_GET['id']}");
 		$agendamentos = $conexao->executarQuery("SELECT * FROM agendamentos WHERE ponte_id = {$_GET['id']}");
 	}
-	$utils = new Utils();
-
-	// $utils->varDump($_SESSION);
+	$inspecoes = $conexao->executarQuery("SELECT * FROM inspecoes");
+	$rankeamento = new RankeamentoService($inspecoes);
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +26,8 @@
 	</head>
 	<body>
 		<?php
-			$utils->navBar();
+			Utils::navBar();
+			$rankeamento->renderDash();
 		?>
 
 		<!--JavaScript at end of body for optimized loading-->

@@ -3,17 +3,16 @@
 	require_once('utils.php');
 	require_once('ClientesService.php');
 
-	$conexao = new Conexao();
-	$utils = new Utils();
+	$conexao = new Conexao();	
 	$clienteService = new ClientesService();
 
 	echo '<!DOCTYPE html>';
-	$utils->tagHead();
+	Utils::tagHead();
 	echo '<body>';
-	$utils->navBar();
+	Utils::navBar();
 
 	$clientes = $clienteService->getDadosClientesFormatados();
-	$utils->row();
+	Utils::row();
 	if(is_array($clientes) && count($clientes) > 0){
 		foreach($clientes as $cliente){
 			echo "
@@ -96,7 +95,7 @@
 	</div>
 
 <?php
-	$utils->scriptsJs();
+	Utils::scriptsJs();
 	echo '</body>';
 	echo '</html>';
 ?>

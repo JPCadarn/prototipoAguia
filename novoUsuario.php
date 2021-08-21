@@ -3,7 +3,6 @@
 	require_once('utils.php');
 	require_once('UsuariosHelper.php');
 	$conexao = new Conexao();
-	$utils = new Utils();
 	$usuariosHelper = new UsuariosHelper();
 	$_POST['senha'] = password_hash($_POST['senha'], PASSWORD_BCRYPT);
 	$chaves = implode(',', array_keys($_POST));

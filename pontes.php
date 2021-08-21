@@ -2,7 +2,6 @@
 	require_once('conexao.php');
 	require_once('utils.php');
 	$conexao = new Conexao();
-	$utils = new Utils();
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +17,7 @@
 	</head>
 	<body>
 		<?php
-			$utils->navBar();
+			Utils::navBar();
 			echo "<div class='row'>";
 			$pontes = $conexao->executarQuery('SELECT id, nome, descricao FROM pontes');
 			if(count($pontes)){
