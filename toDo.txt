@@ -1,9 +1,9 @@
-- Trocar arrays notas p/ atributo static;
-- Implementar rankeamento;
-- Implementar registro de logs;
+- Implementar page rankeamento;
+- Mostrar somente 10 ranks dash;
+- Implementar gráficos dash;
+- Implementar card na utils p/ padronizar;
+- Implementar registro de logs nos cruds;
 - Implementar relatórios;
-- Implementar dashboard;
+- Implementar dark mode;
 - Alterar classe SQL p/ evitar injections;
 - Mudar action cards p/ somente ícones, testar com FABs;
-- Carregar form edit com ajax p/ editar cadastros;
-- Migrar utils p/ static;

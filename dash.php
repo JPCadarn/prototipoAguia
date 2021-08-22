@@ -10,7 +10,7 @@
 		$imagens = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$_GET['id']}");
 		$agendamentos = $conexao->executarQuery("SELECT * FROM agendamentos WHERE ponte_id = {$_GET['id']}");
 	}
-	$inspecoes = $conexao->executarQuery("SELECT * FROM inspecoes");
+	$inspecoes = $conexao->executarQuery("SELECT inspecoes.*, pontes.descricao FROM inspecoes INNER JOIN pontes ON inspecoes.ponte_id = pontes.id");
 	$rankeamento = new RankeamentoService($inspecoes);
 ?>
 <!DOCTYPE html>

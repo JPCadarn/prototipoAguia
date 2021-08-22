@@ -110,7 +110,7 @@ CREATE TABLE inspecoes(
 	nome VARCHAR(200) NOT NULL,
 	descricao VARCHAR(200) NOT NULL,
 	via VARCHAR(200) NOT NULL,
-	data_construcao VARCHAR(200) NOT NULL,
+	data_inspecao VARCHAR(200) NOT NULL,
 	trem_tipo VARCHAR(200) NOT NULL,
 	sentido VARCHAR(200) NOT NULL,
 	localizacao VARCHAR(200) NOT NULL,

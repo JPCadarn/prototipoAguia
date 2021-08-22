@@ -15,14 +15,49 @@
             foreach($this->inspecoes as $inspecao){
                 $imps[$inspecao['ponte_id']] = $this->calcularIMP($inspecao);
             }
-            Utils::varDump($imps);
+            echo "<div class='row col s12 m6'>";
+            echo "
+            <table class='striped centered responsive-table'>
+                <thead>
+                    <tr>
+                        <th>ID Inspeção</th>
+                        <th>Ponte</th>
+                        <th>Data de Inspeção</th>
+                        <th>IVS</th>
+                        <th>ISE</th>
+                        <th>IMP</th>
+                    </tr>
+                </thead>
+            
+            <tbody>";
+            foreach($imps as $inspecao){
+                echo "<tr>";
+                echo "<td>".$inspecao['id']."</td>";
+                echo "<td>".$inspecao['descricao']."</td>";
+                echo "<td>".Utils::formataData($inspecao['data_inspecao'])."</td>";
+                echo "<td>".$inspecao['ivs']."</td>";
+                echo "<td>".$inspecao['ise']."</td>";
+                echo "<td>".$inspecao['imp']."</td>";
+                echo "</td>";
+            }
+            echo "</tbody>
+            </table>
+            ";
+            echo "<div>";
         }
 
         public function calcularIMP($inspecao){
             $indiceValorSocial = $this->calcularIndiceValorSocial($inspecao);
             $indiceSaudeEstrutura = $this->calcularIndiceSaudeEstrutura($inspecao);
             $imp = self::ALFA1 * $indiceValorSocial + self::ALFA2 * $indiceSaudeEstrutura;
-            return ['ivs' => $indiceValorSocial, 'ise' => $indiceSaudeEstrutura, 'imp' => $imp];
+            return [
+                'ivs' => $indiceValorSocial, 
+                'ise' => $indiceSaudeEstrutura, 
+                'imp' => $imp,
+                'descricao' => substr($inspecao['descricao'], 0, 50),
+                'id' => $inspecao['id'],
+                'data_inspecao' => $inspecao['data_inspecao']
+            ];
         }
 
         public function calcularIndiceValorSocial($inspecao){
