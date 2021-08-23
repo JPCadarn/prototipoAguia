@@ -1,4 +1,3 @@
-- Implementar Minha Conta;
 - Implementar card na utils p/ padronizar;
 - Implementar gráficos dash;
 - Implementar registro de logs nos cruds;
