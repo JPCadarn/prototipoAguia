@@ -14,6 +14,13 @@ class Utils{
 		}
 	}
 
+	public static function ordenarArrayMultiDimensional($array, $chave){
+		$colunas = array_column($array, $chave);
+		array_multisort($colunas, SORT_DESC, $array);
+
+		return $array;
+	}
+
 	public static function renderNavBarAguia(){
 		echo "
 			<nav>
@@ -28,7 +35,7 @@ class Utils{
 						<li><a href='inspecoes.php'>Inspeções</a></li>
 						<li><a href='clientes.php'>Clientes</a></li>
 						<li><a href='logout.php'>Logout</a></li>
-						<li><a href='#'>Minha Conta</a></li>
+						<li><a href='minhaConta.php'>Minha Conta</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -38,7 +45,7 @@ class Utils{
 				<li><a href='inspecoes.php'>Inspeções</a></li>
 				<li><a href='clientes.php'>Clientes</a></li>
 				<li><a href='logout.php'>Logout</a></li>
-				<li><a href='#'>Minha Conta</a></li>
+				<li><a href='minhaConta.php'>Minha Conta</a></li>
 			</ul>
 		";
 	}
@@ -56,7 +63,7 @@ class Utils{
 						<li><a href='agendamentos.php'>Agendamentos</a></li>
 						<li><a href='inspecoes.php'>Inspeções</a></li>
 						<li><a href='logout.php'>Logout</a></li>
-						<li><a href='#'>Minha Conta</a></li>
+						<li><a href='minhaConta.php'>Minha Conta</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -65,7 +72,7 @@ class Utils{
 				<li><a href='agendamentos.php'>Agendamentos</a></li>
 				<li><a href='inspecoes.php'>Inspeções</a></li>
 				<li><a href='logout.php'>Logout</a></li>
-				<li><a href='#'>Minha Conta</a></li>
+				<li><a href='minhaConta.php'>Minha Conta</a></li>
 			</ul>
 		";
 	}
@@ -119,6 +126,11 @@ class Utils{
 
 	public static function formataData($data){
 		return implode('/', array_reverse(explode('-', $data)));
+	}
+
+	public static function formataDateTime($dateTime){
+		$DateTime = new DateTime($dateTime);
+		return $DateTime->format('d/m/Y H:i:s');
 	}
 
 	public static function renderSelect($idName, $opcoes, $label, $opcaoDisabled, $campoValor){

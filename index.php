@@ -55,12 +55,6 @@
 						</div>
 						<div class='row'>
 							<button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect purple darken-4'>Login</button>
-							<br>
-							<br>
-							<br>
-							<a data-target="modalCadastro" class="col s12 btn btn-large modal-trigger waves-effect waves-light purple darken-4">
-								Cadastrar-se
-							</a>
 						</div>
 					</form>
 				</div>

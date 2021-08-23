@@ -21,7 +21,7 @@ CREATE TABLE usuarios(
 	tipo ENUM('normal','admin','aguia') NOT NULL
 );
 
-INSERT INTO usuarios (nome, email, senha, id_cliente, chave) VALUES ('ADMIN', 'ADMIN', '$2y$10$EDunD4N4R5yOAvLgJH38WeccvPSnnmNCJWpwpanJF1BFZGQ8uyLg6', 0, 'aguia');
+INSERT INTO usuarios (nome, email, senha, id_cliente, chave, tipo) VALUES ('ADMIN', 'ADMIN', '$2y$10$EDunD4N4R5yOAvLgJH38WeccvPSnnmNCJWpwpanJF1BFZGQ8uyLg6', 0, 'aguia', 'aguia');
 
 CREATE TABLE pontes(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

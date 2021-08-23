@@ -1,9 +1,10 @@
-- Implementar page rankeamento;
-- Mostrar somente 10 ranks dash;
-- Implementar gráficos dash;
+- Implementar Minha Conta;
 - Implementar card na utils p/ padronizar;
+- Implementar gráficos dash;
 - Implementar registro de logs nos cruds;
 - Implementar relatórios;
 - Implementar dark mode;
+- Implementar favicon e título página;
 - Alterar classe SQL p/ evitar injections;
 - Mudar action cards p/ somente ícones, testar com FABs;
+- Adicionar breadcrumbs;
