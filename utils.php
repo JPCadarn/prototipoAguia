@@ -7,6 +7,8 @@ class Utils{
 		}
 		if(isset($_SESSION['userId']) && isset($_SESSION['userType']) && ($_SESSION['userType'] == 'aguia')){
 			self::renderNavBarAguia();
+		}elseif(isset($_SESSION['userId']) && isset($_SESSION['userType']) && ($_SESSION['userType'] == 'admin')){
+			self::renderNavBarAdmin();
 		}elseif(isset($_SESSION['userId'])){
 			self::renderNavBar();
 		}else{
@@ -21,6 +23,35 @@ class Utils{
 		return $array;
 	}
 
+	public static function renderNavBarAdmin(){
+		echo "
+			<nav>
+				<div class='nav-wrapper purple darken-4'>
+					<a href='index.php' class='brand-logo center' tabIndex='-1'>
+						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
+					</a>
+					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
+					<ul class='right hide-on-med-and-down'>
+						<li><a href='pontes.php'>Pontes</a></li>
+						<li><a href='agendamentos.php'>Agendamentos</a></li>
+						<li><a href='inspecoes.php'>Inspeções</a></li>
+						<li><a href='usuarios.php'>Usuários</a></li>
+						<li><a href='logout.php'>Logout</a></li>
+						<li><a href='minhaConta.php'>Minha Conta</a></li>
+					</ul>
+				</div>
+			</nav>
+			<ul class='sidenav' id='mobile-demo'>
+				<li><a href='pontes.php'>Pontes</a></li>
+				<li><a href='agendamentos.php'>Agendamentos</a></li>
+				<li><a href='inspecoes.php'>Inspeções</a></li>
+				<li><a href='usuarios.php'>Usuários</a></li>
+				<li><a href='logout.php'>Logout</a></li>
+				<li><a href='minhaConta.php'>Minha Conta</a></li>
+			</ul>
+		";
+	}
+
 	public static function renderNavBarAguia(){
 		echo "
 			<nav>
@@ -33,6 +64,7 @@ class Utils{
 						<li><a href='pontes.php'>Pontes</a></li>
 						<li><a href='agendamentos.php'>Agendamentos</a></li>
 						<li><a href='inspecoes.php'>Inspeções</a></li>
+						<li><a href='usuarios.php'>Usuários</a></li>
 						<li><a href='clientes.php'>Clientes</a></li>
 						<li><a href='logout.php'>Logout</a></li>
 						<li><a href='minhaConta.php'>Minha Conta</a></li>
@@ -43,6 +75,7 @@ class Utils{
 				<li><a href='pontes.php'>Pontes</a></li>
 				<li><a href='agendamentos.php'>Agendamentos</a></li>
 				<li><a href='inspecoes.php'>Inspeções</a></li>
+				<li><a href='usuarios.php'>Usuários</a></li>
 				<li><a href='clientes.php'>Clientes</a></li>
 				<li><a href='logout.php'>Logout</a></li>
 				<li><a href='minhaConta.php'>Minha Conta</a></li>

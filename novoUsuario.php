@@ -5,6 +5,8 @@
 	$conexao = new Conexao();
 	$usuariosHelper = new UsuariosHelper();
 	$_POST['senha'] = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+	$_POST['tipo'] = 'normal';
+	$_POST['id_cliente'] = $conexao->executarQuery("SELECT id FROM cliente WHERE chave ='".$_POST['chave']."'");
 	$chaves = implode(',', array_keys($_POST));
 	$valores = array_values($_POST);
 	$valoresTratados = [];
@@ -26,5 +28,5 @@
 	}else{
 		$mensagemErro = '?mensagemErro=104';
 	}
-	header('Location: index.php'.$mensagemErro);
+	header('Location: usuarios.php'.$mensagemErro);
 ?>
