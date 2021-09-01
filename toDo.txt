@@ -4,6 +4,7 @@
 - Implementar relatórios;
 - Implementar dark mode;
 - Implementar favicon e título página;
-- Alterar classe SQL p/ evitar injections;
+- Instalar composer na hospedagem;
+- Depois de hospedar, trocar conexões pra DBAL;
 - Mudar action cards p/ somente ícones, testar com FABs;
 - Adicionar breadcrumbs;
