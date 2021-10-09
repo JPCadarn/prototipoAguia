@@ -38,5 +38,25 @@
 			
 			return $retorno;
 		}
+
+		public function insert($tabela, $chaves, $valores){
+			$query = "
+				INSERT INTO $tabela
+				($chaves)
+				VALUES
+				($valores)
+			";
+			return $this->executarQuery($query);
+		}
+
+		public function updateById($tabela, $id, $valores){
+			$query = "
+				UPDATE $tabela
+				SET $valores
+				WHERE id = $id
+			";
+			
+			return $this->executarQuery($query);
+		}
 	}
 ?>

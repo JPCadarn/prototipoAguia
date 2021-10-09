@@ -31,5 +31,14 @@
 			$conexao->executarQuery($queryImagens);
 		}
 	}
+	for($i = 1; $i <= 20; $i++){
+		$queryInsert = "
+			INSERT INTO inspecoes
+			()
+			VALUES
+			()
+		";
+		$conexao->executarQuery($queryInsert);
+	}
 	header('Location: pontes.php');
 ?>

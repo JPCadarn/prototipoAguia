@@ -1,5 +1,7 @@
 <?php
 	require_once('conexao.php');
+	require_once('utils.php');
+	require_once('InspecaoService.php');
 	$conexao = new Conexao();
 	if(!isset($_GET['id']) || $_GET['id'] == ''){
 
@@ -7,6 +9,7 @@
 		$dados = $conexao->executarQuery('SELECT * FROM pontes WHERE id = '.$_GET['id'])[0];
 		$imagens = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$_GET['id']}");
 		$agendamentos = $conexao->executarQuery("SELECT * FROM agendamentos WHERE ponte_id = {$_GET['id']}");
+		$inspecoes = $conexao->executarQuery("SELECT inspecoes.*, usuarios.nome FROM inspecoes INNER JOIN usuarios ON inspecoes.id_usuario = usuarios.id WHERE ponte_id = {$_GET['id']}");
 	}
 ?>
 <!DOCTYPE html>
@@ -21,31 +24,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
-		<nav>
-			<div class="nav-wrapper purple darken-4">
-				<a href='index.php' class='brand-logo center' tabIndex='-1'>
-					<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
-				</a>
-				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="pontes.php">Pontes</a></li>
-					<li><a href="agendamentos.php">Agendamentos</a></li>
-					<li><a href="logout.php">Logout</a></li>
-					<li><a href="#">Minha Conta</a></li>
-				</ul>
-			</div>
-		</nav>
-		
-		<ul class="sidenav" id="mobile-demo">
-			<li><a href="pontes.php">Pontes</a></li>
-			<li><a href="agendamentos.php">Agendamentos</a></li>
-			<li><a href="logout.php">Logout</a></li>
-			<li><a href="#">Minha Conta</a></li>
-		</ul>
+		<?php
+			Utils::navBar();
+		?>
 		
 		<div class="row">
 			<h3>Ficha de Inspeção Cadastral - <?php echo $dados['nome']?></h3>
-			<h6 class="centralizar">Inspeção realizada no dia 23/07/2020 por Prefeitura Municipal de Iraí. Código da OAE não informado</h6>
 			<ul class="collapsible">
 				<li>
 					<div class="collapsible-header"><i class="material-icons">place</i>Identificação e Localização</div>
@@ -128,45 +112,6 @@
 						<p><span class="negrito">Proteção de pilares: </span><span><?php echo $dados['protecao_pilares'];?></span></p>
 				  </div>
 				</li>
-				<!-- <li>
-					<div class="collapsible-header"><i class="material-icons">whatshot</i>Classificação da OAE</div>
-					<div class="collapsible-body">
-						<table class="highlight responsive-table centered">
-							<thead>
-								<tr>
-									<th>Parâmetros</th>
-									<th>Superestrutura</th>
-									<th>Mesoestrutura</th>
-									<th>Infraestrutura</th>
-									<th class="negrito">Nota final</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Estrutural</td>
-									<td>4</td>
-									<td>2</td>
-									<td>-</td>
-									<td class="negrito">2</td>
-								</tr>
-								<tr>
-									<td>Funcional </td>
-									<td>2</td>
-									<td>-</td>
-									<td>-</td>
-									<td class="negrito">0.67</td>
-								</tr>
-								<tr>
-									<td>Durabilidade </td>
-									<td>3</td>
-									<td>2</td>
-									<td>-</td>
-									<td class="negrito">1.67</td>
-								</tr>
-							</tbody>
-						</table>
-				  </div>
-				</li> -->
 				<li>
 					<div class="collapsible-header"><i class="material-icons">av_timer</i>Agendamentos</div>
 				  	<div class="collapsible-body centralizar">
@@ -178,6 +123,25 @@
 									<span class="negrito">Data: </span><span><?php echo implode('/', array_reverse(explode('-', $agendamento['data'])));?></span>
 									<span class="negrito">Horário: </span><span><?php echo $agendamento['horario'];?></span>
 									<span class="negrito">Detalhes: </span><span><?php echo $agendamento['detalhes'];?></span>
+								</p>
+							<?php
+							}
+						?>
+						
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header"><i class="material-icons">av_timer</i>Inspeções</div>
+				  	<div class="collapsible-body centralizar">
+						<?php
+							foreach($inspecoes as $inspecao){
+							?>
+								<p>
+									<span class="negrito">ID: </span><span><?php echo $inspecao['id'];?></span>
+									<span class="negrito">Usuário: </span><span><?php echo $inspecao['nome'];?></span>
+									<span class="negrito">Data: </span><span><?php echo implode('/', array_reverse(explode('-', $inspecao['data_inspecao'])));?></span>
+									<span class="negrito">Tipo: </span><span><?php echo InspecaoService::$tipos[$inspecao['tipo_inspecao']];?></span>
+									<span class="negrito">Descrição: </span><span><?php echo $inspecao['descricao'];?></span>
 								</p>
 							<?php
 							}

@@ -161,6 +161,11 @@ class Utils{
 		return implode('/', array_reverse(explode('-', $data)));
 	}
 
+	public static function formataDataBD($data){
+		$DateTime = new DateTime($data);
+		return $DateTime->format('Y-m-d');
+	}
+
 	public static function formataDateTime($dateTime){
 		$DateTime = new DateTime($dateTime);
 		return $DateTime->format('d/m/Y H:i:s');

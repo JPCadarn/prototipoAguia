@@ -11,6 +11,12 @@
 	';
 	$pontes = $conexao->executarQuery('SELECT id, nome FROM pontes');
 	$agendamentos = $conexao->executarQuery($queryAgendamentos);
+	$opcoesInspecao = [
+		['id' => 'cadastral', 'tipo' => 'Cadastral'],
+		['id' => 'rotineira', 'tipo' => 'Rotineira'],
+		['id' => 'especial', 'tipo' => 'Especial'],
+		['id' => 'extraordinaria', 'tipo' => 'Extraordinária']
+	];
 	echo '<!DOCTYPE html>';
 	Utils::tagHead();
 	echo '<body>';
@@ -41,6 +47,7 @@
 	echo "<div class='input-field col s12'>";
 	echo "<input id='detalhes' name='detalhes' type='text'>";
 	echo "<label for='detalhes'>Detalhes do Agendamento</label>";
+	Utils::renderSelect('tipo_inspecao', $opcoesInspecao, 'Tipo de Inspeção', 'Selecione o tipo de inspeção', 'tipo');
 	echo "<div class='fixed-action-btn'>";
 	echo "<div class='fixed-action-btn'>";
 	echo "<button class='modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4' type='submit' value='Create'>";
@@ -68,7 +75,6 @@
 					<div class='card-image'>
 						<img src='assets/fotos/$imagem'>
 						<span class='card-title'>Agendamento {$agendamento['id']} - {$agendamento['ponte_nome']}</span>
-						<a data-position='bottom' href='agendamentosDelete.php?id={$agendamento['id']}' data-tooltip='Excluir' class='tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>delete</i></a>
 					</div>
 					<div class='card-stacked'>
 						<div class='card-content'>

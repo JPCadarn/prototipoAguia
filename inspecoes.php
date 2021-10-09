@@ -7,7 +7,7 @@
 		SELECT 
 			i.*,
 			p.nome AS ponte_nome
-		FROM inspecoes p
+		FROM inspecoes i
 		INNER JOIN pontes p ON i.ponte_id = p.id
 	';
 	$agendamentos = $conexao->executarQuery('SELECT id, detalhes FROM agendamentos');
@@ -17,8 +17,7 @@
 	echo '<body>';
 	Utils::navBar();
 
-	$pontes = $conexao->executarQuery('SELECT pontes.id, pontes.nome, pontes.descricao FROM pontes INNER JOIN inspecoes ON pontes.id = inspecoes.ponte_id');
-	$pontesSelect = $conexao->executarQuery('SELECT pontes.id, pontes.nome, pontes.descricao FROM pontes');
+	$pontes = $conexao->executarQuery('SELECT pontes.id, inspecoes.nome, inspecoes.descricao, inspecoes.id AS id_inspecao, inspecoes.status FROM pontes INNER JOIN inspecoes ON pontes.id = inspecoes.ponte_id');
 	if(count($pontes)){
 		foreach($pontes as $ponte){
 			$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$ponte['id']} ORDER BY id ASC LIMIT 1");
@@ -27,55 +26,41 @@
 			}else{
 				$imagem = '';
 			}
-			echo "
-				<div class='row'>
-					<div class='col s12 m4'>
-							<div class='card'>
-								<div class='card-image'>
-								<a href='ponteDetalhes.php?id={$ponte['id']}'>
-									<img src='assets/fotos/$imagem'>
-								</a>
-								<span class='card-title'>{$ponte['nome']}</span>
-							</div>
-							<div class='card-content'>
-								<p>{$ponte['descricao']}</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			";
+			echo "<div class='row'>";
+			echo "<div class='col s12 m4'>";
+			echo "<div class='card'>";
+			echo "<div class='card-image'>";
+			echo "<a href='ponteDetalhes.php?id={$ponte['id']}'>";
+			echo "<img src='assets/fotos/$imagem'>";
+			echo "</a>";
+			echo "<span class='card-title'>{$ponte['nome']}</span>";
+			if($ponte['status'] == 'Aberto'){
+				echo "<a id='btnAvaliarInspecao{$ponte['id_inspecao']}' data-id='{$ponte['id_inspecao']}' data-target='modalAvaliar' data-position='bottom' data-tooltip='Avaliar' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>delete</i></a>";
+			}
+			echo "</div>";
+			echo "<div class='card-content'>";
+			echo "<p>{$ponte['descricao']}</p>";
+			echo "</div>";
+			echo "</div>";
+			echo "</div>";
+			echo "</div>";
+		
 		}
 	}else{
 		echo "<h6 class='centralizar'>Nenhuma inspeção cadastrada";
 	}
 ?>
-	<div class="fixed-action-btn">
-		<a data-target="modalCadastro" class="btn-large modal-trigger btn-floating waves-effect waves-light purple darken-4">
-			<i class="large material-icons">add</i>
-		</a>
-	</div>
-
-	<div id="modalCadastro" class="modal">
+	<div id="modalAvaliar" class="modal">
 		<br>
 		<br>
 		<div class="modal-title">
-			<h4 class="center">Adicionar Inspeção</h4>
+			<h4 class="center">Avaliar Inspeção</h4>
 		</div>
 		<div id="formCadastro" class="modal-content">
 			<div class="row">
 				<form id="formulario" action="novaInspecao.php" method="POST" class="col s12" enctype="multipart/form-data" autocomplete="off">
-					<div class="input-field col s12">
-						<select id="tipo_inspecao" name="tipo_inspecao">
-							<option value='' disabled selected>Tipo de Inspeção</option>
-							<option value="cadastral">Inspeção Cadastral</option>
-							<option value="rotineira">Inspeção Rotineira</option>
-							<option value="especial">Inspeção Especial</option>
-							<option value="extraordinaria">Inspeção Extraordinaria</option>
-						</select>
-					</div>
-					<?php
-						Utils::renderSelect('ponte_id', $pontesSelect, 'Ponte', 'Selecione a ponte', 'nome');
-					?>
+					<input type="hidden" value="" name="id_inspecao" id="id_inspecao">
+					<input type="hidden" value="Avaliado" name="status" id="status">
 					<ul class="collapsible expandable">
 						<li class="active">
 							<div class="collapsible-header"><i class="material-icons">location_on</i>Identicação e Localização</div>
@@ -360,9 +345,10 @@
 		</div>
 	</div>
 
-	<!--JavaScript at end of body for optimized loading-->
-	<script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+		<!--JavaScript at end of body for optimized loading-->
+		<script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
 		<script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
 		<script type="text/javascript" src="assets/js/main.js"></script>
+		<script type="text/javascript" src="assets/js/inspecoes.js"></script>
 	</body>
 </html>

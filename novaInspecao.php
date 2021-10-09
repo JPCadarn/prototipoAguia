@@ -1,22 +1,23 @@
 <?php
 	require_once('conexao.php');
+	require_once('utils.php');
+
 	$conexao = new Conexao();
-	$_POST['data_construcao'] = implode('-', array_reverse(explode('/', $_POST['data_construcao'])));
-	$chaves = implode(',', array_keys($_POST));
-	$valores = array_values($_POST);
-	$valoresTratados = [];
+	$_POST['data_inspecao'] = implode('-', array_reverse(explode('/', $_POST['data_inspecao'])));
+	$idInspecao = $_POST['id_inspecao'];
+	unset($_POST['id_inspecao']);
+
+	$chaves = array_keys($_POST);
 	$imagens = [];
-	foreach($valores as $valor){
-		$valoresTratados[] = "'$valor'";
+	$valores = array_values($_POST);
+	$camposValores = [];
+
+	foreach($chaves as $index => $chave){
+		$camposValores [] = "{$chaves[$index]} = '{$valores[$index]}'";
 	}
-	$valoresTratados = implode(',', $valoresTratados);
-	$query = "
-		INSERT INTO inspecoes
-		($chaves)
-		VALUES
-		($valoresTratados)
-	";
-	$idInspecao = $conexao->executarQuery($query);
+	$camposValores = implode(', ', $camposValores);
+	$conexao->updateById('inspecoes', $idInspecao, $camposValores);
+	
 	for($i = 0; $i < count($_FILES['images']['name']); $i++){
 		$nomeImagem = str_replace(['.', ',', '/', '\\'], '_', password_hash($_FILES['images']['name'][$i], PASSWORD_BCRYPT)).'.'.explode('/', $_FILES['images']['type'][$i])[1];
 		$imagens[] = $nomeImagem;
