@@ -6,7 +6,11 @@
 
 	$conexao = new Conexao();
 
-	$dadosUsuario = $conexao->executarQuery('SELECT * FROM usuarios');
+	if(SessionService::getUserType() != 'aguia'){
+		$dadosUsuario = $conexao->executarQuery('SELECT * FROM usuarios WHERE id_cliente = '.SessionService::getIdCliente());
+	}else{
+		$dadosUsuario = $conexao->executarQuery('SELECT * FROM usuarios');
+	}
 
 	Utils::tagHead();
 	echo "<body>";

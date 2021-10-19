@@ -6,7 +6,7 @@
 	$_POST['data'] = Utils::formataDataBD($_POST['data']);	
 	$tipoInspecao = $_POST['tipo_inspecao'];
 	unset($_POST['tipo_inspecao']);
-
+	
 	$chaves = implode(',', array_keys($_POST));
 	$valores = array_values($_POST);
 	foreach($valores as $valor){
@@ -14,10 +14,10 @@
 	}
 	$valoresTratados = implode(',', $valoresTratados);
 	$query = "
-		INSERT INTO agendamentos
-		($chaves)
-		VALUES
-		($valoresTratados)
+	INSERT INTO agendamentos
+	($chaves)
+	VALUES
+	($valoresTratados)
 	";
 	$idAgendamento = $conexao->executarQuery($query);
 	if($idAgendamento){

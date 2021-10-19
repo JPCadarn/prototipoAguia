@@ -35,11 +35,12 @@
 			echo "</a>";
 			echo "<span class='card-title'>{$ponte['nome']}</span>";
 			if($ponte['status'] == 'Aberto'){
-				echo "<a id='btnAvaliarInspecao{$ponte['id_inspecao']}' data-id='{$ponte['id_inspecao']}' data-target='modalAvaliar' data-position='bottom' data-tooltip='Avaliar' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>delete</i></a>";
+				echo "<a id='btnAvaliarInspecao{$ponte['id_inspecao']}' data-id='{$ponte['id_inspecao']}' data-target='modalAvaliar' data-position='bottom' data-tooltip='Avaliar' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>thumbs_up_down</i></a>";
 			}
 			echo "</div>";
 			echo "<div class='card-content'>";
 			echo "<p>{$ponte['descricao']}</p>";
+			echo "<p>{$ponte['status']}</p>";
 			echo "</div>";
 			echo "</div>";
 			echo "</div>";
@@ -75,7 +76,7 @@
 										<label for="nome">Nome da OAE</label>
 									</div>
 									<div class="input-field col s12 m6">
-										<input id="data_inspecao" name="data_inspecao" type="date">
+										<input id="data_inspecao" name="data_inspecao" class="mask-date" type="text">
 										<label for="data_inspecao">Data de Inspeçao</label>
 									</div>
 									<div class="input-field col s12 m6">

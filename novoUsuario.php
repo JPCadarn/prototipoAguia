@@ -6,7 +6,7 @@
 	$usuariosHelper = new UsuariosHelper();
 	$_POST['senha'] = password_hash($_POST['senha'], PASSWORD_BCRYPT);
 	$_POST['tipo'] = 'normal';
-	$_POST['id_cliente'] = $conexao->executarQuery("SELECT id FROM cliente WHERE chave ='".$_POST['chave']."'");
+	$_POST['id_cliente'] = $conexao->executarQuery("SELECT id FROM clientes WHERE chave ='".$_POST['chave']."'")[0]['id'];
 	$chaves = implode(',', array_keys($_POST));
 	$valores = array_values($_POST);
 	$valoresTratados = [];

@@ -4,12 +4,18 @@
 	require_once('InspecaoService.php');
 	$conexao = new Conexao();
 	if(!isset($_GET['id']) || $_GET['id'] == ''){
-
+		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}else{
 		$dados = $conexao->executarQuery('SELECT * FROM pontes WHERE id = '.$_GET['id'])[0];
 		$imagens = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$_GET['id']}");
 		$agendamentos = $conexao->executarQuery("SELECT * FROM agendamentos WHERE ponte_id = {$_GET['id']}");
 		$inspecoes = $conexao->executarQuery("SELECT inspecoes.*, usuarios.nome FROM inspecoes INNER JOIN usuarios ON inspecoes.id_usuario = usuarios.id WHERE ponte_id = {$_GET['id']}");
+		$opcoesInspecao = [
+			['id' => 'cadastral', 'tipo' => 'Cadastral'],
+			['id' => 'rotineira', 'tipo' => 'Rotineira'],
+			['id' => 'especial', 'tipo' => 'Especial'],
+			['id' => 'extraordinaria', 'tipo' => 'Extraordinária']
+		];
 	}
 ?>
 <!DOCTYPE html>
@@ -172,41 +178,41 @@
 			</a>
 		</div>
 
-		<div id="modalAgendamento" class="modal">
-			<div class="modal-title">
-				<h4 class="center">Adicionar Agendamento</h4>
-			</div>
-			<div class="modal-content">
-				<div class="row">
-					<form action="novoAgendamento.php" method="POST" class="col s12" autocomplete="off">
-						<div class="input-field col s6">
-							<input id="ponte_id" name="ponte_id" type="hidden" value="<?php echo $dados['id']?>">
-							<input id="data" name="data" type="text" class="datepicker">
-							<label for="data">Data do Agendamento</label>
-						</div>
-						<div class="input-field col s6">
-							<input id="horario" name="horario" type="text" class="timepicker">
-							<label for="horario">Horário do Agendamento</label>
-						</div>
-						<div class="input-field col s12">
-							<input id="detalhes" name="detalhes" type="text">
-							<label for="detalhes">Detalhes do Agendamento</label>
-							<div class="fixed-action-btn">
-								<div class="fixed-action-btn">
-									<button class="modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4" type="submit" value="Create">
-										<i class="large material-icons">check</i>
-									</button>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<!--JavaScript at end of body for optimized loading-->
-		<script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
-		<script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
-		<script type="text/javascript" src="assets/js/main.js"></script>
+		<?php
+		echo "<div id='modalAgendamento' class='modal bottom-sheet'>";
+		echo "<div class='modal-title'>";
+		echo "<h4 class='center'>Adicionar Agendamento</h4>";
+		echo "</div>";
+		echo "<div class='modal-content'>";
+		echo "<div class='row'>";
+		echo "<form action='novoAgendamento.php' method='POST' class='col s12' autocomplete='off'>";
+		echo "<input id='ponte_id' name='ponte_id' type='hidden' value='".$dados['id']."'>";
+		echo "<div class='input-field col s6'>";
+		echo "<input id='data' name='data' class='mask-date' type='text'>";
+		echo "<label for='data'>Data do Agendamento</label>";
+		echo "</div>";
+		echo "<div class='input-field col s6'>";
+		echo "<input id='horario' name='horario' type='text' class='mask-hora'>";
+		echo "<label for='horario'>Horário do Agendamento</label>";
+		echo "</div>";
+		echo "<div class='input-field col s12'>";
+		echo "<input id='detalhes' name='detalhes' type='text'>";
+		echo "<label for='detalhes'>Detalhes do Agendamento</label>";
+		Utils::renderSelect('tipo_inspecao', $opcoesInspecao, 'Tipo de Inspeção', 'Selecione o tipo de inspeção', 'tipo');
+		echo "<div class='fixed-action-btn'>";
+		echo "<div class='fixed-action-btn'>";
+		echo "<button class='modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4' type='submit' value='Create'>";
+		echo "<i class='large material-icons'>check</i>";
+		echo "</button>";
+		echo "</div>";
+		echo "</div>";
+		echo "</div>";
+		echo "</form>";
+		echo "</div>";
+		echo "</div>";
+		echo "</div>";
+		echo "<div class='row'>";
+		Utils::scriptsJs();
+		?>
 	</body>
 </html>

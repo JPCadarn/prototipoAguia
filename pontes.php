@@ -67,7 +67,7 @@
 			</div>
 			<div class="modal-content">
 				<div class="row">
-					<form action="novaPonte.php" method="POST" class="col s12" enctype="multipart/form-data" autocomplete="off">
+					<form action="novaPonte.php" id="formCadastroOAE" method="POST" class="col s12" enctype="multipart/form-data" autocomplete="off">
 						<ul class="collapsible expandable">
 							<li class="active">
 								<div class="collapsible-header">Identicação e Localização</div>
@@ -187,15 +187,15 @@
 											<label for="aparelhos_apoio">Aparelhos de Apoio</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="comprimento_vao_tipico" name="comprimento_vao_tipico" type="text">
+											<input id="comprimento_vao_tipico" name="comprimento_vao_tipico" class="mask-decimal" type="text">
 											<label for="comprimento_vao_tipico">Comprimento do vão típico (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="comprimento_maior_vao" name="comprimento_maior_vao" type="text">
+											<input id="comprimento_maior_vao" name="comprimento_maior_vao" class="mask-decimal" type="text">
 											<label for="comprimento_maior_vao">Comprimento do maior vão (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="altura_pilares" name="altura_pilares" type="text">
+											<input id="altura_pilares" name="altura_pilares" class="mask-decimal" type="text">
 											<label for="altura_pilares">Altura dos pilares (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
@@ -222,7 +222,7 @@
 											<label for="caracteristicas_plani">Características plani-altimétricas</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="nro_faixas" name="nro_faixas" type="number">
+											<input id="nro_faixas" name="nro_faixas" class="mask-decimal" type="text">
 											<label for="nro_faixas">Número de Faixas (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">

@@ -51,7 +51,7 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<input id="data_construcao" name="data_construcao" type="date" value=<?php echo Utils::formataData($ponte['data_construcao']);?>>
+								<input id="data_construcao" name="data_construcao" class="mask-date" type="text" value=<?php echo Utils::formataData($ponte['data_construcao']);?>>
 								<label for="data_construcao">Data de Construção</label>
 							</div>
 							<div class="input-field col s12 m6">

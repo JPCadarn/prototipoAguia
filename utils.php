@@ -168,6 +168,14 @@ class Utils{
 		return $DateTime->format('Y-m-d');
 	}
 
+	public static function formataCoordenadasBD($coord){
+		return str_replace(['º ', '\' ', '" '], '', $coord);
+	}
+
+	public static function formataDecimalBD($valor){
+		return str_replace(['.', ','], ['', '.'], $valor);
+	}
+
 	public static function formataDateTime($dateTime){
 		$DateTime = new DateTime($dateTime);
 		return $DateTime->format('d/m/Y H:i:s');

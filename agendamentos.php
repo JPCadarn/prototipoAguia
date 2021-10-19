@@ -37,11 +37,11 @@
 	echo "<form action='novoAgendamento.php' method='POST' class='col s12' autocomplete='off'>";
 	Utils::renderSelect('ponte_id', $pontes, 'Ponte', 'Selecione a ponte', 'nome');
 	echo "<div class='input-field col s6'>";
-	echo "<input id='data' name='data' type='text' class='datepicker'>";
+	echo "<input id='data' name='data' class='mask-date' type='text'>";
 	echo "<label for='data'>Data do Agendamento</label>";
 	echo "</div>";
 	echo "<div class='input-field col s6'>";
-	echo "<input id='horario' name='horario' type='text' class='timepicker'>";
+	echo "<input id='horario' name='horario' type='text' class='mask-hora'>";
 	echo "<label for='horario'>Horário do Agendamento</label>";
 	echo "</div>";
 	echo "<div class='input-field col s12'>";
