@@ -20,6 +20,7 @@
 			$_SESSION['visitantes'] = false;
 			$_SESSION['userId'] = $dadosUser[0]['id'];
 			$_SESSION['userType'] = $dadosUser[0]['tipo'];
+			$_SESSION['idCliente'] = $dadosUser[0]['idCliente'];
 			header('Location: dash.php');
 		}else{
 			header('Location: index.php?login_errado=true');

@@ -2,9 +2,14 @@
 	require_once('conexao.php');
 
 	class UsuariosService{
+		private const TIPOS_USUARIO = [
+			['id' => 'normal', 'display' => 'Normal'],
+			['id' => 'admin', 'display' => 'Admin']
+		];
+
 		public static function renderUsuarios($dadosUsuario){
 			$conexao = new Conexao();
-			$usuarios = $conexao->executarQuery("SELECT * FROM usuarios WHERE chave = '".$dadosUsuario['chave']."' AND tipo = 'normal'");
+			$usuarios = $conexao->executarQuery("SELECT * FROM usuarios");
 			echo "<div class='row'>";
 			echo "<table class='striped centered responsive-table'>";
 			echo "<thead>";
@@ -56,6 +61,7 @@
 			echo "<input id='chave' name='chave' type='text'>";
 			echo "<label for='chave'>Chave</label>";
 			echo "</div>";
+			Utils::renderSelect('tipo', self::TIPOS_USUARIO, 'Tipo de Usuário', 'Selecione o tipo de usuário', 'display');
 			echo "<div class='fixed-action-btn'>";
 			echo "<div class='fixed-action-btn'>";
 			echo "<button class='modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4' type='submit' value='Create'>";

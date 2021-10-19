@@ -154,6 +154,8 @@ class Utils{
 			<script type='text/javascript' src='assets/js/jquery-3.4.1.js'></script>
 			<script type='text/javascript' src='assets/materialize/js/materialize.min.js'></script>
 			<script type='text/javascript' src='assets/js/main.js'></script>
+			<script type='text/javascript' src='assets/vendors/jQuery-Mask-Plugin-master/src/jquery.mask.js'></script>
+			<script type='text/javascript' src='assets/js/mascaras.js'></script>
 		";
 	}
 

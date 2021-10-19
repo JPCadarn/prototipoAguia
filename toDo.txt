@@ -1,10 +1,29 @@
-- Implementar card na utils p/ padronizar;
-- Implementar gráficos dash;
-- Implementar registro de logs nos cruds;
-- Implementar relatórios;
-- Implementar dark mode;
-- Implementar favicon e título página;
-- Instalar composer na hospedagem;
-- Depois de hospedar, trocar conexões pra DBAL;
-- Mudar action cards p/ somente ícones, testar com FABs;
-- Adicionar breadcrumbs;
+----IMEDIATOS----
+	- Adicionar tipo de usuário no cadastro;
+	- Verificar cadastro OAE campo decimal;
+	- Mudar ícone de avaliação;
+	- Trocar inputs date p/ máscara;
+	- Ajustar cadastro de pontes p/ números com vírgula;
+	- Página detalhes da inspeção;
+	- Mostrar status inspeção;
+	- Ajustar tabela rankeamentos campo OAE;
+	- Conferir ordenação tabela OAEs rankeamento;
+	- Separar cadastro de endereço no cadastro de cliente;
+	- Editar cadastro cliente;
+	- Validar usuários por cliente;
+	- Arrumar Minha Conta p/ usuários normais;
+	- Revisar Minha Conta p/ usuários ADMIN;
+	- Adicionar campo Estrutura no cadastro de OAE e inspeções;
+	- Finalizar inspeções automáticas;
+	- Ajustar agendamento no detalhes ponte p/ novo padrão;
+	- Copiar ícones avaliação no cadastro de OAE;
+	- Revisar cards;
+	- Alterar menu ponte por inspeções;
+	- Trocar logos;
+
+----FUTUROS----
+	- Preenchimento automático de endereço via CEP;
+	- Implementar relatórios;
+	- Implementar dark mode;
+	- Implementar favicon e título página;
+	- API;

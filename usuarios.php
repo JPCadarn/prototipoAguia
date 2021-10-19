@@ -5,7 +5,8 @@
 	require_once('UsuariosService.php');
 
 	$conexao = new Conexao();
-	$dadosUsuario = $conexao->executarQuery('SELECT * FROM usuarios WHERE id = '.SessionService::getUserId())[0];
+
+	$dadosUsuario = $conexao->executarQuery('SELECT * FROM usuarios');
 
 	Utils::tagHead();
 	echo "<body>";

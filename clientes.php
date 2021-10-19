@@ -26,6 +26,7 @@
 								<p>{$cliente['endereco']}</p>
 								<p>{$cliente['telefone']}</p>
 								<p>{$cliente['email']}</p>
+								<p>{$cliente['chave']}</p>
 							</div>
 							<div class='card-action center'>
 								<a href='clienteDetalhes.php?id={$cliente['id']}'><i class='material-icons'>info</i> Detalhes</a>
@@ -66,7 +67,7 @@
 							<label for="data_nascimento">Data de Nascimento</label>
 						</div>
 						<div class="input-field col s12 m6">
-							<input id="cpf_cnpj" name="cpf_cnpj" type="number" maxlength=14>
+							<input id="cpf_cnpj" name="cpf_cnpj" type="text" class="mask-cpfcnpj">
 							<label for="cpf_cnpj">CPF/CNPJ</label>
 						</div>
 						<div class="input-field col s12 m6">
@@ -74,7 +75,7 @@
 							<label for="endereco">Endereço</label>
 						</div>
 						<div class="input-field col s12 m6">
-							<input id="telefone" name="telefone" type="text">
+							<input id="telefone" name="telefone" type="text" class="mask-telefone">
 							<label for="telefone">Telefone</label>
 						</div>
 						<div class="input-field col s12 m6">

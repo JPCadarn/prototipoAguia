@@ -61,7 +61,6 @@
   			</a>
 		</div>
 
-		<!-- Modal Structure -->
 		<div id="modalCadastro" class="modal">
 			<div class="modal-title">
 				<h4 class="center">Ficha de Inspeção Cadastral</h4>
@@ -83,7 +82,7 @@
 											<label for="nome">Nome da OAE</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="data_construcao" name="data_construcao" type="date">
+											<input id="data_construcao" name="data_construcao" class="mask-date" type="text">
 											<label for="data_construcao">Data de Construção</label>
 										</div>
 										<div class="input-field col s12 m6">
@@ -99,11 +98,11 @@
 											<label for="localizacao">Localização</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="latitude" name="latitude" type="number">
+											<input id="latitude" name="latitude" type="text" class="mask-coord">
 											<label for="latitude">Latitude</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="longitude" name="longitude" type="number">
+											<input id="longitude" name="longitude" type="text" class="mask-coord">
 											<label for="longitude">Longitude</label>
 										</div>
 										<div class="input-field col s12 m6">
@@ -122,23 +121,23 @@
 								<div class="collapsible-body">
 									<div class="row">
 										<div class="input-field col s12 m6">
-											<input id="comprimento_estrutura" name="comprimento_estrutura" type="number">
+											<input id="comprimento_estrutura" name="comprimento_estrutura" class="mask-decimal" type="text">
 											<label for="comprimento_estrutura">Comprimento (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="largura_estrutura" name="largura_estrutura" type="number">
+											<input id="largura_estrutura" name="largura_estrutura" class="mask-decimal" type="text">
 											<label for="largura_estrutura">Largura (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="largura_acostamento" name="largura_acostamento" type="number">
+											<input id="largura_acostamento" name="largura_acostamento" class="mask-decimal" type="text">
 											<label for="largura_acostamento">Largura do Acostamento (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="largura_refugio" name="largura_refugio" type="number">
+											<input id="largura_refugio" name="largura_refugio" class="mask-decimal" type="text">
 											<label for="largura_refugio">Largura do Refúgio (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="largura_passeio" name="largura_passeio" type="number">
+											<input id="largura_passeio" name="largura_passeio" class="mask-decimal" type="text">
 											<label for="largura_passeio">Largura do Passeio (metros)</label>
 										</div>
 										<div class="input-field col s12 m6">
@@ -154,17 +153,21 @@
 											<label for="material_construcao">Material</label>
 										</div>
 										<h5 class="center">Seção Tipo <i class='tiny material-icons tooltipped' data-position='bottom' data-tooltip='Favor anexar as imagens correspondentes na seção Imagens'>info</i></h5>
-										<div class="input-field col s4">
+										<div class="input-field col s12 m6">
 											<input id="longitudinal_super" name="longitudinal_super" type="text">
 											<label for="longitudinal_super">Longitudinal da superestrutura</label>
 										</div>
-										<div class="input-field col s4">
+										<div class="input-field col s12 m6">
 											<input id="transversal_super" name="transversal_super" type="text">
 											<label for="transversal_super">Transversal da superestrutura</label>
 										</div>
-										<div class="input-field col s4">
+										<div class="input-field col s12 m6">
 											<input id="mesoestrutura_tipo" name="mesoestrutura_tipo" type="text">
 											<label for="mesoestrutura_tipo">Mesoestrutura </label>
+										</div>
+										<div class="input-field col s12 m6">
+											<input id="infraestrutura" name="infraestrutura" type="text">
+											<label for="infraestrutura">Infraestrutura</label>
 										</div>
 										<h5 class="center">Características Particulares</h5>
 										<div class="input-field col s12 m6">
@@ -266,28 +269,28 @@
 								<div class="collapsible-body">
 									<div class="row">
 										<h5 class="center">Elementos Estruturais</h5>
-										<div class="input-field col s12 m6">
-											<input id="superestrutura" name="superestrutura" type="text">
+										<div class="input-field col s12">
+											<textarea class="materialize-textarea" id="superestrutura" name="superestrutura" type="text"></textarea>
 											<label for="superestrutura">Superestrutura</label>
 										</div>
-										<div class="input-field col s12 m6">
-											<input id="mesoestrutura" name="mesoestrutura" type="text">
+										<div class="input-field col s12">
+											<textarea class="materialize-textarea" id="mesoestrutura" name="mesoestrutura" type="text"></textarea>
 											<label for="mesoestrutura">Mesoestrutura</label>
 										</div>
-										<div class="input-field col s12 m6">
-											<input id="infraestrutura" name="infraestrutura" type="text">
-											<label for="infraestrutura">Infraestrutura</label>
+										<div class="input-field col s12">
+											<textarea class="materialize-textarea" id="infraestrutura_anomalia" name="infraestrutura_anomalia" type="text"></textarea>
+											<label for="infraestrutura_anomalia">Infraestrutura</label>
 										</div>
-										<div class="input-field col s12 m6">
-											<input id="aparelhos_apoio_anomalia" name="aparelhos_apoio_anomalia" type="text">
+										<div class="input-field col s12">
+											<textarea class="materialize-textarea" id="aparelhos_apoio_anomalia" name="aparelhos_apoio_anomalia" type="text"></textarea>
 											<label for="aparelhos_apoio_anomalia">Aparelhos de apoio</label>
 										</div>
-										<div class="input-field col s12 m6">
-											<input id="juntas_dilatacao_anomalia" name="juntas_dilatacao_anomalia" type="text">
+										<div class="input-field col s12">
+											<textarea class="materialize-textarea" id="juntas_dilatacao_anomalia" name="juntas_dilatacao_anomalia" type="text"></textarea>
 											<label for="juntas_dilatacao_anomalia">Juntas de dilatação</label>
 										</div>
-										<div class="input-field col s12 m6">
-											<input id="encontros_anomalia" name="encontros_anomalia" type="text">
+										<div class="input-field col s12">
+											<textarea class="materialize-textarea" id="encontros_anomalia" name="encontros_anomalia" type="text"></textarea>
 											<label for="encontros_anomalia">Encontros</label>
 										</div>
 										<h5 class="center">Elementos da pista ou funcionais</h5>
@@ -349,20 +352,17 @@
 							</li>
 						</ul>
 						<div class="fixed-action-btn">
-							<div class="fixed-action-btn">
-								<button class="modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4" type="submit" value="Create">
-									<i class="large material-icons">check</i>
-								</button>
-							</div>
+							<button class="modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4" type="submit" value="Create">
+								<i class="large material-icons">check</i>
+							</button>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 		
-		<!--JavaScript at end of body for optimized loading-->
-		<script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
-		<script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
-		<script type="text/javascript" src="assets/js/main.js"></script>
+		<?php
+		Utils::scriptsJs();
+		?>
 	</body>
 </html>

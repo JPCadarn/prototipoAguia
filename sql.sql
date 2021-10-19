@@ -203,3 +203,7 @@ ADD nota_outros_fi DECIMAL(10, 2),
 ADD tipo_inspecao ENUM('cadastral', 'rotineira', 'especial', 'extraordinaria') NOT NULL;
 
 ALTER TABLE inspecoes ADD status ENUM('Aberto', 'Avaliado') DEFAULT 'Aberto';
+
+ALTER TABLE pontes ADD infraestrutura_anomalia VARCHAR(50);
+
+ALTER TABLE inspecoes ADD infraestrutura_anomalia VARCHAR(50);

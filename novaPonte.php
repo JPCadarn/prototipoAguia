@@ -1,5 +1,6 @@
 <?php
 	require_once('conexao.php');
+	require_once('utils.php');
 	$conexao = new Conexao();
 	$_POST['data_construcao'] = implode('-', array_reverse(explode('/', $_POST['data_construcao'])));
 	$chaves = implode(',', array_keys($_POST));

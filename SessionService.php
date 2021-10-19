@@ -15,5 +15,10 @@
 			self::iniciarSessao();
 			return $_SESSION['userType'];
 		}
+
+		public static function getIdCliente(){
+			self::iniciarSessao();
+			return $_SESSION['idCliente'];
+		}
 	}
 ?>
