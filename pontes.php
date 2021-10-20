@@ -68,7 +68,7 @@
 			<div class="modal-content">
 				<div class="row">
 					<form action="novaPonte.php" id="formCadastroOAE" method="POST" class="col s12" enctype="multipart/form-data" autocomplete="off">
-						<ul class="collapsible expandable">
+						<ul class="collapsible expandable popout">
 							<li class="active">
 								<div class="collapsible-header">Identicação e Localização</div>
 								<div class="collapsible-body">

@@ -4,7 +4,9 @@
 
 	$conexao = new Conexao();
 	$_POST['data_inspecao'] = implode('-', array_reverse(explode('/', $_POST['data_inspecao'])));
+	$idUsuario = SessionService::getUserId();
 	$idInspecao = $_POST['id_inspecao'];
+	$_POST['id_usuario'] = $idUsuario;
 	unset($_POST['id_inspecao']);
 
 	$chaves = array_keys($_POST);
@@ -27,7 +29,7 @@
 			INSERT INTO imagens_inspecoes
 			(inspecao_id, imagem, id_usuario)
 			VALUES
-			($idInspecao, '$nomeImagem', {$_SESSION['userId']})
+			($idInspecao, '$nomeImagem', $idUsuario)
 			";
 			$conexao->executarQuery($queryImagens);
 		}

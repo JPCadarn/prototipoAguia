@@ -105,7 +105,9 @@ $('a[href="#"]').click(function(e){
 })
 
 $(document).ready(function(){
-    $('.collapsible').collapsible();
+    $('.collapsible').collapsible({
+        accordion: false
+    });
 });
 
 $(".dropdown-trigger").dropdown({

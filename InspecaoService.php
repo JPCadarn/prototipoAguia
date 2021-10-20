@@ -1,7 +1,7 @@
 <?php
 
 class InspecaoService{
-    public static $camposIndiceLocalizacao = [
+    public const camposIndiceLocalizacao = [
         ['id' => 40, 'descricao' => 'Centro Urbano'],
         ['id' => 35, 'descricao' => 'Rodovia Federal'],
         ['id' => 25, 'descricao' => 'Rodovia Estadual'],
@@ -9,7 +9,7 @@ class InspecaoService{
         ['id' => 5, 'descricao' => 'Área Rural Municipal']
     ];
 
-    public static $camposVolumeTrafego = [
+    public const camposVolumeTrafego = [
         ['id' => 40, 'descricao' => 'Muito alto, com muitos engarrafamentos'],
         ['id' => 35, 'descricao' => 'Alto, com poucos engarrafamentos'],
         ['id' => 25, 'descricao' => 'Moderado, com ou sem engarrafamento'],
@@ -17,7 +17,7 @@ class InspecaoService{
         ['id' => 5, 'descricao' => 'Muito baixo, sem engarrafamento']
     ];
 
-    public static $camposLarguraOAE = [
+    public const camposLarguraOAE = [
         ['id' => 20, 'descricao' => 'Muito larga (maior que 17m) '],
         ['id' => 15, 'descricao' => 'Larga (14-17m)'],
         ['id' => 10, 'descricao' => 'Média (10-14m)'],
@@ -25,7 +25,7 @@ class InspecaoService{
         ['id' => 3, 'descricao' => 'Muito estreita (menos que 6,5m)']
     ];
 
-    public static $camposFsPesoAlto = [
+    public const camposFsPesoAlto = [
         ['id' => 5, 'descricao' => 'Precária'],
         ['id' => 3.75, 'descricao' => 'Sofrível'],
         ['id' => 2.5, 'descricao' => 'Boa aparentemente'],
@@ -33,7 +33,7 @@ class InspecaoService{
         ['id' => 0, 'descricao' => 'Muito boa']
     ];
 
-    public static $camposFsPesoMedio = [
+    public const camposFsPesoMedio = [
         ['id' => 4, 'descricao' => 'Precária'],
         ['id' => 3, 'descricao' => 'Sofrível'],
         ['id' => 2, 'descricao' => 'Boa aparentemente'],
@@ -41,7 +41,7 @@ class InspecaoService{
         ['id' => 0, 'descricao' => 'Muito boa']
     ];
 
-    public static $camposFsPesoBaixo = [
+    public const camposFsPesoBaixo = [
         ['id' => 3, 'descricao' => 'Precária'],
         ['id' => 2.25, 'descricao' => 'Sofrível'],
         ['id' => 1.5, 'descricao' => 'Boa aparentemente'],
@@ -49,7 +49,7 @@ class InspecaoService{
         ['id' => 0, 'descricao' => 'Muito boa']
     ];
 
-    public static $camposFcLargura = [
+    public const camposFcLargura = [
         ['id' => 10, 'descricao' => 'Muito larga (acima de 17 m)'],
         ['id' => 8, 'descricao' => 'Larga (14-17 m)'],
         ['id' => 6, 'descricao' => 'Média (10-14 m)'],
@@ -57,7 +57,7 @@ class InspecaoService{
         ['id' => 2, 'descricao' => 'Muito estreita (abaixo de 7 m)']
     ];
 
-    public static $camposFcCarga = [
+    public const camposFcCarga = [
         ['id' => 10, 'descricao' => 'Muito alta (maior que 30 toneladas)'],
         ['id' => 8, 'descricao' => 'Alta (25-30 toneladas)'],
         ['id' => 6, 'descricao' => 'Média (18-25 toneladas)'],
@@ -65,7 +65,7 @@ class InspecaoService{
         ['id' => 2, 'descricao' => 'Muito baixa (menor que 13 toneladas)']
     ];
 
-    public static $camposFcSuperficie = [
+    public const camposFcSuperficie = [
         ['id' => 10, 'descricao' => 'Nota 1'],
         ['id' => 8, 'descricao' => 'Nota 2'],
         ['id' => 6, 'descricao' => 'Nota 3'],
@@ -73,25 +73,25 @@ class InspecaoService{
         ['id' => 2, 'descricao' => 'Nota 5']
     ];
 
-    public static $camposFcPistaRolamento = [
+    public const camposFcPistaRolamento = [
         ['id' => 5, 'descricao' => 'Está em pior estado que as pistas de acesso à ponte'],
         ['id' => 3, 'descricao' => 'Está no mesmo estado que as pistas de acesso à ponte'],
         ['id' => 1, 'descricao' => 'Está em melhor estado que as pistas de acesso à ponte']
     ];
 
-    public static $camposFcOutros = [
+    public const camposFcOutros = [
         ['id' => 5, 'descricao' => 'Vida útil remanescente baixa'],
         ['id' => 3, 'descricao' => 'Vida útil remanescente média'],
         ['id' => 1, 'descricao' => 'Vida útil remanescente alta']
     ];
 
-    public static $camposFiEspacoLivre = [
+    public const camposFiEspacoLivre = [
         ['id' => 5, 'descricao' => 'Frequentemente inviabiliza a passagem de navios'],
         ['id' => 3, 'descricao' => 'Inviabiliza a passagem de navios algumas vezes'],
         ['id' => 1, 'descricao' => 'Não inviabiliza a passagem de navios'],
     ];
 
-    public static $camposFiLocal = [
+    public const camposFiLocal = [
         ['id' => 3, 'descricao' => 'Centro urbano'],
         ['id' => 2.4, 'descricao' => 'Rodovia Federal'],
         ['id' => 1.8, 'descricao' => 'Rodovia Estadual'],
@@ -99,7 +99,7 @@ class InspecaoService{
         ['id' => 0.6, 'descricao' => 'Área rural municipal']
     ];
 
-    public static $camposFiSaude = [
+    public const camposFiSaude = [
         ['id' => 1, 'descricao' => 'Nota 1'],
         ['id' => 0.8, 'descricao' => 'Nota 2'],
         ['id' => 0.6, 'descricao' => 'Nota 3'],
@@ -107,13 +107,13 @@ class InspecaoService{
         ['id' => 0.2, 'descricao' => 'Nota 5']
     ];
 
-    public static $camposFiOutros = [
+    public const camposFiOutros = [
         ['id' => 1, 'descricao' => 'Alto impacto em terceiros'],
         ['id' => 0.6, 'descricao' => 'Impacto moderado em terceiros'],
         ['id' => 0.2, 'descricao' => 'Baixo impacto em terceiros']
     ];
 
-    public static $tipos = [
+    public const tipos = [
         'cadastral' => 'Cadastral',
         'rotineira' => 'Rotineira',
         'especial' => 'Especial',

@@ -146,7 +146,7 @@
 									<span class="negrito">ID: </span><span><?php echo $inspecao['id'];?></span>
 									<span class="negrito">Usuário: </span><span><?php echo $inspecao['nome'];?></span>
 									<span class="negrito">Data: </span><span><?php echo implode('/', array_reverse(explode('-', $inspecao['data_inspecao'])));?></span>
-									<span class="negrito">Tipo: </span><span><?php echo InspecaoService::$tipos[$inspecao['tipo_inspecao']];?></span>
+									<span class="negrito">Tipo: </span><span><?php echo InspecaoService::tipos[$inspecao['tipo_inspecao']];?></span>
 									<span class="negrito">Descrição: </span><span><?php echo $inspecao['descricao'];?></span>
 								</p>
 							<?php

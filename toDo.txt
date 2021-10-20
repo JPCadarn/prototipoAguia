@@ -1,5 +1,4 @@
 ----IMEDIATOS----
-	- Página detalhes da inspeção;
 	- Ajustar tabela rankeamentos campo OAE;
 	- Conferir ordenação tabela OAEs rankeamento;
 	- Separar cadastro de endereço no cadastro de cliente;
@@ -12,6 +11,7 @@
 	- Revisar cards;
 	- Alterar menu ponte por inspeções;
 	- Trocar logos;
+	- Ajustar slideshow detalhes pontes;
 
 ----FUTUROS----
 	- Preenchimento automático de endereço via CEP;
