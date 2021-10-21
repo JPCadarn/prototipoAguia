@@ -44,13 +44,28 @@
 		}
 	}
 	for($i = 1; $i <= 20; $i++){
-		$queryInsert = "
+		$nomeInspecao = 'Inspeção automática gerada ao cadastrar a estrutura.';
+		$dataInspecao = date('Y-m-d', strtotime($_POST['data_construcao']." $i year"));
+		$queryRotineira = "
 			INSERT INTO inspecoes
-			()
+			(ponte_id, nome, descricao, data_inspecao, tipo_inspecao)
 			VALUES
-			()
+			(".$idPonte.", '".$nomeInspecao."', '$nomeInspecao', '$dataInspecao', 'rotineira')
 		";
-		$conexao->executarQuery($queryInsert);
+		$conexao->executarQuery($queryRotineira);
 	}
+	for($i = 1; $i <= 4; $i++){
+		$nomeInspecao = 'Inspeção automática gerada ao cadastrar a estrutura.';
+		$anosInspecao = $i * 5;
+		$dataInspecao = date('Y-m-d', strtotime($_POST['data_construcao']." $anosInspecao year"));
+		$queryEspecial = "
+			INSERT INTO inspecoes
+			(ponte_id, nome, descricao, data_inspecao, tipo_inspecao)
+			VALUES
+			(".$idPonte.", '".$nomeInspecao."', '$nomeInspecao', '$dataInspecao', 'especial')
+		";
+		$conexao->executarQuery($queryEspecial);
+	}
+	
 	header('Location: pontes.php');
 ?>

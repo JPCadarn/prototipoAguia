@@ -1,15 +1,18 @@
 ----IMEDIATOS----
-	- Adicionar campo Estrutura no cadastro de OAE e inspeções;
-	- Finalizar inspeções automáticas;
-	- Copiar ícones avaliação no cadastro de OAE;
 	- Revisar cards;
 	- Alterar menu ponte por inspeções;
 	- Trocar logos;
 	- Ajustar slideshow detalhes pontes;
+	- Implementar favicon e título página;
 
 ----FUTUROS----
 	- Preenchimento automático de endereço via CEP;
 	- Implementar relatórios;
 	- Implementar dark mode;
-	- Implementar favicon e título página;
 	- API;
+
+ESTRUTURA AGENDAMENTO AUTOMÁTICO
+--> INSPEÇÃO CADASTRAL --> PERIODICIDADE: Apenas no cadastro da estrutura
+--> INSPEÇÃO ROTINEIRA --> PERIODICIDADE: Uma vez por ano, menos quando está prevista uma inspeção especial
+--> INSPEÇÃO ESPECIAL --> PERIODICIDADE: Uma a cada 5 anos (com possibilidade de se prorrogar até 8 anos)
+--> INSPEÇÃO EXTRAORDINÁRIA --> PERIODICIDADE: Não há. Será realizada sem prévio aviso sempre que necessário e, portanto, não necessitará de agendamento

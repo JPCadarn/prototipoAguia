@@ -17,7 +17,7 @@
 	echo '<body>';
 	Utils::navBar();
 
-	$pontes = $conexao->executarQuery('SELECT pontes.id, inspecoes.nome, inspecoes.descricao, inspecoes.id AS id_inspecao, inspecoes.status FROM pontes INNER JOIN inspecoes ON pontes.id = inspecoes.ponte_id');
+	$pontes = $conexao->executarQuery('SELECT pontes.id, inspecoes.nome, inspecoes.descricao, inspecoes.id AS id_inspecao, inspecoes.status, inspecoes.data_inspecao FROM pontes INNER JOIN inspecoes ON pontes.id = inspecoes.ponte_id');
 	if(count($pontes)){
 		foreach($pontes as $ponte){
 			$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$ponte['id']} ORDER BY id ASC LIMIT 1");
@@ -28,20 +28,20 @@
 			}
 			echo "<div class='row'>";
 			echo "<div class='col s12 m4'>";
-			echo "<div class='card'>";
+			echo "<div class='card medium'>";
 			echo "<div class='card-image'>";
-			echo "<a href='ponteDetalhes.php?id={$ponte['id']}'>";
 			echo "<img src='assets/fotos/$imagem'>";
 			echo "</a>";
 			echo "<span class='card-title'>{$ponte['nome']}</span>";
+			echo "</div>";
+			echo "<div class='card-content'>";
 			if($ponte['status'] == 'Aberto'){
 				echo "<a id='btnAvaliarInspecao{$ponte['id_inspecao']}' data-id='{$ponte['id_inspecao']}' data-target='modalAvaliar' data-position='bottom' data-tooltip='Avaliar' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>thumbs_up_down</i></a>";
 			}elseif($ponte['status'] == 'Avaliado'){
 				echo "<a data-position='bottom' href='inspecoesDetalhes.php?id={$ponte['id_inspecao']}'' data-tooltip='Detalhes' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>info_outline</i></a>";
 			}
-			echo "</div>";
-			echo "<div class='card-content'>";
 			echo "<p>{$ponte['descricao']}</p>";
+			echo "<p>".Utils::formataData($ponte['data_inspecao'])."</p>";
 			echo "<p>{$ponte['status']}</p>";
 			echo "</div>";
 			echo "</div>";

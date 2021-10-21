@@ -70,7 +70,7 @@
 					<form action="novaPonte.php" id="formCadastroOAE" method="POST" class="col s12" enctype="multipart/form-data" autocomplete="off">
 						<ul class="collapsible expandable popout">
 							<li class="active">
-								<div class="collapsible-header">Identicação e Localização</div>
+								<div class="collapsible-header"><i class="material-icons">location_on</i>Identicação e Localização</div>
 								<div class="collapsible-body">
 									<div class="row">
 										<div class="input-field col s12 m6">
@@ -117,7 +117,7 @@
 								</div>
 							</li>
 							<li>
-								<div class="collapsible-header">Características da Estrutura</div>
+								<div class="collapsible-header"><i class="material-icons">build</i>Características da Estrutura</div>
 								<div class="collapsible-body">
 									<div class="row">
 										<div class="input-field col s12 m6">
@@ -214,7 +214,7 @@
 								</div>
 							</li>
 							<li>
-								<div class="collapsible-header">Características Funcionais</div>
+								<div class="collapsible-header"><i class="material-icons">landscape</i>Características Funcionais</div>
 								<div class="collapsible-body">
 									<div class="row">
 										<div class="input-field col s12 m6">
@@ -265,7 +265,7 @@
 								</div>
 							</li>
 							<li>
-								<div class="collapsible-header">Registro de Anomalias</div>
+								<div class="collapsible-header"><i class="material-icons">block</i>Registro de Anomalias</div>
 								<div class="collapsible-body">
 									<div class="row">
 										<h5 class="center">Elementos Estruturais</h5>
@@ -335,7 +335,7 @@
 								</div>
 							</li>
 							<li>
-								<div class="collapsible-header">Imagens</div>
+								<div class="collapsible-header"><i class="material-icons">photo_camera</i>Imagens</div>
 								<div class="collapsible-body">
 									<div class="row">
 										<div class="file-field input-field">
