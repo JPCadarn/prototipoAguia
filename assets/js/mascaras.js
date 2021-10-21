@@ -4,6 +4,7 @@ $(document).ready(function(){
 	$('.mask-coord').mask('00º 00\' 00\" A');
 	$('.mask-telefone').mask('(00) 90000-0000');
 	$('.mask-decimal').mask('000.000.000.000.000,00', {reverse: true});
+	$('.mask-cep').mask('00000-000');
 	$(".mask-cpfcnpj").keydown(function(){
 		try {
 			$(".mask-cpfcnpj").unmask();

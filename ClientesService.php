@@ -15,6 +15,7 @@
 				$clientes[$idCliente]['data_nascimento'] = Utils::formataData($cliente['data_nascimento']);
 				$clientes[$idCliente]['telefone'] = Utils::formataTelefone($cliente['telefone']);
 				$clientes[$idCliente]['cpf_cnpj'] = Utils::formataCpfCnpj($cliente['cpf_cnpj']);
+				$clientes[$idCliente]['endereco'] = Utils::formataEnderecoCliente($cliente);
 			}
 			
 			return $clientes;

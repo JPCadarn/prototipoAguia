@@ -29,7 +29,6 @@
 								<p>{$cliente['chave']}</p>
 							</div>
 							<div class='card-action center'>
-								<a href='clienteDetalhes.php?id={$cliente['id']}'><i class='material-icons'>info</i> Detalhes</a>
 								<a href='clienteEdit.php?id={$cliente['id']}'><i class='material-icons'>edit</i> Editar</a>
 							</div>
 						</div>
@@ -71,10 +70,6 @@
 							<label for="cpf_cnpj">CPF/CNPJ</label>
 						</div>
 						<div class="input-field col s12 m6">
-							<input id="endereco" name="endereco" type="text">
-							<label for="endereco">Endereço</label>
-						</div>
-						<div class="input-field col s12 m6">
 							<input id="telefone" name="telefone" type="text" class="mask-telefone">
 							<label for="telefone">Telefone</label>
 						</div>
@@ -82,13 +77,41 @@
 							<input id="email" name="email" type="email">
 							<label for="email">Email</label>
 						</div>
-						<div class="fixed-action-btn">
-							<div class="fixed-action-btn">
-								<button class="modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4" type="submit" value="Create">
-									<i class="large material-icons">check</i>
-								</button>
-							</div>
+						<div class="input-field col s12 m6">
+							<input id="cep" name="cep" type="text" class="mask-cep">
+							<label for="cep">CEP</label>
 						</div>
+						<div class="input-field col s12 m6">
+							<input id="endereco" name="endereco" type="text">
+							<label for="endereco">Endereço</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<input id="bairro" name="bairro" type="text">
+							<label for="bairro">Bairro</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<input id="numero" name="numero" type="text">
+							<label for="numero">Número</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<input id="complemento" name="complemento" type="text">
+							<label for="complemento">Complemento</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<input id="estado" name="estado" type="text">
+							<label for="estado">Complemento</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<input id="cidade" name="cidade" type="text">
+							<label for="cidade">Cidade</label>
+						</div>
+						<div class="input-field col s12">
+							<input id="referencia" name="referencia" type="text">
+							<label for="referencia">Referência</label>
+						</div>
+						<button class="modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4 float-right" type="submit" value="Create">
+							<i class="large material-icons">check</i>
+						</button>
 					</div>
 				</form>
 			</div>

@@ -1,8 +1,6 @@
 $("#confirme_senha").keyup(function() {
 	let senha = $("#senha").val();
 	let confirmeSenha = $("#confirme_senha").val();
-	console.log(senha);
-	console.log(confirmeSenha);
 	if(senha != '' && senha == confirmeSenha){
 		$('#btnSubmit').prop('disabled', false);
 	}else{
@@ -13,8 +11,6 @@ $("#confirme_senha").keyup(function() {
 $("#senha").keyup(function() {
 	let senha = $("#senha").val();
 	let confirmeSenha = $("#confirme_senha").val();
-	console.log(senha);
-	console.log(confirmeSenha);
 	if(senha != '' && senha == confirmeSenha){
 		$('#btnSubmit').prop('disabled', false);
 	}else{

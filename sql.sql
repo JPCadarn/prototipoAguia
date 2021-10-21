@@ -207,3 +207,12 @@ ALTER TABLE inspecoes ADD status ENUM('Aberto', 'Avaliado') DEFAULT 'Aberto';
 ALTER TABLE pontes ADD infraestrutura_anomalia VARCHAR(50);
 
 ALTER TABLE inspecoes ADD infraestrutura_anomalia VARCHAR(50);
+
+ALTER TABLE clientes
+ADD cep VARCHAR(10) NOT NULL,
+ADD bairro VARCHAR(50) NOT NULL,
+ADD numero VARCHAR(50) NOT NULL,
+ADD complemento VARCHAR(50) NOT NULL,
+ADD estado VARCHAR(50) NOT NULL,
+ADD cidade VARCHAR(50) NOT NULL,
+ADD referencia VARCHAR(100) NOT NULL;

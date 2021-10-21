@@ -164,8 +164,7 @@ class Utils{
 	}
 
 	public static function formataDataBD($data){
-		$DateTime = new DateTime($data);
-		return $DateTime->format('Y-m-d');
+		return implode('-', array_reverse(explode('/', $data)));
 	}
 
 	public static function formataCoordenadasBD($coord){
@@ -179,6 +178,40 @@ class Utils{
 	public static function formataDateTime($dateTime){
 		$DateTime = new DateTime($dateTime);
 		return $DateTime->format('d/m/Y H:i:s');
+	}
+
+	public static function formataTelefone($telefone){
+		$retorno = substr_replace($telefone, '(', 0, 0);
+		return substr_replace($retorno, ') ', 3, 0);
+	}
+
+	public static function formataEnderecoCliente($cliente){
+		return sprintf('%s, %s-%s, %s, %s-%s, CEP: %s', $cliente['endereco'], $cliente['numero'], $cliente['complemento'], $cliente['bairro'], $cliente['cidade'], $cliente['estado'], $cliente['cep']);
+	}
+
+	public static function formataTelefoneBD($fone){
+		return str_replace(['(', ')', '-', ' '], '', $fone);
+	}
+	
+	public static function formataCepBD($fone){
+		return str_replace('-', '', $fone);
+	}
+
+	public static function formataCpfCnpj($cpfCnpj){
+		if(strlen($cpfCnpj) == 14){
+			//XX.XXX.XXX/0001-XX
+			$retorno = substr_replace($cpfCnpj, '.', 2, 0);
+			$retorno = substr_replace($retorno, '.', 6, 0);
+			$retorno = substr_replace($retorno, '/', 10, 0);
+			$retorno = substr_replace($retorno, '-', 15, 0);
+		}else{
+			//XXX.XXX.XXX-XX
+			$retorno = substr_replace($cpfCnpj, '.', 3, 0);
+			$retorno = substr_replace($retorno, '.', 7, 0);
+			$retorno = substr_replace($retorno, '-', 11, 0);
+		}
+
+		return $retorno;
 	}
 
 	public static function renderSelect($idName, $opcoes, $label, $opcaoDisabled, $campoValor){
@@ -217,28 +250,6 @@ class Utils{
 		echo '<pre>';
 		print_r($dados);
 		exit;
-	}
-
-	public static function formataTelefone($telefone){
-		$retorno = substr_replace($telefone, '(', 0, 0);
-		return substr_replace($retorno, ')', 3, 0);
-	}
-
-	public static function formataCpfCnpj($cpfCnpj){
-		if(strlen($cpfCnpj) == 14){
-			//XX.XXX.XXX/0001-XX
-			$retorno = substr_replace($cpfCnpj, '.', 2, 0);
-			$retorno = substr_replace($retorno, '.', 6, 0);
-			$retorno = substr_replace($retorno, '/', 10, 0);
-			$retorno = substr_replace($retorno, '-', 15, 0);
-		}else{
-			//XXX.XXX.XXX-XX
-			$retorno = substr_replace($cpfCnpj, '.', 3, 0);
-			$retorno = substr_replace($retorno, '.', 7, 0);
-			$retorno = substr_replace($retorno, '-', 11, 0);
-		}
-
-		return $retorno;
 	}
 
 	public static function mostraMensagemErro(){

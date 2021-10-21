@@ -19,17 +19,16 @@
 		}
 
 		private static function renderMinhaContaUsuario($dadosUsuario){
-			echo "<ul class='collapsible'>";
+			echo "<ul class='collapsible popout'>";
 			echo "<li>";
 			echo "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>Meus Dados</div>";
 			self::renderFormMeusDados($dadosUsuario);
-			echo "<div class='collapsible-body'><span>Lorem ipsum dolor sit amet.</span></div>";
 			echo "</li>";
 			echo "</ul>";
 		}
 
 		private static function renderMinhaContaAdmin($dadosUsuario){
-			echo "<ul class='collapsible'>";
+			echo "<ul class='collapsible popout'>";
 			echo "<li>";
 			echo "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>Meus Dados</div>";
 			echo "<div class='collapsible-body'>";
@@ -46,8 +45,8 @@
 		}
 		
 		private static function renderMinhaContaAguia($dadosUsuario){
-			echo "<ul class='collapsible'>";
-			echo "<li>";
+			echo "<ul class='collapsible popout'>";
+			echo "<li class='active'>";
 			echo "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>Meus Dados</div>";
 			echo "<div class='collapsible-body'>";
 			self::renderFormMeusDados($dadosUsuario, true);
@@ -73,7 +72,7 @@
 			if($renderChave){
 				echo "
 					<div class='input-field col s12'>
-						<input disabled id='chave' name='chave' type='text' value='".$dadosUsuario['chave']."'
+						<input disabled id='chave' name='chave' type='text' value='".$dadosUsuario['chave']."'>
 						<label for='chave'>Chave</label>
 					</div>
 				";
@@ -82,25 +81,25 @@
 			echo "<input type='hidden' name='id' id='id' value=".$dadosUsuario['id'].">";
 			echo "
 				<div class='input-field col s12'>
-					<input id='nome' name='nome' type='text' value='".$dadosUsuario['nome']."'
+					<input id='nome' name='nome' type='text' value='".$dadosUsuario['nome']."'>
 					<label for='nome'>Nome</label>
 				</div>
 			";
 			echo "
 				<div class='input-field col s12'>
-					<input id='email' name='email' type='text' value='".$dadosUsuario['email']."'
+					<input id='email' name='email' type='text' value='".$dadosUsuario['email']."'>
 					<label for='email'>Email</label>
 				</div>
 			";
 			echo "
 				<div class='input-field col s12'>
-					<input id='senha' name='senha' type='text'
+					<input id='senha' name='senha' type='text'>
 					<label for='senha'>Senha</label>
 				</div>
 			";
 			echo "
 				<div class='input-field col s12'>
-					<input id='confirme_senha' type='text'
+					<input id='confirme_senha' type='text'>
 					<label for='confirme_senha'>Confirme sua Senha</label>
 				</div>
 			";

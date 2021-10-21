@@ -78,7 +78,7 @@
 				'ivs' => $indiceValorSocial, 
 				'ise' => $indiceSaudeEstrutura, 
 				'imp' => $imp,
-				'descricao' => substr($inspecao['descricao'], 0, 50),
+				'descricao' => substr($inspecao['nome'], 0, 50),
 				'id' => $inspecao['id'],
 				'data_inspecao' => $inspecao['data_inspecao']
 			];
