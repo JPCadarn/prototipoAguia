@@ -19,6 +19,7 @@
 
 	$pontes = $conexao->executarQuery('SELECT pontes.id, inspecoes.nome, inspecoes.descricao, inspecoes.id AS id_inspecao, inspecoes.status, inspecoes.data_inspecao, inspecoes.tipo_inspecao FROM pontes INNER JOIN inspecoes ON pontes.id = inspecoes.ponte_id');
 	if(count($pontes)){
+		echo "<div class='row'>";
 		foreach($pontes as $ponte){
 			$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$ponte['id']} ORDER BY id ASC LIMIT 1");
 			if(isset($imagem[0]['imagem'])){
@@ -26,7 +27,6 @@
 			}else{
 				$imagem = '';
 			}
-			echo "<div class='row'>";
 			echo "<div class='col s12 m4'>";
 			echo "<div class='card medium'>";
 			echo "<div class='card-image'>";
@@ -46,9 +46,8 @@
 			echo "</div>";
 			echo "</div>";
 			echo "</div>";
-			echo "</div>";
-		
 		}
+		echo "</div>";
 	}else{
 		echo "<h6 class='centralizar'>Nenhuma inspeção cadastrada";
 	}

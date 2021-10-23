@@ -28,7 +28,7 @@ class Utils{
 			<nav>
 				<div class='nav-wrapper purple darken-4'>
 					<a href='index.php' class='brand-logo center' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
+						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/infrasil_sem_letras.png'/>
 					</a>
 					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
 					<ul class='right hide-on-med-and-down'>
@@ -57,7 +57,7 @@ class Utils{
 			<nav>
 				<div class='nav-wrapper purple darken-4'>
 					<a href='index.php' class='brand-logo center' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
+						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/infrasil_sem_letras.png'/>
 					</a>
 					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
 					<ul class='right hide-on-med-and-down'>
@@ -88,7 +88,7 @@ class Utils{
 			<nav>
 				<div class='nav-wrapper purple darken-4'>
 					<a href='index.php' class='brand-logo center' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
+						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/infrasil_sem_letras.png'/>
 					</a>
 					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
 					<ul class='right hide-on-med-and-down'>
@@ -115,7 +115,7 @@ class Utils{
 			<nav>
 				<div class='nav-wrapper purple darken-4'>
 					<a href='index.php' class='brand-logo center' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/Branco.png'/>
+						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/infrasil_sem_letras.png'/>
 					</a>
 					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
 					<ul class='right hide-on-med-and-down'>

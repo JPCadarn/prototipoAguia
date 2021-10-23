@@ -62,13 +62,9 @@
 			echo "<label for='chave'>Chave</label>";
 			echo "</div>";
 			Utils::renderSelect('tipo', self::TIPOS_USUARIO, 'Tipo de Usuário', 'Selecione o tipo de usuário', 'display');
-			echo "<div class='fixed-action-btn'>";
-			echo "<div class='fixed-action-btn'>";
-			echo "<button class='modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4' type='submit' value='Create'>";
+			echo "<button class='float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4' type='submit' value='Create'>";
 			echo "<i class='large material-icons'>check</i>";
 			echo "</button>";
-			echo "</div>";
-			echo "</div>";
 			echo "</div>";
 			echo "</form>";
 			echo "</div>";

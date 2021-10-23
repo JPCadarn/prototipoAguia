@@ -28,7 +28,7 @@
 			<i class='large material-icons'>add</i>
 		</a>
 	</div>";
-	echo "<div id='modalCadastro' class='modal bottom-sheet'>";
+	echo "<div id='modalCadastro' class='modal'>";
 	echo "<div class='modal-title'>";
 	echo "<h4 class='center'>Adicionar Agendamento</h4>";
 	echo "</div>";
@@ -48,13 +48,9 @@
 	echo "<input id='detalhes' name='detalhes' type='text'>";
 	echo "<label for='detalhes'>Detalhes do Agendamento</label>";
 	Utils::renderSelect('tipo_inspecao', $opcoesInspecao, 'Tipo de Inspeção', 'Selecione o tipo de inspeção', 'tipo');
-	echo "<div class='fixed-action-btn'>";
-	echo "<div class='fixed-action-btn'>";
-	echo "<button class='modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4' type='submit' value='Create'>";
+	echo "<button class='float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4' type='submit' value='Create'>";
 	echo "<i class='large material-icons'>check</i>";
 	echo "</button>";
-	echo "</div>";
-	echo "</div>";
 	echo "</div>";
 	echo "</form>";
 	echo "</div>";

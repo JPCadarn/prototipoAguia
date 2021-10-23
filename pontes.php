@@ -351,11 +351,9 @@
 								</div>
 							</li>
 						</ul>
-						<div class="fixed-action-btn">
-							<button class="modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4" type="submit" value="Create">
-								<i class="large material-icons">check</i>
-							</button>
-						</div>
+						<button class="float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4" type="submit" value="Create">
+							<i class="large material-icons">check</i>
+						</button>
 					</form>
 				</div>
 			</div>

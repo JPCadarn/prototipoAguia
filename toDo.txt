@@ -1,9 +1,4 @@
 ----IMEDIATOS----
-	- Revisar cards; (basear cards pontes)
-	- Alterar menu ponte por inspeções;
-	- Trocar logos;
-	- Ajustar slideshow detalhes pontes;
-	- Implementar favicon e título página;
 	- Revisar FAB's cadastros;
 	- Colocar popout detalhes ponte;
 	- Agrupar inspeções por ponte com collapsible;
@@ -13,10 +8,16 @@
 	- REFAZER DASHBOARD HORRIVEL;
 	- Validar acesso páginas sem login;
 	- Trocar roxo p/ branco e cinza;
+	- Implementar relatórios;
+	- Alterar menu ponte por inspeções;
+	- Trocar logos;
+	- Ajustar slideshow detalhes pontes;
+	- Implementar favicon e título página;
 
 ----FUTUROS----
+	- Refazer banco p/ usar bind;
+	- Breadcrumbs;
 	- Preenchimento automático de endereço via CEP;
-	- Implementar relatórios;
 	- Implementar dark mode;
 	- API;
 
