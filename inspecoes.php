@@ -17,7 +17,7 @@
 	echo '<body>';
 	Utils::navBar();
 
-	$pontes = $conexao->executarQuery('SELECT pontes.id, inspecoes.nome, inspecoes.descricao, inspecoes.id AS id_inspecao, inspecoes.status, inspecoes.data_inspecao FROM pontes INNER JOIN inspecoes ON pontes.id = inspecoes.ponte_id');
+	$pontes = $conexao->executarQuery('SELECT pontes.id, inspecoes.nome, inspecoes.descricao, inspecoes.id AS id_inspecao, inspecoes.status, inspecoes.data_inspecao, inspecoes.tipo_inspecao FROM pontes INNER JOIN inspecoes ON pontes.id = inspecoes.ponte_id');
 	if(count($pontes)){
 		foreach($pontes as $ponte){
 			$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$ponte['id']} ORDER BY id ASC LIMIT 1");
@@ -41,7 +41,7 @@
 				echo "<a data-position='bottom' href='inspecoesDetalhes.php?id={$ponte['id_inspecao']}'' data-tooltip='Detalhes' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>info_outline</i></a>";
 			}
 			echo "<p>{$ponte['descricao']}</p>";
-			echo "<p>".Utils::formataData($ponte['data_inspecao'])."</p>";
+			echo "<p>".Utils::formataData($ponte['data_inspecao'])." - ".$ponte['tipo_inspecao']."</p>";
 			echo "<p>{$ponte['status']}</p>";
 			echo "</div>";
 			echo "</div>";
