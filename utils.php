@@ -274,6 +274,16 @@ class Utils{
 				break;
 		}
 	}
+
+	public static function agruparArrayPorChave($array, $chave){
+		$retorno = [];
+
+		foreach($array as $valor){
+			$retorno[$valor[$chave]][] = $valor;
+		}
+
+		return $retorno;
+	}
 }
 
 ?>

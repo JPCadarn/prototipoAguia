@@ -1,5 +1,7 @@
 <?php
 
+require_once('conexao.php');
+
 class InspecaoService{
     public const camposIndiceLocalizacao = [
         ['id' => 40, 'descricao' => 'Centro Urbano'],
@@ -119,4 +121,38 @@ class InspecaoService{
         'especial' => 'Especial',
         'extraordinaria' => 'Extraordinária'
     ];
+
+    public static function renderCardsInspecaoGroup($groupInspecao){
+        $conexao = new Conexao();
+
+        echo "<div class='row collapsible-row'>";
+        foreach($groupInspecao as $inspecao){
+			$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$inspecao['id']} ORDER BY id ASC LIMIT 1");
+			if(isset($imagem[0]['imagem'])){
+				$imagem = $imagem[0]['imagem'];
+			}else{
+				$imagem = '';
+			}
+			echo "<div class='col s12 m4'>";
+			echo "<div class='card medium'>";
+			echo "<div class='card-image'>";
+			echo "<img src='assets/fotos/$imagem'>";
+			echo "</a>";
+			echo "<span class='card-title'>{$inspecao['nome']}</span>";
+			echo "</div>";
+			echo "<div class='card-content'>";
+			if($inspecao['status'] == 'Aberto'){
+				echo "<a id='btnAvaliarInspecao{$inspecao['id_inspecao']}' data-id='{$inspecao['id_inspecao']}' data-target='modalAvaliar' data-position='bottom' data-tooltip='Avaliar' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>thumbs_up_down</i></a>";
+			}elseif($inspecao['status'] == 'Avaliado'){
+				echo "<a data-position='bottom' href='inspecoesDetalhes.php?id={$inspecao['id_inspecao']}'' data-tooltip='Detalhes' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>info_outline</i></a>";
+			}
+			echo "<p>{$inspecao['descricao']}</p>";
+			echo "<p>".Utils::formataData($inspecao['data_inspecao'])." - ".InspecaoService::tipos[$inspecao['tipo_inspecao']]." - ID ".$inspecao['id_inspecao']."</p>";
+			echo "<p>{$inspecao['status']}</p>";
+			echo "</div>";
+			echo "</div>";
+			echo "</div>";
+		}
+        echo "</div>";
+    }
 }

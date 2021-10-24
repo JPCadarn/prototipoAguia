@@ -10,43 +10,26 @@
 		FROM inspecoes i
 		INNER JOIN pontes p ON i.ponte_id = p.id
 	';
-	$agendamentos = $conexao->executarQuery('SELECT id, detalhes FROM agendamentos');
-	$inspecoes = $conexao->executarQuery($queryInspecoes);
 	echo '<!DOCTYPE html>';
 	Utils::tagHead();
 	echo '<body>';
 	Utils::navBar();
 
-	$pontes = $conexao->executarQuery('SELECT pontes.id, inspecoes.nome, inspecoes.descricao, inspecoes.id AS id_inspecao, inspecoes.status, inspecoes.data_inspecao, inspecoes.tipo_inspecao FROM pontes INNER JOIN inspecoes ON pontes.id = inspecoes.ponte_id');
-	if(count($pontes)){
-		echo "<div class='row'>";
-		foreach($pontes as $ponte){
-			$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$ponte['id']} ORDER BY id ASC LIMIT 1");
-			if(isset($imagem[0]['imagem'])){
-				$imagem = $imagem[0]['imagem'];
-			}else{
-				$imagem = '';
+	$inspecoes = $conexao->executarQuery('SELECT pontes.id, pontes.nome AS ponte_nome, inspecoes.nome, inspecoes.descricao, inspecoes.id AS id_inspecao, inspecoes.status, inspecoes.data_inspecao, inspecoes.tipo_inspecao FROM pontes INNER JOIN inspecoes ON pontes.id = inspecoes.ponte_id');
+	$inspecoesAgrupadas = Utils::agruparArrayPorChave($inspecoes, 'id');
+	
+	if(count($inspecoes)){
+		echo "<div class='container'>";
+			foreach($inspecoesAgrupadas as $groupInspecao){
+				echo "<ul class='collapsible expandable popout'>";
+					echo "<li>";
+						echo "<div class='collapsible-header'>".$groupInspecao[0]['ponte_nome']."</div>";
+						echo "<div class='collapsible-body'>"; 
+						InspecaoService::renderCardsInspecaoGroup($groupInspecao);
+						echo "</div>";
+					echo "</li>";
+				echo "</ul>";
 			}
-			echo "<div class='col s12 m4'>";
-			echo "<div class='card medium'>";
-			echo "<div class='card-image'>";
-			echo "<img src='assets/fotos/$imagem'>";
-			echo "</a>";
-			echo "<span class='card-title'>{$ponte['nome']}</span>";
-			echo "</div>";
-			echo "<div class='card-content'>";
-			if($ponte['status'] == 'Aberto'){
-				echo "<a id='btnAvaliarInspecao{$ponte['id_inspecao']}' data-id='{$ponte['id_inspecao']}' data-target='modalAvaliar' data-position='bottom' data-tooltip='Avaliar' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>thumbs_up_down</i></a>";
-			}elseif($ponte['status'] == 'Avaliado'){
-				echo "<a data-position='bottom' href='inspecoesDetalhes.php?id={$ponte['id_inspecao']}'' data-tooltip='Detalhes' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>info_outline</i></a>";
-			}
-			echo "<p>{$ponte['descricao']}</p>";
-			echo "<p>".Utils::formataData($ponte['data_inspecao'])." - ".$ponte['tipo_inspecao']."</p>";
-			echo "<p>{$ponte['status']}</p>";
-			echo "</div>";
-			echo "</div>";
-			echo "</div>";
-		}
 		echo "</div>";
 	}else{
 		echo "<h6 class='centralizar'>Nenhuma inspeção cadastrada";

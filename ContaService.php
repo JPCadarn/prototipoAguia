@@ -21,7 +21,7 @@
 		private static function renderMinhaContaUsuario($dadosUsuario){
 			echo "<ul class='collapsible popout'>";
 			echo "<li>";
-			echo "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>Meus Dados</div>";
+			echo "<div class='collapsible-header'><i class='material-icons'>lock</i>Meus Dados</div>";
 			self::renderFormMeusDados($dadosUsuario);
 			echo "</li>";
 			echo "</ul>";
@@ -30,13 +30,13 @@
 		private static function renderMinhaContaAdmin($dadosUsuario){
 			echo "<ul class='collapsible popout'>";
 			echo "<li>";
-			echo "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>Meus Dados</div>";
+			echo "<div class='collapsible-header'><i class='material-icons'>lock</i>Meus Dados</div>";
 			echo "<div class='collapsible-body'>";
 			self::renderFormMeusDados($dadosUsuario, true);
 			echo "</div>";
 			echo "</li>";
 			echo "<li>";
-			echo "<div class='collapsible-header'><i class='material-icons'>whatshot</i>Usuários</div>";
+			echo "<div class='collapsible-header'><i class='material-icons'>people</i>Usuários</div>";
 			echo "<div class='collapsible-body'>";
 			self::renderUsuarios($dadosUsuario);
 			echo "</div>";
@@ -47,19 +47,19 @@
 		private static function renderMinhaContaAguia($dadosUsuario){
 			echo "<ul class='collapsible popout'>";
 			echo "<li class='active'>";
-			echo "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>Meus Dados</div>";
+			echo "<div class='collapsible-header'><i class='material-icons'>lock</i>Meus Dados</div>";
 			echo "<div class='collapsible-body'>";
 			self::renderFormMeusDados($dadosUsuario, true);
 			echo "</div>";
 			echo "</li>";
 			echo "<li>";
-			echo "<div class='collapsible-header'><i class='material-icons'>place</i>Clientes</div>";
+			echo "<div class='collapsible-header'><i class='material-icons'>attach_money</i>Clientes</div>";
 			echo "<div class='collapsible-body'>";
 			self::renderClientes();
 			echo "</div>";
 			echo "</li>";
 			echo "<li>";
-			echo "<div class='collapsible-header'><i class='material-icons'>whatshot</i>Usuários</div>";
+			echo "<div class='collapsible-header'><i class='material-icons'>people</i>Usuários</div>";
 			echo "<div class='collapsible-body'>";
 			self::renderUsuarios($dadosUsuario, true);
 			echo "</div>";

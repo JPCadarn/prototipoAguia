@@ -36,8 +36,8 @@
 		
 		<div class="row">
 			<h3>Ficha de Inspeção Cadastral - <?php echo $dados['nome']?></h3>
-			<ul class="collapsible">
-				<li>
+			<ul class="collapsible popout">
+				<li class="active">
 					<div class="collapsible-header"><i class="material-icons">place</i>Identificação e Localização</div>
 				  	<div class="collapsible-body">
 						<p><span class="negrito">Via ou municípo: </span><span><?php echo $dados['via'];?></span></p>
