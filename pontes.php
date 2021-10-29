@@ -41,8 +41,6 @@
 										</div>
 										<div class='card-action center'>
 											<a href='ponteDetalhes.php?id={$ponte['id']}'><i class='material-icons tooltipped' data-position='bottom' data-tooltip='Detalhes'>info</i></a>
-											<a href='pontesEdit.php?id={$ponte['id']}'><i class='material-icons tooltipped' data-position='bottom' data-tooltip='Editar'>edit</i></a>
-											<a href='pontesDelete.php?id={$ponte['id']}'><i class='material-icons tooltipped' data-position='bottom' data-tooltip='Excluir'>delete</i></a>
 											<a target='_blank' href='pontesRelatorio.php?id={$ponte['id']}'><i class='material-icons tooltipped' data-position='bottom' data-tooltip='Relatório'>print</i></a>
 										</div>
 									</div>

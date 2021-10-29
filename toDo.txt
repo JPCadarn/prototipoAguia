@@ -1,7 +1,8 @@
 ----IMEDIATOS----
+	- Implementar relatórios;
+	- Remover edits e deletes;
 	- Validar acesso páginas sem login;
 	- Trocar roxo p/ branco e cinza;
-	- Implementar relatórios;
 	- Alterar menu ponte por inspeções;
 	- Implementar favicon e título página;
 
