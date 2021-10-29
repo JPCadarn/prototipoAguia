@@ -3,20 +3,20 @@
 	- Trocar roxo p/ branco e cinza;
 	- Implementar relatórios;
 	- Alterar menu ponte por inspeções;
+	- Implementar favicon e título página;
 
 ----FUTUROS----
 	- REFAZER DASHBOARD HORRIVEL;
 	- Trocar logos;
 	- Ajustar slideshow detalhes pontes;
-	- Implementar favicon e título página;
 	- Refazer banco p/ usar bind;
 	- Breadcrumbs;
 	- Preenchimento automático de endereço via CEP;
 	- Implementar dark mode;
 	- API;
 
-ESTRUTURA AGENDAMENTO AUTOMÁTICO
---> INSPEÇÃO CADASTRAL --> PERIODICIDADE: Apenas no cadastro da estrutura
---> INSPEÇÃO ROTINEIRA --> PERIODICIDADE: Uma vez por ano, menos quando está prevista uma inspeção especial
---> INSPEÇÃO ESPECIAL --> PERIODICIDADE: Uma a cada 5 anos (com possibilidade de se prorrogar até 8 anos)
---> INSPEÇÃO EXTRAORDINÁRIA --> PERIODICIDADE: Não há. Será realizada sem prévio aviso sempre que necessário e, portanto, não necessitará de agendamento
+estrutura do relatório:
+
+--> CAPA
+--> INFORMAÇÕES DE LOCALIZAÇÃO DA PONTE
+--> INFORMAÇÕES GERADAS PELO SISTEMA (COMO RANKING COM A PONTE DESTACADA, DEMAIS GRÁFICOS QUE ESTEJAM DISPONÍVEIS, ETC)

@@ -1,9 +1,10 @@
 <?php
 	require_once('conexao.php');
+	require_once('utils.php');
 	$conexao = new Conexao();
 	$_POST['data_construcao'] = Utils::formataDataBD($_POST['data_construcao']);
-	$_POST['latitude'] = Utils::formataCoordenadasBD($_POST['latitude']);
-	$_POST['longitude'] = Utils::formataCoordenadasBD($_POST['longitude']);
+	$_POST['latitude'] = addslashes($_POST['latitude']);
+	$_POST['longitude'] = addslashes($_POST['longitude']);
 	$_POST['comprimento_estrutura'] = Utils::formataDecimalBD($_POST['comprimento_estrutura']);
 	$_POST['largura_estrutura'] = Utils::formataDecimalBD($_POST['largura_estrutura']);
 	$_POST['largura_acostamento'] = Utils::formataDecimalBD($_POST['largura_acostamento']);

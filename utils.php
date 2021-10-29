@@ -180,6 +180,15 @@ class Utils{
 		return $DateTime->format('d/m/Y H:i:s');
 	}
 
+	public static function calculaDiferencaDatas($data1, $data2, $formato){
+		$datetime1 = date_create($data1);
+		$datetime2 = date_create($data2);
+	
+		$interval = date_diff($datetime1, $datetime2);
+	
+		return $interval->format($formato);
+	}
+
 	public static function formataTelefone($telefone){
 		$retorno = substr_replace($telefone, '(', 0, 0);
 		return substr_replace($retorno, ') ', 3, 0);
@@ -283,6 +292,16 @@ class Utils{
 		}
 
 		return $retorno;
+	}
+
+	public static function somarArray($array, $chaves){
+		$soma = 0;
+
+		foreach ($chaves as $chave) {
+			$soma += $array[$chave];
+		}
+
+		return $soma;
 	}
 }
 

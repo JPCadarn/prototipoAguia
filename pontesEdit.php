@@ -71,11 +71,11 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<input id="latitude" name="latitude" type="text" value=<?php echo $ponte['latitude'];?>>
+								<input id="latitude" name="latitude" type="text" class="mask-coord" value=<?php echo $ponte['latitude'];?>>
 								<label for="latitude">Latitude</label>
 							</div>
 							<div class="input-field col s12 m6">
-								<input id="longitude" name="longitude" type="text" value=<?php echo $ponte['longitude'];?>>
+								<input id="longitude" name="longitude" type="text" class="mask-coord" value=<?php echo $ponte['longitude'];?>>
 								<label for="longitude">Longitude</label>
 							</div>
 						</div>
@@ -93,27 +93,27 @@
 					<div id="formEstrutura" class="col s12">
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<input id="comprimento_estrutura" name="comprimento_estrutura" type="text" value=<?php echo $ponte['comprimento_estrutura'];?>>
+								<input id="comprimento_estrutura" name="comprimento_estrutura" type="text" class="mask-decimal" value=<?php echo $ponte['comprimento_estrutura'];?>>
 								<label for="comprimento_estrutura">Comprimento</label>
 							</div>
 							<div class="input-field col s12 m6">
-								<input id="largura_estrutura" name="largura_estrutura" type="text" value=<?php echo $ponte['largura_estrutura'];?>>
+								<input id="largura_estrutura" name="largura_estrutura" type="text" class="mask-decimal" value=<?php echo $ponte['largura_estrutura'];?>>
 								<label for="largura_estrutura">Largura</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<input id="largura_acostamento" name="largura_acostamento" type="text" value=<?php echo $ponte['largura_acostamento'];?>>
+								<input id="largura_acostamento" name="largura_acostamento" class="mask-decimal" type="text" value=<?php echo $ponte['largura_acostamento'];?>>
 								<label for="largura_acostamento">Largura do Acostamento</label>
 							</div>
 							<div class="input-field col s12 m6">
-								<input id="largura_refugio" name="largura_refugio" type="text" value=<?php echo $ponte['largura_refugio'];?>>
+								<input id="largura_refugio" name="largura_refugio" type="text" class="mask-decimal" value=<?php echo $ponte['largura_refugio'];?>>
 								<label for="largura_refugio">Largura do Refúgio</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<input id="largura_passeio" name="largura_passeio" type="text" value=<?php echo $ponte['largura_passeio'];?>>
+								<input id="largura_passeio" name="largura_passeio" type="text" class="mask-decimal" value=<?php echo $ponte['largura_passeio'];?>>
 								<label for="largura_passeio">Largura do Passeio</label>
 							</div>
 							<div class="input-field col s12 m6">
@@ -169,17 +169,17 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<input id="comprimento_vao_tipico" name="comprimento_vao_tipico" type="text" value=<?php echo $ponte['comprimento_vao_tipico'];?>>
+								<input id="comprimento_vao_tipico" name="comprimento_vao_tipico" type="text" class="mask-decimal" value=<?php echo $ponte['comprimento_vao_tipico'];?>>
 								<label for="comprimento_vao_tipico">Comprimento do vão típico</label>
 							</div>
 							<div class="input-field col s12 m6">
-								<input id="comprimento_maior_vao" name="comprimento_maior_vao" type="text" value=<?php echo $ponte['comprimento_maior_vao'];?>>
+								<input id="comprimento_maior_vao" name="comprimento_maior_vao" type="text" class="mask-decimal" value=<?php echo $ponte['comprimento_maior_vao'];?>>
 								<label for="comprimento_maior_vao">Comprimento do maior vão</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<input id="altura_pilares" name="altura_pilares" type="text" value=<?php echo $ponte['altura_pilares'];?>>
+								<input id="altura_pilares" name="altura_pilares" type="text" class="mask-decimal" value=<?php echo $ponte['altura_pilares'];?>>
 								<label for="altura_pilares">Altura dos pilares</label>
 							</div>
 							<div class="input-field col s12 m6">
@@ -344,9 +344,8 @@
 			</div>
 		</div>
 		
-		<!--JavaScript at end of body for optimized loading-->
-		<script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
-		<script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
-		<script type="text/javascript" src="assets/js/main.js"></script>
+		<?php
+		Utils::scriptsJs();
+		?>
 	</body>
 </html>
