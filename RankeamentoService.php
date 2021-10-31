@@ -33,41 +33,48 @@
 			return json_encode($retorno);
 		}
 
-		public function renderRankeamentos(){
+		public function renderRankeamentos($retornarHtml = false, $limite = 10){
 			$imps = [];
 			foreach($this->inspecoes as $inspecao){
 				$imps[$inspecao['ponte_id']] = $this->calcularIMP($inspecao);
 			}
 			$imps = Utils::ordenarArrayMultiDimensional($imps, 'imp');
-			echo "<table class='striped centered responsive-table'>";
-			echo "<thead>";
-			echo "<tr>";
-			echo "<th>ID Inspeção</th>";
-			echo "<th>OAE</th>";
-			echo "<th>Data de Inspeção</th>";
-			echo "<th>IVS</th>";
-			echo "<th>ISE</th>";
-			echo "<th>IMP</th>";
-			echo "</tr>";
-			echo "</thead>";
-			echo "<tbody>";
+			$html = '';
+			$html .= "<table class='striped centered responsive-table'>";
+			$html .= "<thead>";
+			$html .= "<tr>";
+			$html .= "<th>ID Inspeção</th>";
+			$html .= "<th>OAE</th>";
+			$html .= "<th>Data de Inspeção</th>";
+			$html .= "<th>IVS</th>";
+			$html .= "<th>ISE</th>";
+			$html .= "<th>IMP</th>";
+			$html .= "</tr>";
+			$html .= "</thead>";
+			$html .= "<tbody>";
 			$contador = 0;
 			foreach($imps as $inspecao){
-				if($contador == 10){
+				if($contador == $limite){
 					break;
 				}
-				echo "<tr>";
-				echo "<td>".$inspecao['id']."</td>";
-				echo "<td>".$inspecao['descricao']."</td>";
-				echo "<td>".Utils::formataData($inspecao['data_inspecao'])."</td>";
-				echo "<td>".$inspecao['ivs']."</td>";
-				echo "<td>".$inspecao['ise']."</td>";
-				echo "<td>".$inspecao['imp']."</td>";
-				echo "</tr>";
+				$html .= "<tr>";
+				$html .= "<td>".$inspecao['id']."</td>";
+				$html .= "<td>".$inspecao['descricao']."</td>";
+				$html .= "<td>".Utils::formataData($inspecao['data_inspecao'])."</td>";
+				$html .= "<td>".$inspecao['ivs']."</td>";
+				$html .= "<td>".$inspecao['ise']."</td>";
+				$html .= "<td>".$inspecao['imp']."</td>";
+				$html .= "</tr>";
 				$contador++;
 			}
-			echo "</tbody>";
-			echo "</table>";
+			$html .= "</tbody>";
+			$html .= "</table>";
+
+			if($retornarHtml){
+				return $html;
+			}
+
+			echo $html;
 		}
 
 		public function calcularIMP($inspecao){

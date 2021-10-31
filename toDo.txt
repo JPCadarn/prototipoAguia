@@ -3,18 +3,20 @@
 	- Remover edits e deletes;
 	- Validar acesso páginas sem login;
 	- Trocar roxo p/ branco e cinza;
+	- Atualizar ícone;
 	- Alterar menu ponte por inspeções;
 	- Implementar favicon e título página;
+	- Colocar addslashes nas coisas;
+	- Integrar index Leandro;
 
 ----FUTUROS----
-	- REFAZER DASHBOARD HORRIVEL;
-	- Trocar logos;
-	- Ajustar slideshow detalhes pontes;
 	- Refazer banco p/ usar bind;
+	- REFAZER DASHBOARD HORRIVEL;
+	- Ajustar slideshow detalhes pontes;
+	- API;
 	- Breadcrumbs;
 	- Preenchimento automático de endereço via CEP;
 	- Implementar dark mode;
-	- API;
 
 estrutura do relatório:
 
