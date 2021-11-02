@@ -55,7 +55,7 @@
 		</div>
 
 		<div class="fixed-action-btn">
-  			<a data-target="modalCadastro" class="btn-large modal-trigger btn-floating waves-effect waves-light purple darken-4">
+  			<a data-target="modalCadastro" class="indigo darken-4 btn-large modal-trigger btn-floating waves-effect waves-light">
     			<i class="large material-icons">add</i>
   			</a>
 		</div>
@@ -338,7 +338,7 @@
 								<div class="collapsible-body">
 									<div class="row">
 										<div class="file-field input-field">
-											<div class="btn purple darken-4">
+											<div class="btn">
 												<span>Imagens</span>
 												<input name="images[]" required type="file" multiple accept="image/*">
 											</div>
@@ -350,7 +350,7 @@
 								</div>
 							</li>
 						</ul>
-						<button class="float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4" type="submit" value="Create">
+						<button class="indigo darken-4 float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large" type="submit" value="Create">
 							<i class="large material-icons">check</i>
 						</button>
 					</form>

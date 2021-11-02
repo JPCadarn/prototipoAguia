@@ -1,6 +1,7 @@
 <?php
 	require_once('conexao.php');
 	require_once('utils.php');
+	require_once('SessionService.php');
 
 	$conexao = new Conexao();
 	$_POST['data_inspecao'] = implode('-', array_reverse(explode('/', $_POST['data_inspecao'])));

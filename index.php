@@ -49,7 +49,7 @@
 							</div>
 						</div>
 						<div class='row'>
-							<button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect purple darken-4'>Login</button>
+							<button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Login</button>
 						</div>
 					</form>
 				</div>

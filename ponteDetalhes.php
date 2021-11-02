@@ -173,7 +173,7 @@
 		</div>
 		
 		<div class="fixed-action-btn">
-			<a data-target="modalAgendamento" class="btn-large modal-trigger btn-floating waves-effect waves-light purple darken-4">
+			<a data-target="modalAgendamento" class="indigo darken-4 btn-large modal-trigger btn-floating waves-effect waves-light">
 				<i class="large material-icons">av_timer</i>
 			</a>
 		</div>
@@ -199,7 +199,7 @@
 		echo "<input id='detalhes' name='detalhes' type='text'>";
 		echo "<label for='detalhes'>Detalhes do Agendamento</label>";
 		Utils::renderSelect('tipo_inspecao', $opcoesInspecao, 'Tipo de Inspeção', 'Selecione o tipo de inspeção', 'tipo');
-		echo "<button class='float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4' type='submit' value='Create'>";
+		echo "<button class='indigo darken-4 float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large' type='submit' value='Create'>";
 		echo "<i class='large material-icons'>check</i>";
 		echo "</button>";
 		echo "</div>";

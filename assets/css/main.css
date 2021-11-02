@@ -25,7 +25,8 @@ main {
 }
 
 .imagem-logo {
-	height: 2.5em !important;
+	width: 10% !important;
+	height: auto;
 }
 
 .imagem-login {
@@ -45,8 +46,8 @@ main {
 .input-field input[type=email]:not(.browser-default):focus:not([readonly]),
 .input-field input[type=password]:not(.browser-default):focus:not([readonly]),
 .input-field input[type=number]:not(.browser-default):focus:not([readonly]) {
-	border-bottom: 1px solid #4a148c !important;
-	box-shadow: 0 1px 0 0 #4a148c !important;
+	border-bottom: 1px solid #1a237e !important;
+	box-shadow: 0 1px 0 0 #1a237e !important;
 }
 
 .input-field input[type=text]:focus+label,
@@ -57,18 +58,18 @@ main {
 .materialize-textarea:focus:not([readonly])+label,
 input[type=date]:not(.browser-default):focus:not([readonly])+label,
 input[type=number]:not(.browser-default):focus:not([readonly])+label {
-	color: #4a148c !important;
+	color: #1a237e !important;
 }
 
 .input-field .prefix.active {
-	color: #4a148c !important;
+	color: #1a237e !important;
 }
 
 .input-field input[type=text]:focus,
 .materialize-textarea:focus:not([readonly]),
 input[type=date]:not(.browser-default):focus:not([readonly]) {
-	border-bottom: 1px solid #4a148c !important;
-	box-shadow: 0 1px 0 0 #4a148c !important;
+	border-bottom: 1px solid #1a237e !important;
+	box-shadow: 0 1px 0 0 #1a237e !important;
 }
 
 .slider .indicators .indicator-item.active {
@@ -90,13 +91,13 @@ input[type=date]:not(.browser-default):focus:not([readonly]) {
 
 [type="radio"]:checked+span:after,
 [type="radio"].with-gap:checked+span:after {
-	background-color: #4a148c;
+	background-color: #1a237e;
 }
 
 [type="radio"]:checked+span:after,
 [type="radio"].with-gap:checked+span:before,
 [type="radio"].with-gap:checked+span:after {
-	border: 2px solid #4a148c;
+	border: 2px solid #1a237e;
 }
 
 .img-pedido {
@@ -113,14 +114,14 @@ input[type=date]:not(.browser-default):focus:not([readonly]) {
 
 .datepicker-date-display,
 .datepicker-table td.is-selected {
-	background-color: #4a148c !important;
+	background-color: #1a237e !important;
 }
 
 .datepicker-cancel,
 .datepicker-done,
 .is-today .datepicker-day-button,
 .dropdown-content li>span {
-	color: #4a148c;
+	color: #1a237e;
 }
 
 .label-tabela {
@@ -128,7 +129,7 @@ input[type=date]:not(.browser-default):focus:not([readonly]) {
 }
 
 .select-wrapper input.select-dropdown:focus {
-	border-bottom: 1px solid #4a148c !important;
+	border-bottom: 1px solid #1a237e !important;
 }
 
 #parcelas, .oculto {
@@ -148,7 +149,7 @@ input[type=date]:not(.browser-default):focus:not([readonly]) {
 }
 
 .tabs .indicator, .timepicker-digital-display {
-	background-color: #4a148c;
+	background-color: #1a237e;
 }
 
 .tabs .tab a:focus, .tabs .tab a:focus.active {
@@ -166,7 +167,7 @@ input[type=date]:not(.browser-default):focus:not([readonly]) {
 }
 
 .timepicker-close {
-	color: #4a148c;
+	color: #1a237e;
 }
 
 .cropped, .card {

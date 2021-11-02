@@ -26,9 +26,9 @@ class Utils{
 	public static function renderNavBarAdmin(){
 		echo "
 			<nav>
-				<div class='nav-wrapper purple darken-4'>
-					<a href='index.php' class='brand-logo center' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/infrasil_sem_letras.png'/>
+				<div class='nav-wrapper grey lighten-1'>
+					<a href='index.php' class='brand-logo center imagem-logo' tabIndex='-1'>
+						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo.png'/>
 					</a>
 					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
 					<ul class='right hide-on-med-and-down'>
@@ -55,11 +55,10 @@ class Utils{
 	public static function renderNavBarAguia(){
 		echo "
 			<nav>
-				<div class='nav-wrapper purple darken-4'>
-					<a href='index.php' class='brand-logo center' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/infrasil_sem_letras.png'/>
+				<div class='nav-wrapper grey lighten-1'>
+					<a href='index.php' class='brand-logo center imagem-logo' tabIndex='-1'>
+						<img class='responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo_corte.png'/>
 					</a>
-					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
 					<ul class='right hide-on-med-and-down'>
 						<li><a href='pontes.php'>Pontes</a></li>
 						<li><a href='agendamentos.php'>Agendamentos</a></li>
@@ -86,9 +85,9 @@ class Utils{
 	public static function renderNavBar(){
 		echo "
 			<nav>
-				<div class='nav-wrapper purple darken-4'>
-					<a href='index.php' class='brand-logo center' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/infrasil_sem_letras.png'/>
+				<div class='nav-wrapper grey lighten-1'>
+					<a href='index.php' class='brand-logo center imagem-logo' tabIndex='-1'>
+						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo.png'/>
 					</a>
 					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
 					<ul class='right hide-on-med-and-down'>
@@ -113,9 +112,9 @@ class Utils{
 	public static function renderNavBarSemLogin(){
 		echo "
 			<nav>
-				<div class='nav-wrapper purple darken-4'>
-					<a href='index.php' class='brand-logo center' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/infrasil_sem_letras.png'/>
+				<div class='nav-wrapper grey lighten-1'>
+					<a href='index.php' class='brand-logo center imagem-logo' tabIndex='-1'>
+						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo.png'/>
 					</a>
 					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
 					<ul class='right hide-on-med-and-down'>

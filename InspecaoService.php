@@ -142,9 +142,9 @@ class InspecaoService{
 			echo "</div>";
 			echo "<div class='card-content'>";
 			if($inspecao['status'] == 'Aberto'){
-				echo "<a id='btnAvaliarInspecao{$inspecao['id_inspecao']}' data-id='{$inspecao['id_inspecao']}' data-target='modalAvaliar' data-position='bottom' data-tooltip='Avaliar' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>thumbs_up_down</i></a>";
+				echo "<a id='btnAvaliarInspecao{$inspecao['id_inspecao']}' data-id='{$inspecao['id_inspecao']}' data-target='modalAvaliar' data-position='bottom' data-tooltip='Avaliar' class='indigo darken-4 modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light'><i class='material-icons'>thumbs_up_down</i></a>";
 			}elseif($inspecao['status'] == 'Avaliado'){
-				echo "<a data-position='bottom' href='inspecoesDetalhes.php?id={$inspecao['id_inspecao']}'' data-tooltip='Detalhes' class='modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light purple darken-4'><i class='material-icons'>info_outline</i></a>";
+				echo "<a data-position='bottom' href='inspecoesDetalhes.php?id={$inspecao['id_inspecao']}'' data-tooltip='Detalhes' class='indigo darken-4 modal-trigger tooltipped btn-floating btn-large halfway-fab waves-effect waves-light'><i class='material-icons'>info_outline</i></a>";
 			}
 			echo "<p>{$inspecao['descricao']}</p>";
 			echo "<p>".Utils::formataData($inspecao['data_inspecao'])." - ".InspecaoService::tipos[$inspecao['tipo_inspecao']]." - ID ".$inspecao['id_inspecao']."</p>";

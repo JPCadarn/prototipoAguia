@@ -310,7 +310,7 @@
 							<div class="collapsible-body">
 								<div class="row">
 									<div class="file-field input-field">
-										<div class="btn purple darken-4">
+										<div class="btn">
 											<span>Imagens</span>
 											<input name="images[]" required type="file" multiple accept="image/*">
 										</div>
@@ -322,7 +322,7 @@
 							</div>
 						</li>
 					</ul>
-					<button class="modal-close waves-effect waves-circle waves-light btn-floating btn-large purple darken-4 float-right" type="submit" value="Create">
+					<button class="indigo darken-4 modal-close waves-effect waves-circle waves-light btn-floating btn-large float-right" type="submit" value="Create">
 						<i class="large material-icons">check</i>
 					</button>
 				</form>

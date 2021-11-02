@@ -1,9 +1,5 @@
 ----IMEDIATOS----
-	- Implementar relatórios;
-	- Remover edits e deletes;
 	- Validar acesso páginas sem login;
-	- Trocar roxo p/ branco e cinza;
-	- Atualizar ícone;
 	- Alterar menu ponte por inspeções;
 	- Implementar favicon e título página;
 	- Colocar addslashes nas coisas;

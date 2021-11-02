@@ -103,7 +103,7 @@
 					<label for='confirme_senha'>Confirme sua Senha</label>
 				</div>
 			";
-			echo "<button id='btnSubmit' class='float-right waves-effect waves-circle waves-light btn-floating btn-large purple darken-4' disabled type='submit' value='Create'>";
+			echo "<button id='btnSubmit' class='indigo darken-4 float-right waves-effect waves-circle waves-light btn-floating btn-large' disabled type='submit' value='Create'>";
 			echo "<i class='large material-icons'>check</i>";
 			echo "</button>";
 			echo "</form>";
