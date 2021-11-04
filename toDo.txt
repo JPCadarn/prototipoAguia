@@ -1,4 +1,5 @@
 ----IMEDIATOS----
+	- Testar deploy;
 	- Validar acesso páginas sem login;
 	- Alterar menu ponte por inspeções;
 	- Implementar favicon e título página;
