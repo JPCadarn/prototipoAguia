@@ -2,7 +2,6 @@
 	- Revisar explode('models') nas imagens da ponte;
 	- Testar deploy;
 	- Validar acesso páginas sem login;
-	- Alterar menu ponte por inspeções;
 	- Implementar favicon e título página;
 	- Colocar addslashes nas coisas;
 
