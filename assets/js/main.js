@@ -25,74 +25,6 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $('.datepicker').datepicker({
-        autoClose: true,
-        format: 'dd/mm/yyyy',
-        selectMonths: true,
-        selectYears: 20,
-        disable: [true],
-        i18n: {
-            cancel: 'Cancelar',
-            months:	[
-                'Janeiro',
-                'Fevereiro',
-                'Março',
-                'Abril',
-                'Maio',
-                'Junho',
-                'Julho',
-                'Agosto',
-                'Setembro',
-                'Outubro',
-                'Novembro',
-                'Dezembro'
-            ],
-            monthsShort: [
-                'Jan',
-                'Fev',
-                'Mar',
-                'Abr',
-                'Mai',
-                'Jun',
-                'Jul',
-                'Ago',
-                'Set',
-                'Out',
-                'Nov',
-                'Dez'
-            ],
-            weekdays: [
-                'Domingo',
-                'Segunda-Feira',
-                'Terça-Feira',
-                'Quarta-Feira',
-                'Quinta-Feira',
-                'Sexta-Feira',
-                'Sábado'
-            ],
-            weekdaysShort: [
-                'Dom',
-                'Seg',
-                'Ter',
-                'Qua',
-                'Qui',
-                'Sex',
-                'Sab'
-            ],
-            weekdaysAbbrev:	[
-                'D',
-                'S',
-                'T',
-                'Q',
-                'Q',
-                'S',
-                'S'
-            ]
-        }
-    });
-});
-
-$(document).ready(function(){
     $('.slider').slider();
 });
 
@@ -123,6 +55,15 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.tabs').tabs();
 });
+
+(function($){
+    $(function(){
+  
+      $('.sidenav').sidenav();
+      $('.parallax').parallax();
+  
+    });
+})(jQuery);
 
 var elem = document.querySelector('.collapsible.expandable');
 var instance = M.Collapsible.init(elem, {

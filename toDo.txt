@@ -5,7 +5,6 @@
 	- Alterar menu ponte por inspeções;
 	- Implementar favicon e título página;
 	- Colocar addslashes nas coisas;
-	- Integrar index Leandro;
 
 ----FUTUROS----
 	- Refazer banco p/ usar bind;
@@ -15,9 +14,3 @@
 	- Breadcrumbs;
 	- Preenchimento automático de endereço via CEP;
 	- Implementar dark mode;
-
-estrutura do relatório:
-
---> CAPA
---> INFORMAÇÕES DE LOCALIZAÇÃO DA PONTE
---> INFORMAÇÕES GERADAS PELO SISTEMA (COMO RANKING COM A PONTE DESTACADA, DEMAIS GRÁFICOS QUE ESTEJAM DISPONÍVEIS, ETC)
