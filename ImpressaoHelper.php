@@ -12,4 +12,11 @@ class ImpressaoHelper extends TCPDF{
         $this->SetAutoPageBreak($auto_page_break, $bMargin);
         $this->setPageMark();
     }
+
+    public function Footer() {
+        $this->SetTextColor(255, 255, 255);
+        $this->SetY(-10);
+        $this->SetFont('helvetica', 'I', 8);
+        $this->Cell(0, 10, 'Página '.$this->getAliasNumPage().'/'.$this->getAliasNbPages().' - Gerado em '.date('d/m/Y H:i:s'), 0, false, 'L');
+    }
 }

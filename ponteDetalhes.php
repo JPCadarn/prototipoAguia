@@ -2,6 +2,10 @@
 	require_once('conexao.php');
 	require_once('utils.php');
 	require_once('InspecaoService.php');
+	require_once('SessionService.php');
+	require_once('Cidades.php');
+
+	SessionService::validarLoginFeitoEVisitante();
 	$conexao = new Conexao();
 	if(!isset($_GET['id']) || $_GET['id'] == ''){
 		header('Location: '.$_SERVER['HTTP_REFERER']);
@@ -16,18 +20,17 @@
 			['id' => 'especial', 'tipo' => 'Especial'],
 			['id' => 'extraordinaria', 'tipo' => 'Extraordinária']
 		];
+		$ReflectionClass = new ReflectionClass(Cidades::class);
+		$constantes = $ReflectionClass->getConstants();
+		$cidades = $constantes['CIDADES_'.strtoupper($dados['estado'])];
 	}
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<!--Import Google Icon Font-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<!--Import materialize.css-->
-		<link type="text/css" rel="stylesheet" href="assets/materialize/css/materialize.min.css"  media="screen,projection"/>
-		<link rel="stylesheet" href="assets/css/main.css">
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<?php
+			Utils::tagHead();
+		?>
 	</head>
 	<body>
 		<?php
@@ -42,6 +45,7 @@
 				  	<div class="collapsible-body">
 						<p><span class="negrito">Via ou municípo: </span><span><?php echo $dados['via'];?></span></p>
 						<p><span class="negrito">Nome da OAE: </span><span><?php echo $dados['nome'];?></span></p>
+						<p><span class="negrito">Município: </span><span><?php echo $cidades[$dados['cidade']]['nome'];?></span></p>
 						<p><span class="negrito">Ano de construção (ou época aprox.): </span><span><?php echo implode('/', array_reverse(explode('-', $dados['data_construcao'])));?></span></p>
 						<p><span class="negrito">Trem-tipo: </span><span><?php echo $dados['trem_tipo'];?></span></p>
 						<p><span class="negrito">Sentido: </span><span><?php echo $dados['sentido'];?></span></p>
@@ -59,13 +63,13 @@
 						<p><span class="negrito">Largura do acostamento (m): </span><span><?php echo $dados['largura_acostamento'];?></span></p>
 						<p><span class="negrito">Largura do refúgio (m): </span><span><?php echo $dados['largura_refugio'];?></span></p>
 						<p><span class="negrito">Largura do passeio (m): </span><span><?php echo $dados['largura_passeio'];?></span></p>
-						<p><span class="negrito">Sistema construtivo (ver Tabela A3): </span><span><?php echo $dados['sistema_construtivo'];?></span></p>
-						<p><span class="negrito">Natureza da transposição (ver Tabela A4): </span><span><?php echo $dados['natureza_transposicao'];?></span></p>
+						<p><span class="negrito">Sistema Construtivo (Tabela A.3 - NBR 9452) (ver Tabela A3): </span><span><?php echo $dados['sistema_construtivo'];?></span></p>
+						<p><span class="negrito">Natureza de Transposição (Tabela A.4 - NBR 9452) (ver Tabela A4): </span><span><?php echo $dados['natureza_transposicao'];?></span></p>
 						<p><span class="negrito">Material (ver Tabela A5): </span><span><?php echo $dados['material_construcao'];?></span></p>
 						<h6 class="centralizar">Secão tipo</h6>
-						<p><span class="negrito">Longitudinal da superestrutura (ver Tabela A2): </span><span><?php echo $dados['longitudinal_super'];?></span></p>
+						<p><span class="negrito">Transversal da superestrutura (ver Tabela A2): </span><span><?php echo $dados['longitudinal_super'];?></span></p>
 						<p><span class="negrito">Transversal da superestrutura (ver Tabela A2): </span><span><?php echo $dados['transversal_super'];?></span></p>
-						<p><span class="negrito">Mesoestrutura (ver Tabela A2): </span><span><?php echo $dados['mesoestrutura_tipo'];?></span></p>
+						<p><span class="negrito">Mesoestrutura (Tabela A.2 - NBR 9452) (ver Tabela A2): </span><span><?php echo $dados['mesoestrutura_tipo'];?></span></p>
 						<h6 class="centralizar">Características Particulares</h6>
 						<p><span class="negrito">Número de vãos: </span><span><?php echo $dados['nro_vaos'];?></span></p>
 						<p><span class="negrito">Número de apoios: </span><span><?php echo $dados['nro_apoios'];?></span></p>
@@ -100,8 +104,8 @@
 					<div class="collapsible-body">
 						<h6 class="centralizar">Elementos estruturais</h6>
 						<p><span class="negrito">Superestrutura: </span><span><?php echo $dados['superestrutura'];?></span></p>
-						<p><span class="negrito">Mesoestrutura: </span><span><?php echo $dados['mesoestrutura'];?></span></p>
-						<p><span class="negrito">Infraestrutura: </span><span><?php echo $dados['infraestrutura'];?></span></p>
+						<p><span class="negrito">Mesoestrutura (Tabela A.2 - NBR 9452): </span><span><?php echo $dados['mesoestrutura'];?></span></p>
+						<p><span class="negrito">Infraestrutura (Tabela A.2 - NBR 9452): </span><span><?php echo $dados['infraestrutura'];?></span></p>
 						<p><span class="negrito">Aparelhos de apoio: </span><span><?php echo $dados['aparelhos_apoio_anomalia'];?></span></p>
 						<p><span class="negrito">Juntas de dilatação: </span><span><?php echo $dados['juntas_dilatacao_anomalia'];?></span></p>
 						<p><span class="negrito">Encontros: </span><span><?php echo $dados['encontros_anomalia'];?></span></p>
@@ -199,7 +203,7 @@
 		echo "<input id='detalhes' name='detalhes' type='text'>";
 		echo "<label for='detalhes'>Detalhes do Agendamento</label>";
 		Utils::renderSelect('tipo_inspecao', $opcoesInspecao, 'Tipo de Inspeção', 'Selecione o tipo de inspeção', 'tipo');
-		echo "<button class='indigo darken-4 float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large' type='submit' value='Create'>";
+		echo "<button class='indigo darken-4 float-right  waves-effect waves-circle waves-light btn-floating btn-large' type='submit' value='Create'>";
 		echo "<i class='large material-icons'>check</i>";
 		echo "</button>";
 		echo "</div>";

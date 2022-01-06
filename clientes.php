@@ -2,6 +2,8 @@
 	require_once('conexao.php');
 	require_once('utils.php');
 	require_once('ClientesService.php');
+	require_once('SessionService.php');
+	SessionService::validarLoginFeito();
 
 	$conexao = new Conexao();	
 	$clienteService = new ClientesService();
@@ -109,7 +111,7 @@
 							<input id="referencia" name="referencia" type="text">
 							<label for="referencia">Referência</label>
 						</div>
-						<button class="indigo darken-4 modal-close waves-effect waves-circle waves-light btn-floating btn-large float-right" type="submit" value="Create">
+						<button class="indigo darken-4  waves-effect waves-circle waves-light btn-floating btn-large float-right" type="submit" value="Create">
 							<i class="large material-icons">check</i>
 						</button>
 					</div>

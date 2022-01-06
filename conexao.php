@@ -1,13 +1,23 @@
 <?php
 	class Conexao{
-		const serverName = 'localhost';
-		const userName = 'root';
-		const senha = '';
-		const dbName = 'aguia'; 
+		
+		private const serverNameTest = 'localhost';
+		private const userNameTest = 'root';
+		private const senhaTest = '';
+		private const dbNameTest = 'aguia'; 
+		
+		private const serverName = 'localhost';
+		private const userName = 'infras12_aguia';
+		private const senha = 'Qz7Kg&fGdF55';
+		private const dbName = 'infras12_infrasil'; 
 
 		public function conectar(){
 			try{
-				$conexao = new mysqli($this::serverName, $this::userName, $this::senha, $this::dbName);
+				if($_SERVER['MIBDIRS'] == 'C:/xampp/php/extras/mibs'){
+					$conexao = new mysqli($this::serverNameTest, $this::userNameTest, $this::senhaTest, $this::dbNameTest);
+				}else{
+					$conexao = new mysqli($this::serverName, $this::userName, $this::senha, $this::dbName);
+				}
 				$conexao->autocommit(true);
 				return $conexao;
 			} catch(Exception $e){

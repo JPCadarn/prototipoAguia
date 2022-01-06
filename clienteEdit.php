@@ -79,7 +79,7 @@
 						<input id="referencia" value="<?php echo $cliente['referencia']; ?>" name="referencia" type="text">
 						<label for="referencia">Referência</label>
 					</div>
-					<button class="modal-close waves-effect waves-circle waves-light btn-floating btn-large float-right" type="submit" value="Create">
+					<button class=" waves-effect waves-circle waves-light btn-floating btn-large float-right" type="submit" value="Create">
 						<i class="large material-icons">check</i>
 					</button>
 				</div>

@@ -1,6 +1,10 @@
 <?php
 
 require_once('RelatorioPonte.php');
+require_once('SessionService.php');
+require_once('utils.php');
+
+SessionService::validarLoginFeitoEVisitante();
 
 $idPonte = $_GET['id'];
 

@@ -1,25 +1,23 @@
 <?php
 	require_once('conexao.php');
 	require_once('utils.php');
+	require_once('SessionService.php');
+	require_once('Cidades.php');
+	
+	SessionService::validarLoginFeito();
 	$conexao = new Conexao();
 ?>
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<!--Import Google Icon Font-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<!--Import materialize.css-->
-		<link type="text/css" rel="stylesheet" href="assets/materialize/css/materialize.min.css"  media="screen,projection"/>
-		<link rel="stylesheet" href="assets/css/main.css">
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	</head>
+	<?php
+		Utils::tagHead();
+	?>
 	<body>
 		<?php
 			Utils::navBar();
 			echo "<div class='row'>";
-			$pontes = $conexao->executarQuery('SELECT id, nome, descricao FROM pontes');
+			$pontes = $conexao->executarQuery('SELECT pontes.id, pontes.nome, pontes.descricao, pontes.resumo, pontes.id_usuario FROM pontes LEFT JOIN usuarios ON pontes.id_usuario = usuarios.id LEFT JOIN clientes ON usuarios.id_cliente = clientes.id WHERE clientes.id = '.SessionService::getIdCliente());
 			if(count($pontes)){
 				foreach($pontes as $ponte){
 					$imagem = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$ponte['id']} ORDER BY id ASC LIMIT 1");
@@ -37,11 +35,11 @@
 									<div>
 										<div class='card-content'>
 											<span class='card-title'>{$ponte['nome']}</span>
-											<p>{$ponte['descricao']}</p>
+											<p>".str_replace(PHP_EOL, '<br>', $ponte['resumo'])."</p>
 										</div>
 										<div class='card-action center'>
-											<a href='ponteDetalhes.php?id={$ponte['id']}'><i class='material-icons tooltipped' data-position='bottom' data-tooltip='Detalhes'>info</i></a>
-											<a target='_blank' href='pontesRelatorio.php?id={$ponte['id']}'><i class='material-icons tooltipped' data-position='bottom' data-tooltip='Relatório'>print</i></a>
+											<a href='ponteDetalhes.php?id={$ponte['id']}'><i class='material-icons tooltipped indigo-text text-darken-4' data-position='bottom' data-tooltip='Detalhes'>info</i></a>
+											<a target='_blank' href='pontesRelatorio.php?id={$ponte['id']}'><i class='material-icons tooltipped indigo-text text-darken-4' data-position='bottom' data-tooltip='Relatório'>print</i></a>
 										</div>
 									</div>
 								</div>
@@ -73,16 +71,32 @@
 								<div class="collapsible-body">
 									<div class="row">
 										<div class="input-field col s12 m6">
-											<input id="via" name="via" type="text">
+											<input id="via" name="via" type="text" required>
 											<label for="via">Via ou Municipio</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="nome" name="nome" type="text">
+											<input id="nome" name="nome" type="text" required>
 											<label for="nome">Nome da OAE</label>
 										</div>
+										<?php
+											Utils::renderSelect('estado', Cidades::ESTADOS, 'Estado', 'Selecione o estado da OAE', 'nome', 's12 m6');
+											echo "<div id='div_cidades' class='input-field col s12 m6'>";
+											echo "<select disabled id='cidade' name='cidade'>";
+											echo "<option value='' disabled selected>Selecione a cidade da OAE</option>";
+											echo "</select>";
+											echo "<label>Cidade</label>";
+											echo "</div>";
+											$ReflectionClass = new ReflectionClass(Cidades::class);
+											$constantes = $ReflectionClass->getConstants();
+											unset($constantes['ESTADOS']);
+											ksort($constantes);
+											foreach($constantes as $estado => $cidades){
+												Utils::renderSelectNameIdDiferentesOculto($estado, 'cidade', $cidades, 'Cidade', 'Selecione a cidade da OAE', 'nome', 's21 m6');
+											}
+										?>
 										<div class="input-field col s12 m6">
 											<input id="data_construcao" name="data_construcao" class="mask-date" type="text">
-											<label for="data_construcao">Data de Construção</label>
+											<label for="data_construcao">Data de Inauguração</label>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="trem_tipo" name="trem_tipo" type="text">
@@ -97,12 +111,14 @@
 											<label for="localizacao">Localização</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="latitude" name="latitude" type="text" class="mask-coord">
+											<input id="latitude" name="latitude" type="text" class="mask-coord validate" required pattern="\d\dº\s\d\d\&lsquo;\s\d\d&quot;\s[A-Z]">
 											<label for="latitude">Latitude</label>
+											<span class="helper-text" data-error="As coordenadas precisam seguir o padrão 00º 00' 00&quot; A"></span>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="longitude" name="longitude" type="text" class="mask-coord">
+											<input id="longitude" name="longitude" type="text" class="mask-coord validate" required pattern="\d\dº\s\d\d\&lsquo;\s\d\d&quot;\s[A-Z]">
 											<label for="longitude">Longitude</label>
+											<span class="helper-text" data-error="As coordenadas precisam seguir o padrão 00º 00' 00&quot; A"></span>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="projetista" name="projetista" type="text">
@@ -141,15 +157,15 @@
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="sistema_construtivo" name="sistema_construtivo" type="text">
-											<label for="sistema_construtivo">Sistema Construtivo</label>
+											<label for="sistema_construtivo">Sistema Construtivo (Tabela A.3 - NBR 9452)</label>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="natureza_transposicao" name="natureza_transposicao" type="text">
-											<label for="natureza_transposicao">Natureza da Transposição</label>
+											<label for="natureza_transposicao">Natureza de Transposição (Tabela A.4 - NBR 9452)</label>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="material_construcao" name="material_construcao" type="text">
-											<label for="material_construcao">Material</label>
+											<label for="material_construcao">Material (Tabela A.5 - NBR 9452)</label>
 										</div>
 										<h5 class="center">Seção Tipo <i class='tiny material-icons tooltipped' data-position='bottom' data-tooltip='Favor anexar as imagens correspondentes na seção Imagens'>info</i></h5>
 										<div class="input-field col s12 m6">
@@ -162,11 +178,11 @@
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="mesoestrutura_tipo" name="mesoestrutura_tipo" type="text">
-											<label for="mesoestrutura_tipo">Mesoestrutura </label>
+											<label for="mesoestrutura_tipo">Mesoestrutura (Tabela A.2 - NBR 9452) </label>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="infraestrutura" name="infraestrutura" type="text">
-											<label for="infraestrutura">Infraestrutura</label>
+											<label for="infraestrutura">Infraestrutura (Tabela A.2 - NBR 9452)</label>
 										</div>
 										<h5 class="center">Características Particulares</h5>
 										<div class="input-field col s12 m6">
@@ -221,8 +237,8 @@
 											<label for="caracteristicas_plani">Características plani-altimétricas</label>
 										</div>
 										<div class="input-field col s12 m6">
-											<input id="nro_faixas" name="nro_faixas" class="mask-decimal" type="text">
-											<label for="nro_faixas">Número de Faixas (metros)</label>
+											<input id="nro_faixas" name="nro_faixas" type="number">
+											<label for="nro_faixas">Número de Faixas</label>
 										</div>
 										<div class="input-field col s12 m6">
 											<input id="acostamento" name="acostamento" type="text">
@@ -274,7 +290,7 @@
 										</div>
 										<div class="input-field col s12">
 											<textarea class="materialize-textarea" id="mesoestrutura" name="mesoestrutura" type="text"></textarea>
-											<label for="mesoestrutura">Mesoestrutura</label>
+											<label for="mesoestrutura">Mesoestrutura (Tabela A.2 - NBR 9452)</label>
 										</div>
 										<div class="input-field col s12">
 											<textarea class="materialize-textarea" id="infraestrutura_anomalia" name="infraestrutura_anomalia" type="text"></textarea>
@@ -338,19 +354,23 @@
 								<div class="collapsible-body">
 									<div class="row">
 										<div class="file-field input-field">
-											<div class="btn">
+											<div class="btn indigo darken-4">
 												<span>Imagens</span>
-												<input name="images[]" required type="file" multiple accept="image/*">
+												<input name="images[]" required type="file" multiple accept="image/*" required="" aria-required="true">
 											</div>
 											<div class="file-path-wrapper">
 												<input class="file-path validate" type="text" placeholder="Anexe aqui as imagens da ponte">
 											</div>
 										</div>
+										<div class="input-field col s12">
+											<textarea class="materialize-textarea" id="resumo" name="resumo" type="text" required></textarea>
+											<label for="resumo">Resumo da situação e recomendações</label>
+										</div>
 									</div>
 								</div>
 							</li>
 						</ul>
-						<button class="indigo darken-4 float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large" type="submit" value="Create">
+						<button class="indigo darken-4 float-right  waves-effect waves-circle waves-light btn-floating btn-large" type="submit" value="Create">
 							<i class="large material-icons">check</i>
 						</button>
 					</form>
@@ -361,5 +381,6 @@
 		<?php
 		Utils::scriptsJs();
 		?>
+		<script type='text/javascript' src='assets/js/cidades.js'></script>
 	</body>
 </html>

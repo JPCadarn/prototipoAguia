@@ -27,6 +27,7 @@ main {
 .imagem-logo {
 	width: 10% !important;
 	height: auto;
+	margin-left: 1em;
 }
 
 .imagem-login {

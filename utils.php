@@ -1,20 +1,8 @@
 <?php
 
+require_once('SessionService.php');
+
 class Utils{
-	public static function navBar(){
-		if(session_status() <> PHP_SESSION_ACTIVE){
-			session_start();
-		}
-		if(isset($_SESSION['userId']) && isset($_SESSION['userType']) && ($_SESSION['userType'] == 'aguia')){
-			self::renderNavBarAguia();
-		}elseif(isset($_SESSION['userId']) && isset($_SESSION['userType']) && ($_SESSION['userType'] == 'admin')){
-			self::renderNavBarAdmin();
-		}elseif(isset($_SESSION['userId'])){
-			self::renderNavBar();
-		}else{
-			self::renderNavBarSemLogin();
-		}
-	}
 
 	public static function ordenarArrayMultiDimensional($array, $chave){
 		$colunas = array_column($array, $chave);
@@ -22,44 +10,32 @@ class Utils{
 
 		return $array;
 	}
-
-	public static function renderNavBarAdmin(){
-		echo "
-			<nav>
-				<div class='nav-wrapper grey lighten-1'>
-					<a href='index.php' class='brand-logo center imagem-logo' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo.png'/>
-					</a>
-					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
-					<ul class='right hide-on-med-and-down'>
-						<li><a href='pontes.php'>Pontes</a></li>
-						<li><a href='agendamentos.php'>Agendamentos</a></li>
-						<li><a href='inspecoes.php'>Inspeções</a></li>
-						<li><a href='usuarios.php'>Usuários</a></li>
-						<li><a href='logout.php'>Logout</a></li>
-						<li><a href='minhaConta.php'>Minha Conta</a></li>
-					</ul>
-				</div>
-			</nav>
-			<ul class='sidenav' id='mobile-demo'>
-				<li><a href='pontes.php'>Pontes</a></li>
-				<li><a href='agendamentos.php'>Agendamentos</a></li>
-				<li><a href='inspecoes.php'>Inspeções</a></li>
-				<li><a href='usuarios.php'>Usuários</a></li>
-				<li><a href='logout.php'>Logout</a></li>
-				<li><a href='minhaConta.php'>Minha Conta</a></li>
-			</ul>
-		";
+	
+	public static function navBar(){
+		if(session_status() <> PHP_SESSION_ACTIVE){
+			session_start();
+		}
+		$userType = SessionService::getUserType();
+		if($userType == 'aguia'){
+			self::renderNavBarAguia();
+		}elseif($userType == 'admin'){
+			self::renderNavBarAdmin();
+		}elseif($userType == 'normal'){
+			self::renderNavBar();
+		}else{
+			self::renderNavBarSemLogin();
+		}
 	}
 
 	public static function renderNavBarAguia(){
 		echo "
 			<nav>
 				<div class='nav-wrapper grey lighten-1'>
-					<a href='index.php' class='brand-logo center imagem-logo' tabIndex='-1'>
+					<a href='dash.php' class='brand-logo imagem-logo' tabIndex='-1'>
 						<img class='responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo_corte.png'/>
 					</a>
-					<ul class='right hide-on-med-and-down'>
+					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
+					<ul id='itens_menu' class='right hide-on-med-and-down'>
 						<li><a href='pontes.php'>Pontes</a></li>
 						<li><a href='agendamentos.php'>Agendamentos</a></li>
 						<li><a href='inspecoes.php'>Inspeções</a></li>
@@ -82,15 +58,49 @@ class Utils{
 		";
 	}
 
-	public static function renderNavBar(){
+	public static function renderNavBarAdmin(){
 		echo "
 			<nav>
 				<div class='nav-wrapper grey lighten-1'>
-					<a href='index.php' class='brand-logo center imagem-logo' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo.png'/>
+				<a href='dash.php' class='brand-logo imagem-logo' tabIndex='-1'>
+					<img class='responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo_corte.png'/>
+				</a>
+					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
+					<ul id='itens_menu' class='right hide-on-med-and-down'>
+						<li><a href='pontes.php'>Pontes</a></li>
+						<li><a href='agendamentos.php'>Agendamentos</a></li>
+						<li><a href='inspecoes.php'>Inspeções</a></li>
+						<li><a href='usuarios.php'>Usuários</a></li>
+						<li><a href='logout.php'>Logout</a></li>
+						<li><a href='minhaConta.php'>Minha Conta</a></li>
+					</ul>
+					<ul id='dropdownEstruturas' class='dropdown-content'>
+						<li><a href='pontes.php'>Pontes</a></li>
+						<li><a href='agendamentos.php'>Agendamentos</a></li>
+						<li><a href='inspecoes.php'>Inspeções</a></li>
+					</ul>
+				</div>
+			</nav>
+			<ul class='sidenav' id='mobile-demo'>
+				<li><a href='pontes.php'>Pontes</a></li>
+				<li><a href='agendamentos.php'>Agendamentos</a></li>
+				<li><a href='inspecoes.php'>Inspeções</a></li>
+				<li><a href='usuarios.php'>Usuários</a></li>
+				<li><a href='logout.php'>Logout</a></li>
+				<li><a href='minhaConta.php'>Minha Conta</a></li>
+			</ul>
+		";
+	}
+				
+	public static function renderNavBar(){
+		echo "
+			<nav>
+					<div class='nav-wrapper grey lighten-1'>
+					<a href='dash.php' class='brand-logo imagem-logo' tabIndex='-1'>
+						<img class='responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo_corte.png'/>
 					</a>
 					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
-					<ul class='right hide-on-med-and-down'>
+					<ul id='itens_menu' class='right hide-on-med-and-down'>
 						<li><a href='pontes.php'>Pontes</a></li>
 						<li><a href='agendamentos.php'>Agendamentos</a></li>
 						<li><a href='inspecoes.php'>Inspeções</a></li>
@@ -113,28 +123,22 @@ class Utils{
 		echo "
 			<nav>
 				<div class='nav-wrapper grey lighten-1'>
-					<a href='index.php' class='brand-logo center imagem-logo' tabIndex='-1'>
-						<img class='imagem-logo responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo.png'/>
+					<a href='dash.php' class='brand-logo center imagem-logo' tabIndex='-1'>
+						<img class='responsive-img' tabIndex='-1' id='logo' src='assets/Logo/logo_novo_corte.png'/>
 					</a>
 					<a href='#' data-target='mobile-demo' class='sidenav-trigger'><i class='material-icons'>menu</i></a>
 					<ul class='right hide-on-med-and-down'>
-						<li><a href='pontes.php'>Pontes</a></li>
-						<li><a href='agendamentos.php'>Agendamentos</a></li>
-						<li><a href='inspecoes.php'>Inspeções</a></li>
-						<li><a href='index.php'>Login</a></li>
+						<li><a href='login.php'>Login</a></li>
 					</ul>
 				</div>
 			</nav>
 			<ul class='sidenav' id='mobile-demo'>
-				<li><a href='pontes.php'>Pontes</a></li>
-				<li><a href='agendamentos.php'>Agendamentos</a></li>
-				<li><a href='inspecoes.php'>Inspeções</a></li>
-				<li><a href='index.php'>Login</a></li>
+				<li><a href='login.php'>Login</a></li>
 			</ul>
 		";
 	}
 
-	public static function tagHead(){
+	public static function tagHead($titulo = 'Infrasil - O portal da infraestrutura brasileira'){
 		echo "
 			<head>
 				<!--Import Google Icon Font-->
@@ -144,6 +148,8 @@ class Utils{
 				<link rel='stylesheet' href='assets/css/main.css'>
 				<!--Let browser know website is optimized for mobile-->
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+				<link rel='icon' href='assets/Logo/logo_novo_clean.png' type='image/x-icon'>
+				<title>".$titulo."</title>
 			</head>
 		";
 	}
@@ -222,9 +228,21 @@ class Utils{
 		return $retorno;
 	}
 
-	public static function renderSelect($idName, $opcoes, $label, $opcaoDisabled, $campoValor){
-		echo "<div class='input-field col s12'>";
+	public static function renderSelect($idName, $opcoes, $label, $opcaoDisabled, $campoValor, $tamanho = 's12'){
+		echo "<div class='input-field col ".$tamanho."'>";
 		echo "<select id='$idName' name='$idName'>";
+		echo "<option value='' disabled selected>$opcaoDisabled</option>";
+		foreach($opcoes as $opcao){
+			echo '<option value='.$opcao['id'].'>'.$opcao[$campoValor].'</option>';
+		}
+		echo "</select>";
+		echo "<label>$label</label>";
+		echo "</div>";
+	}
+
+	public static function renderSelectNameIdDiferentesOculto($id, $name, $opcoes, $label, $opcaoDisabled, $campoValor, $tamanho = 's12'){
+		echo "<div id='div_".$id."' class='oculto input-field col ".$tamanho."'>";
+		echo "<select id='$id' name='$name'>";
 		echo "<option value='' disabled selected>$opcaoDisabled</option>";
 		foreach($opcoes as $opcao){
 			echo '<option value='.$opcao['id'].'>'.$opcao[$campoValor].'</option>';

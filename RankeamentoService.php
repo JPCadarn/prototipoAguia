@@ -1,5 +1,7 @@
 <?php
 
+	require_once('InspecaoService.php');
+
 	class RankeamentoService{
 		const ALFA1 = 0.4;
 		const ALFA2 = 0.6;
@@ -43,7 +45,7 @@
 			$html .= "<table class='striped centered responsive-table'>";
 			$html .= "<thead>";
 			$html .= "<tr>";
-			$html .= "<th>ID Inspeção</th>";
+			$html .= "<th>Tipo de Inspeção</th>";
 			$html .= "<th>OAE</th>";
 			$html .= "<th>Data de Inspeção</th>";
 			$html .= "<th>IVS</th>";
@@ -58,7 +60,7 @@
 					break;
 				}
 				$html .= "<tr>";
-				$html .= "<td>".$inspecao['id']."</td>";
+				$html .= "<td>".InspecaoService::tipos[$inspecao['tipo_inspecao']]."</td>";
 				$html .= "<td>".$inspecao['descricao']."</td>";
 				$html .= "<td>".Utils::formataData($inspecao['data_inspecao'])."</td>";
 				$html .= "<td>".$inspecao['ivs']."</td>";
@@ -77,6 +79,56 @@
 			echo $html;
 		}
 
+		public function renderRankeamentosRelatorio($idPonte){
+			$imps = [];
+
+			foreach($this->inspecoes as $inspecao){
+				$imps[$inspecao['ponte_id']] = $this->calcularIMP($inspecao);
+			}
+
+			$imps = Utils::ordenarArrayMultiDimensional($imps, 'imp');
+
+			$html = '';
+			$html .= "<table>";
+			$html .= "<thead>";
+			$html .= "<tr>";
+			$html .= "<th><b>Tipo de Inspeção</b></th>";
+			$html .= "<th><b>Nome da OAE</b></th>";
+			$html .= "<th><b>Data de Inspeção</b></th>";
+			$html .= "<th><b>Pontuação</b></th>";
+			$html .= "</tr>";
+			$html .= "</thead>";
+			$html .= "<tbody>";
+			$contador = 0;
+
+			$imps = array_splice($imps, 0, 9);
+
+			foreach($imps as $inspecao){
+				$html .= "<tr>";
+				$html .= "<td>".InspecaoService::tipos[$inspecao['id']]."</td>";
+				$html .= "<td>".$inspecao['ponte_nome']."</td>";
+				$html .= "<td>".Utils::formataData($inspecao['data_inspecao'])."</td>";
+				$html .= "<td>".$inspecao['imp']."</td>";
+				$html .= "</tr>";
+				$contador++;
+			}
+			$html .= "</tbody>";
+			$html .= "</table>";
+			
+			return $html;
+		}
+
+		public function getPosicaoPonte($idPonte){
+			$imps = [];
+
+			foreach($this->inspecoes as $inspecao){
+				$imps[$inspecao['ponte_id']] = $this->calcularIMP($inspecao);
+			}
+			$imps = Utils::ordenarArrayMultiDimensional($imps, 'imp');
+
+			return array_search($idPonte, array_column($imps, 'ponte_id')) + 1;
+		}
+
 		public function calcularIMP($inspecao){
 			$indiceValorSocial = $this->calcularIndiceValorSocial($inspecao);
 			$indiceSaudeEstrutura = $this->calcularIndiceSaudeEstrutura($inspecao);
@@ -87,7 +139,10 @@
 				'imp' => $imp,
 				'descricao' => substr($inspecao['nome'], 0, 50),
 				'id' => $inspecao['id'],
-				'data_inspecao' => $inspecao['data_inspecao']
+				'ponte_id' => $inspecao['ponte_id'],
+				'data_inspecao' => $inspecao['data_inspecao'],
+				'ponte_nome' => $inspecao['ponte_nome'],
+				'tipo_inspecao' => $inspecao['tipo_inspecao']
 			];
 		}
 

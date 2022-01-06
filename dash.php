@@ -2,15 +2,19 @@
 	require_once('conexao.php');
 	require_once('utils.php');
 	require_once('RankeamentoService.php');
+	require_once('SessionService.php');
+	SessionService::validarLoginFeito();
 	$conexao = new Conexao();
-	if(!isset($_GET['id']) || $_GET['id'] == ''){
-
-	}else{
-		$dados = $conexao->executarQuery('SELECT * FROM pontes WHERE id = '.$_GET['id'])[0];
-		$imagens = $conexao->executarQuery("SELECT imagem FROM imagens_pontes WHERE ponte_id = {$_GET['id']}");
-		$agendamentos = $conexao->executarQuery("SELECT * FROM agendamentos WHERE ponte_id = {$_GET['id']}");
-	}
-	$inspecoes = $conexao->executarQuery("SELECT inspecoes.*, pontes.descricao FROM inspecoes INNER JOIN pontes ON inspecoes.ponte_id = pontes.id WHERE inspecoes.status = 'Avaliado'");
+	
+	$inspecoes = $conexao->executarQuery('
+			SELECT 
+				i.*,
+				p.nome AS ponte_nome
+			FROM inspecoes i
+			INNER JOIN pontes p ON i.ponte_id = p.id
+			LEFT JOIN usuarios ON p.id_usuario = usuarios.id 
+			LEFT JOIN clientes ON usuarios.id_cliente = clientes.id
+			WHERE clientes.id = '.SessionService::getIdCliente());
 	$rankeamento = new RankeamentoService($inspecoes);
 	Utils::navBar();
 ?>
@@ -26,18 +30,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
 		<script type="text/javascript" src="assets/js/PieChartDash.js"></script>
+		<link rel="icon" href="assets/Logo/logo_novo_clean.png" type="image/x-icon">
+		<title>Infrasil - O portal da infraestrutura brasileira</title>
 	</head>
 	<body>
 		<div class="row container">
 			<div class="col s12 m5">
 				<?php
-					$rankeamento->renderRankeamentos();
+					if(count($inspecoes)){
+						$rankeamento->renderRankeamentos();
+					}
 				?>
 			</div>
 			<div class="col s12 m5 offset-m2">
 				<canvas id="myChart"></canvas>
 				<?php
-					$rankeamento->renderGrafico();
+					if(count($inspecoes)){
+						$rankeamento->renderGrafico();
+					}
 				?>
 			</div>
 		</div>

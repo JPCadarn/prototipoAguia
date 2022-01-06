@@ -1,3 +1,7 @@
+<?php
+	require_once('utils.php');
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,7 +15,9 @@
 	</head>
 	<body>
 		<?php
-			require_once('utils.php');
+			if(!$_GET['batatafrita'] == 'S' || !isset($_GET['batatafrita'])){
+				header('Location: index.php');
+			}
 
 			if(session_status() <> PHP_SESSION_ACTIVE){
 				session_start();

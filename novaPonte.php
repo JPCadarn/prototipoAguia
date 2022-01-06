@@ -14,10 +14,12 @@
 	$_POST['comprimento_maior_vao'] = Utils::formataDecimalBD($_POST['comprimento_maior_vao']);
 	$_POST['altura_pilares'] = Utils::formataDecimalBD($_POST['altura_pilares']);
 	$_POST['nro_faixas'] = Utils::formataDecimalBD($_POST['nro_faixas']);
+	$_POST['id_usuario'] = SessionService::getUserId();
 	$chaves = implode(',', array_keys($_POST));
 	$valores = array_values($_POST);
 	$valoresTratados = [];
 	$imagens = [];
+
 	foreach($valores as $valor){
 		$valoresTratados[] = "'$valor'";
 	}
@@ -29,11 +31,13 @@
 		($valoresTratados)
 	";
 	$idPonte = $conexao->executarQuery($query);
+
 	for($i = 0; $i < count($_FILES['images']['name']); $i++){
 		$nomeImagem = str_replace(['.', ',', '/', '\\'], '_', password_hash($_FILES['images']['name'][$i], PASSWORD_BCRYPT)).'.'.explode('/', $_FILES['images']['type'][$i])[1];
 		$imagens[] = $nomeImagem;
-		$destino = explode('models', dirname(__FILE__))[0].'\\assets\\fotos\\'.$nomeImagem;
+		$destino = dirname(__FILE__).'/assets/fotos/'.$nomeImagem;
 		if(rename($_FILES['images']['tmp_name'][$i], $destino)){
+			chmod($destino, 604);
 			$queryImagens = "
 			INSERT INTO imagens_pontes
 			(ponte_id, imagem)
@@ -43,29 +47,48 @@
 			$conexao->executarQuery($queryImagens);
 		}
 	}
-	for($i = 1; $i <= 20; $i++){
-		$nomeInspecao = 'Inspeção automática gerada ao cadastrar a estrutura.';
-		$dataInspecao = date('Y-m-d', strtotime($_POST['data_construcao']." $i year"));
-		$queryRotineira = "
-			INSERT INTO inspecoes
-			(ponte_id, nome, descricao, data_inspecao, tipo_inspecao)
-			VALUES
-			(".$idPonte.", '".$nomeInspecao."', '$nomeInspecao', '$dataInspecao', 'rotineira')
-		";
-		$conexao->executarQuery($queryRotineira);
-	}
+
+	$nomeInspecao = 'Inspeção cadastral para a OAE '.$idPonte;
+	$dataInspecao = date('Y-m-d');
+	$detalhesAgendamentoCadastral = 'Agendamento de inspeção cadastral para a OAE '.$idPonte;
+	$queryAgendamentoCadastral = "
+		INSERT INTO agendamentos
+		(data, horario, detalhes, ponte_id, id_usuario)
+		VALUES
+		('".$dataInspecao."', '12:00:00', '".$detalhesAgendamentoCadastral."', ".$idPonte.", ".SessionService::getUserId().")
+	";
+	$queryInspecaoCadastral = "
+		INSERT INTO inspecoes
+		(ponte_id, nome, descricao, data_inspecao, tipo_inspecao, id_usuario)
+		VALUES
+		(".$idPonte.", '".$nomeInspecao."', '$nomeInspecao', '$dataInspecao', 'cadastral', ".SessionService::getUserId().")
+	";
+	$conexao->executarQuery($queryAgendamentoCadastral);
+	$conexao->executarQuery($queryInspecaoCadastral);
+
 	for($i = 1; $i <= 4; $i++){
-		$nomeInspecao = 'Inspeção automática gerada ao cadastrar a estrutura.';
-		$anosInspecao = $i * 5;
-		$dataInspecao = date('Y-m-d', strtotime($_POST['data_construcao']." $anosInspecao year"));
-		$queryEspecial = "
-			INSERT INTO inspecoes
-			(ponte_id, nome, descricao, data_inspecao, tipo_inspecao)
+		$nomeInspecao = 'Inspeção rotineira automática para a OAE '.$idPonte;
+		$dataInspecao = date('Y-m-d', strtotime(date('Y-m-d')." $i year"));
+		$detalhesAgendamentoRotineiro = 'Agendamento de inspeção rotineira para a OAE '.$idPonte;
+		$queryAgendamentoRotineira = "
+			INSERT INTO agendamentos
+			(data, horario, detalhes, ponte_id, id_usuario)
 			VALUES
-			(".$idPonte.", '".$nomeInspecao."', '$nomeInspecao', '$dataInspecao', 'especial')
+			('".$dataInspecao."', '12:00:00', '".$detalhesAgendamentoRotineiro."', ".$idPonte.", ".SessionService::getUserId().")
 		";
-		$conexao->executarQuery($queryEspecial);
+		$conexao->executarQuery($queryAgendamentoRotineira);
 	}
+
+	$nomeInspecao = 'Inspeção especial automática para a OAE '.$idPonte;
+	$dataInspecao = date('Y-m-d', strtotime(date('Y-m-d')." 5 year"));
+	$detalhesAgendamentoEspecial = 'Agendamento de inspeção especial para a OAE '.$idPonte;
+	$queryAgendamentoEspecial = "
+		INSERT INTO agendamentos
+		(data, horario, detalhes, ponte_id, id_usuario)
+		VALUES
+		('".$dataInspecao."', '12:00:00', '".$detalhesAgendamentoEspecial."', ".$idPonte.", ".SessionService::getUserId().")
+	";
+	$conexao->executarQuery($queryAgendamentoEspecial);
 	
 	header('Location: pontes.php');
 ?>

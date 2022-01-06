@@ -3,9 +3,10 @@
 	require_once('conexao.php');
 	require_once('SessionService.php');
 	require_once('UsuariosService.php');
+	SessionService::validarLoginFeito();
 
 	$conexao = new Conexao();
-
+	
 	if(SessionService::getUserType() != 'aguia'){
 		$dadosUsuario = $conexao->executarQuery('SELECT * FROM usuarios WHERE id_cliente = '.SessionService::getIdCliente());
 	}else{

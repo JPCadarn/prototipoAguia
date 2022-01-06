@@ -21,19 +21,19 @@
 	$camposValores = implode(', ', $camposValores);
 	$conexao->updateById('inspecoes', $idInspecao, $camposValores);
 	
-	for($i = 0; $i < count($_FILES['images']['name']); $i++){
-		$nomeImagem = str_replace(['.', ',', '/', '\\'], '_', password_hash($_FILES['images']['name'][$i], PASSWORD_BCRYPT)).'.'.explode('/', $_FILES['images']['type'][$i])[1];
-		$imagens[] = $nomeImagem;
-		$destino = explode('models', dirname(__FILE__))[0].'\\assets\\fotos\\'.$nomeImagem;
-		if(rename($_FILES['images']['tmp_name'][$i], $destino)){
-			$queryImagens = "
-			INSERT INTO imagens_inspecoes
-			(inspecao_id, imagem, id_usuario)
-			VALUES
-			($idInspecao, '$nomeImagem', $idUsuario)
-			";
-			$conexao->executarQuery($queryImagens);
-		}
-	}
+	// for($i = 0; $i < count($_FILES['images']['name']); $i++){
+	// 	$nomeImagem = str_replace(['.', ',', '/', '\\'], '_', password_hash($_FILES['images']['name'][$i], PASSWORD_BCRYPT)).'.'.explode('/', $_FILES['images']['type'][$i])[1];
+	// 	$imagens[] = $nomeImagem;
+	// 	$destino = explode('models', dirname(__FILE__))[0].'\\assets\\fotos\\'.$nomeImagem;
+	// 	if(rename($_FILES['images']['tmp_name'][$i], $destino)){
+	// 		$queryImagens = "
+	// 		INSERT INTO imagens_inspecoes
+	// 		(inspecao_id, imagem, id_usuario)
+	// 		VALUES
+	// 		($idInspecao, '$nomeImagem', $idUsuario)
+	// 		";
+	// 		$conexao->executarQuery($queryImagens);
+	// 	}
+	// }
 	header('Location: inspecoes.php');
 ?>

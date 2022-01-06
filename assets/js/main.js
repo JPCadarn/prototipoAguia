@@ -69,3 +69,10 @@ var elem = document.querySelector('.collapsible.expandable');
 var instance = M.Collapsible.init(elem, {
   accordion: false
 });
+
+let split = window.location.href.split('/');
+let actual = split[split.length - 1];
+let ativos = $('a[href="'+actual+'"]');
+ativos.each(function(){
+    $(this).parent().addClass('active');
+});

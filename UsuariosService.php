@@ -7,9 +7,8 @@
 			['id' => 'admin', 'display' => 'Admin']
 		];
 
-		public static function renderUsuarios($dadosUsuario){
+		public static function renderUsuarios($usuarios){
 			$conexao = new Conexao();
-			$usuarios = $conexao->executarQuery("SELECT * FROM usuarios");
 			echo "<div class='row'>";
 			echo "<table class='striped centered responsive-table'>";
 			echo "<thead>";
@@ -62,7 +61,7 @@
 			echo "<label for='chave'>Chave</label>";
 			echo "</div>";
 			Utils::renderSelect('tipo', self::TIPOS_USUARIO, 'Tipo de Usuário', 'Selecione o tipo de usuário', 'display');
-			echo "<button class='indigo darken-4 float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large' type='submit' value='Create'>";
+			echo "<button class='indigo darken-4 float-right  waves-effect waves-circle waves-light btn-floating btn-large' type='submit' value='Create'>";
 			echo "<i class='large material-icons'>check</i>";
 			echo "</button>";
 			echo "</div>";

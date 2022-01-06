@@ -3,6 +3,7 @@
 	require_once('conexao.php');
 	require_once('SessionService.php');
 	require_once('ContaService.php');
+	SessionService::validarLoginFeito();
 
 	$conexao = new Conexao();
 	$dadosUsuario = $conexao->executarQuery('SELECT * FROM usuarios WHERE id = '.SessionService::getUserId())[0];

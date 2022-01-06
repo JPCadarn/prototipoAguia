@@ -1,6 +1,10 @@
 <?php
 	require_once('conexao.php');
 	require_once('utils.php');
+	require_once('SessionService.php');
+	require_once('AgendamentoService.php');
+
+	SessionService::validarLoginFeito();
 	$conexao = new Conexao();
 	$queryAgendamentos = '
 		SELECT 
@@ -8,7 +12,9 @@
 			p.nome AS ponte_nome
 		FROM agendamentos a
 		INNER JOIN pontes p ON a.ponte_id = p.id
-	';
+		LEFT JOIN usuarios ON p.id_usuario = usuarios.id 
+		LEFT JOIN clientes ON usuarios.id_cliente = clientes.id
+		WHERE clientes.id = '.SessionService::getIdCliente();
 	$pontes = $conexao->executarQuery('SELECT id, nome FROM pontes');
 	$agendamentos = $conexao->executarQuery($queryAgendamentos);
 	$opcoesInspecao = [
@@ -48,7 +54,7 @@
 	echo "<input id='detalhes' name='detalhes' type='text'>";
 	echo "<label for='detalhes'>Detalhes do Agendamento</label>";
 	Utils::renderSelect('tipo_inspecao', $opcoesInspecao, 'Tipo de Inspeção', 'Selecione o tipo de inspeção', 'tipo');
-	echo "<button class='indigo darken-4 float-right modal-close waves-effect waves-circle waves-light btn-floating btn-large' type='submit' value='Create'>";
+	echo "<button class='indigo darken-4 float-right waves-effect waves-circle waves-light btn-floating btn-large' type='submit' value='Create'>";
 	echo "<i class='large material-icons'>check</i>";
 	echo "</button>";
 	echo "</div>";
@@ -56,33 +62,25 @@
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";
-	echo "<div class='row'>";
 
-	foreach($agendamentos as $agendamento){
-		$imagem = $conexao->executarQuery('SELECT imagem FROM imagens_pontes WHERE ponte_id = '.$agendamento['ponte_id'].' ORDER BY id ASC LIMIT 1');
-		if(isset($imagem[0]['imagem'])){
-			$imagem = $imagem[0]['imagem'];
-		}else{
-			$imagem = '';
-		}
-		echo "
-			<div class='col s12 m6'>
-				<div class='card horizontal'>
-					<div class='card-image'>
-						<img src='assets/fotos/$imagem'>
-						<span class='card-title'>Agendamento {$agendamento['id']} - {$agendamento['ponte_nome']}</span>
-					</div>
-					<div class='card-stacked'>
-						<div class='card-content'>
-							<p>" . Utils::formataData($agendamento['data']) . ' - '. $agendamento['horario']. "</p>
-							<p>{$agendamento['detalhes']}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		";
+	$agendamentosAgrupados = Utils::agruparArrayPorChave($agendamentos, 'ponte_id');
+	
+	if(count($agendamentos)){
+		echo "<div class='container'>";
+			foreach($agendamentosAgrupados as $groupAgendamento){
+				echo "<ul class='collapsible expandable popout'>";
+					echo "<li>";
+						echo "<div class='collapsible-header'>".$groupAgendamento[0]['ponte_nome']." - ".$groupAgendamento[0]['id']."</div>";
+						echo "<div class='collapsible-body'>"; 
+						AgendamentoService::renderCardsAgendamentoAgrupado($groupAgendamento);
+						echo "</div>";
+					echo "</li>";
+				echo "</ul>";
+			}
+		echo "</div>";
+	}else{
+		echo "<h6>Nenhum agendamento cadastrado</h6>";
 	}
-	echo "</div>";
 
 	Utils::scriptsJs();
 	echo '</body>';

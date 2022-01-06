@@ -1,6 +1,7 @@
 
 <?php
 	require_once('utils.php');
+	require_once('Cidades.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +16,29 @@
 	<link href="assets/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="assets/css/main.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="assets/css/home.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<link rel="icon" href="assets/Logo/logo_novo_clean.png" type="image/x-icon">
 </head>
 <body>
+	<center>
+		<img class="responsive-img imagem-login" src="assets/Logo/logo_novo_corte.png" />
+
+		<div class="container center">
+
+			<?php
+				if(isset($_GET['login_errado']) && $_GET['login_errado'] == true){
+					echo "<h5 class='red-text'>Usuário ou Senha estão incorretos.</h5>";
+					echo "<div class='section'></div>";
+				}
+			?>
+
+			<h1>Site em manutenção</h1>
+			<h3>No momento, o site encontra-se em manutenção para melhorias na ferramenta</h3>
+		</div>
+	</center>
+	<?php
+		exit;
+	?>
+
 	<nav class="transparent" role="navigation">
 		<div class="nav-wrapper container">
 			<a href='#' class='brand-logo imagem-navbar' tabIndex='-1'>
@@ -44,7 +66,7 @@
 				<br><br>
 			</div>
 		</div>
-		<div class="parallax"><img src="assets/fotos/home/bridge1.jpg" alt="Unsplashed background img 1"></div>
+		<div class="parallax"><img src="assets/home/bridge1.jpg" alt="Unsplashed background img 1"></div>
 	</div>
 
 
@@ -53,33 +75,28 @@
 
 			<!--   Icon Section   -->
 			<div class="row">
-				<div class="col s12 m4">
-					<div class="icon-block">
-						<h2 class="center indigo-text"><i class="material-icons">attach_money</i></h2>
-						<h5 class="center">Otimize seus custos</h5>
-						<p class="light">
-							Com os relatórios e gráficos de manutenção prioritária gerados pelo sistema, o Infrasil reduz seus custos enquanto otimiza manutenções.
-						</p>
-					</div>
-				</div>
-
-				<div class="col s12 m4">
-					<div class="icon-block">
-						<h2 class="center indigo-text"><i class="material-icons">lock_open</i></h2>
-						<h5 class="center">Transparente</h5>
-						<p class="light">
-							Enquanto cataloga e gerencia suas OAE's, disponibilizamos ao público a consulta ao estado das estruturas. Com isso, tornamos a gestão pública mais transparente.
-						</p>
-					</div>
-				</div>
-
-				<div class="col s12 m4">
-					<div class="icon-block">
-						<h2 class="center indigo-text"><i class="material-icons">highlight</i></h2>
-						<h5 class="center">Amigável ao uso</h5>
-						<p class="light">Feito com layout moderno e de fácil uso. Sem instalações complexas, apenas </p>
-					</div>
-				</div>
+				<h5 class="center">Consulta do estado das OAE de sua cidade</h5>
+				<form action="buscarOAE.php" method="POST">
+					<?php
+						Utils::renderSelect('estado', Cidades::ESTADOS, 'Estado', 'Selecione o estado da OAE', 'nome', 's12 m6');
+						echo "<div id='div_cidades' class='input-field col s12 m6'>";
+						echo "<select disabled id='cidade' name='cidade'>";
+						echo "<option value='' disabled selected>Selecione a cidade da OAE</option>";
+						echo "</select>";
+						echo "<label>Cidade</label>";
+						echo "</div>";
+						$ReflectionClass = new ReflectionClass(Cidades::class);
+						$constantes = $ReflectionClass->getConstants();
+						unset($constantes['ESTADOS']);
+						ksort($constantes);
+						foreach($constantes as $estado => $cidades){
+							Utils::renderSelectNameIdDiferentesOculto($estado, 'cidade', $cidades, 'Cidade', 'Selecione a cidade da OAE', 'nome', 's21 m6');
+						}
+					?>
+					<button target="_blank" class="indigo darken-4 float-right  waves-effect waves-circle waves-light btn-floating btn-large" type="submit" value="Create">
+						<i class="large material-icons">search</i>
+					</button>
+				</form>
 			</div>
 
 		</div>
@@ -95,33 +112,106 @@
 				</div>
 			</div>
 		</div>
-		<div class="parallax"><img src="assets/fotos/home/obras2.jpg" alt="Unsplashed background img 2"></div>
+		<div class="parallax"><img src="assets/home/obras2.jpg" alt="Unsplashed background img 2"></div>
 	</div>
 
 	<div class="container">
 		<div class="section">
+		<div class="row">
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center indigo-text"><i class="material-icons">attach_money</i></h2>
+						<h5 class="center">Otimizando os gastos públicos</h5>
+						<p class="light">
+							Com os gráficos e relatórios técnicos gerados pelo sistema do Infrasil, os gastos públicos se tornam mais eficientes, menos onerosos e priorizam sua utilização onde mais se necessita.
+						</p>
+					</div>
+				</div>
 
-			<div class="row">
-				<div class="col s12 center">
-					<h3><i class="mdi-content-send indigo-text"></i></h3>
-					<h4>Entre em contato</h4>
-					<p class="center light">
-						Deseja contratar o serviço, precisa de suporte ou apenas deseja tirar dúvidas? Nossos contatos são:<br>
-						Comercial: comercial@infrasil.com.br<br>
-						Suporte: suporte@infrasil.com.br
-					</p>
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center indigo-text"><i class="material-icons">lock_open</i></h2>
+						<h5 class="center">Transparência</h5>
+						<p class="light">
+							As obras de infraestrutura do município catalogadas e gerenciadas de forma eficiente, proporcionando ao público a geração de relatórios completos. 
+							Assim, a gestão pública se torna cada vez mais transparente.
+						</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center indigo-text"><i class="material-icons">highlight</i></h2>
+						<h5 class="center">Amigável ao uso</h5>
+						<p class="light">
+							Feito com layout moderno e de fácil uso. Sem instalações complexas e necessidade de cadastro.
+							A Infrasil tornou o acesso a informação mais fácil para o cidadão.
+						</p>
+					</div>
 				</div>
 			</div>
 
 		</div>
 	</div>
 
-	<footer class="page-footer indigo">
-		<div class="container right-align">
-			Made by <a class="white-text text-darken-3" href="http://materializecss.com">Materialize</a>
+	<div id="modalPesquisa" class="modal large">
+		<div class="modal-title">
+			<br>
+			<h4 class="center">Consulte as OAE de sua cidade</h4>
 		</div>
-				
-		<!-- </div> -->
+		<form action="buscarOAE.php" method="POST">
+		<div class="modal-content">
+			<?php
+				Utils::renderSelect('estado', Cidades::ESTADOS, 'Estado', 'Selecione o estado da OAE', 'nome', 's12 m6');
+				echo "<div id='div_cidades' class='input-field col s12 m6'>";
+				echo "<select disabled id='cidade' name='cidade'>";
+				echo "<option value='' disabled selected>Selecione a cidade da OAE</option>";
+				echo "</select>";
+				echo "<label>Cidade</label>";
+				echo "</div>";
+				$ReflectionClass = new ReflectionClass(Cidades::class);
+				$constantes = $ReflectionClass->getConstants();
+				unset($constantes['ESTADOS']);
+				ksort($constantes);
+				foreach($constantes as $estado => $cidades){
+					Utils::renderSelectNameIdDiferentesOculto($estado, 'cidade', $cidades, 'Cidade', 'Selecione a cidade da OAE', 'nome', 's21 m6');
+				}
+			?>
+			</div>
+			<div class="modal-footer">
+				<div class="col s12 center">
+					<h3><i class="mdi-content-send indigo-text"></i></h3>
+					<h5>Entre em contato</h5>
+					<p class="center light">
+						Deseja contratar o serviço, precisa de suporte ou apenas deseja tirar dúvidas? Nossos contatos são:<br>
+						Comercial: comercial@infrasil.com.br<br>
+						Suporte: suporte@infrasil.com.br
+					</p>
+				</div>
+				<button target="_blank" class="indigo darken-4 float-right  waves-effect waves-circle waves-light btn-floating btn-large" type="submit" value="Create">
+					<i class="large material-icons">check</i>
+				</button>
+			</div>
+		</form>
+	</div>
+
+	<footer class="page-footer indigo">
+	<div class="container">
+		<div class="row">
+			<div class="col l6 s12">
+			<h5 class="white-text">Contato</h5>
+			<p class="grey-text text-lighten-4">
+				Comercial: comercial@infrasil.com.br<br>
+				Suporte: suporte@infrasil.com.br
+			</p>
+			</div>
+		</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+			</div>
+		</div>
 	</footer>
 
 
@@ -129,6 +219,6 @@
 	<?php
 		Utils::scriptsJs();
 	?>
-
+	<script type='text/javascript' src='assets/js/cidades.js'></script>
 	</body>
 </html>

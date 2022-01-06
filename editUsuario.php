@@ -1,6 +1,8 @@
 <?php
 	require_once('conexao.php');
 	require_once('utils.php');
+	require_once('SessionService.php');
+	SessionService::validarLoginFeito();
 	$conexao = new Conexao();
 	$chaves = array_keys($_POST);
 	$_POST['senha'] = password_hash($_POST['senha'], PASSWORD_BCRYPT);
